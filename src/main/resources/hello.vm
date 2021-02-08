@@ -47,4 +47,3 @@ sayHello("NICK")
 ##include指令会将外部文件原样输出
 #include("footer.vm")
 
-
