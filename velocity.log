@@ -1,0 +1,29 @@
+Sun Jan 24 14:28:28 CST 2021  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
+Sun Jan 24 14:28:28 CST 2021   [info] ************************************************************** 
+Sun Jan 24 14:28:28 CST 2021   [info] Starting Jakarta Velocity v1.3.1
+Sun Jan 24 14:28:28 CST 2021   [info] RuntimeInstance initializing.
+Sun Jan 24 14:28:28 CST 2021   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+Sun Jan 24 14:28:28 CST 2021   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Sun Jan 24 14:28:28 CST 2021   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Sun Jan 24 14:28:28 CST 2021   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+Sun Jan 24 14:28:28 CST 2021   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Sun Jan 24 14:28:28 CST 2021   [info] FileResourceLoader : initialization starting.
+Sun Jan 24 14:28:28 CST 2021   [info] FileResourceLoader : adding path 'D:\workspace\excel\'
+Sun Jan 24 14:28:28 CST 2021   [info] FileResourceLoader : initialization complete.
+Sun Jan 24 14:28:28 CST 2021   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+Sun Jan 24 14:28:28 CST 2021   [info] Default ResourceManager initialization complete.
+Sun Jan 24 14:28:28 CST 2021   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+Sun Jan 24 14:28:28 CST 2021   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+Sun Jan 24 14:28:28 CST 2021   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+Sun Jan 24 14:28:28 CST 2021   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+Sun Jan 24 14:28:28 CST 2021   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+Sun Jan 24 14:28:28 CST 2021   [info] Created: 20 parsers.
+Sun Jan 24 14:28:28 CST 2021   [info] Velocimacro : initialization starting.
+Sun Jan 24 14:28:28 CST 2021   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
+Sun Jan 24 14:28:28 CST 2021   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+Sun Jan 24 14:28:28 CST 2021   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+Sun Jan 24 14:28:28 CST 2021   [info] Velocimacro : messages on  : VM system will output logging messages
+Sun Jan 24 14:28:28 CST 2021   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
+Sun Jan 24 14:28:28 CST 2021   [info] Velocimacro : initialization complete.
+Sun Jan 24 14:28:28 CST 2021   [info] Velocity successfully started.
+Sun Jan 24 14:28:28 CST 2021   [info] ResourceManager : found /vm/dlf_job_dm.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader

@@ -1,0 +1,40 @@
+## 设置变量
+#set($color = 'red')
+$color
+
+#set($monkey=$color)
+$monkey
+
+##读取变量
+$greet $name
+
+## 循环
+## List<String>
+#foreach($item in $list)
+    $velocityCount:$iitem
+#end
+## List
+#set($map=["1","2","3","4"])
+#foreach($item in $map)
+    $velocityCount:$item
+#end
+## List<Book>
+#foreach($item in $bookList)
+ $item.getName()
+#end
+#foreach($key in $bookMap.keySet())
+    $velocityCount --> $key:$bookMap.get($key).toString()
+#end
+
+## 判断
+#if(1)
+    ## dosomething...
+#elseif(1)
+    ## dosomething...
+#else
+    ## dosomething...
+#end
+
+##声明宏
+#macro(sayHello $name)
+#end

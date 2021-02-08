@@ -1,0 +1,45 @@
+DECLARE
+records BIGINT;
+u_batch_num BIGINT;
+u_num BIGINT;
+BEGIN
+--查询出dwr表中是否有数据,没有则全量插入
+SELECT count(*),max(dw_batch_number) FROM ${dwrTableName}  INTO records,u_batch_num;
+IF records=0
+THEN
+INSERT INTO ${dwrTableName} 
+(${dwrInsertSQLField})
+SELECT
+${dwiInsertSQLField}
+ FROM ${dwiTableName} a;
+ELSE
+--增量更新
+--查询出dwi表中是否有新增数据,有则增量更新
+SELECT count(*) FROM ${dwiTableName} WHERE dw_batch_number > u_batch_num INTO u_num;
+IF u_num <> 0
+THEN
+
+-- 删除DWR表中待修改的数据
+DELETE FROM  ${dwrTableName} WHERE record_id in (
+SELECT
+ a.id
+ FROM ${dwiTableName} a
+  JOIN ${dwrTableName} b ON (a.id = b.record_id)
+  WHERE a.dw_batch_number > u_batch_num
+);
+
+-- 2.新增数据
+INSERT INTO ${dwrTableName} 
+(${dwrInsertSQLField})
+
+(SELECT
+ ${dwiInsertSQLField}
+ FROM ${dwiTableName} a
+--插入比dwr最大的批次号的企业
+WHERE a.dw_batch_number > u_batch_num
+);
+
+END IF;
+END IF;
+
+END;

@@ -1,0 +1,58 @@
+-- ${dlf_script_dic} ${dlf_script_name} ${dlf_script_des}
+DECLARE
+records BIGINT;
+u_batch_num BIGINT;
+u_num BIGINT;
+BEGIN
+--查询出dwr表中是否有数据,没有则全量插入
+SELECT count(1),max(dw_batch_number) FROM ${dwrTableName}  INTO records,u_batch_num;
+IF (records=0)
+THEN
+INSERT INTO ${dwrTableName} 
+    (${dwrInsertSQLField}) 
+SELECT
+    ${dwiInsertSQLField}
+ FROM ${dwiTableName} a
+ JOIN 
+(SELECT b.${dwiId},MAX(b.dw_last_update_date) AS dw_last_update_date
+FROM ${dwiTableName} b 
+GROUP BY b.${dwiId}) x
+ON (a.${dwiId} = x.${dwiId} AND a.dw_last_update_date = x.dw_last_update_date);
+ 
+ELSE
+--增量更新
+--查询出dwi表中是否有新增数据,有则增量更新
+SELECT count(1) FROM ${dwiTableName} WHERE dw_batch_number > u_batch_num INTO u_num;
+IF (u_num <> 0)
+THEN
+
+-- 删除DWR表中待修改的数据
+DELETE FROM  ${dwrTableName} WHERE ${dwrId} in (
+SELECT
+ a.${dwiId}
+ FROM ${dwiTableName} a
+  JOIN ${dwrTableName} b ON (a.${dwiId} = b.${dwrId})
+  WHERE a.dw_batch_number > u_batch_num
+);
+
+-- 2.新增数据
+INSERT INTO ${dwrTableName} 
+    (${dwrInsertSQLField})
+
+(SELECT
+     ${dwiInsertSQLField}
+ FROM ${dwiTableName} a
+ JOIN 
+(SELECT b.${dwiId},MAX(b.dw_last_update_date) AS dw_last_update_date
+FROM 
+    ${dwiTableName} b 
+WHERE b.dw_batch_number > u_batch_num GROUP BY b.${dwiId}) x
+ON (a.${dwiId} = x.${dwiId} AND a.dw_last_update_date = x.dw_last_update_date)
+--插入比dwr最大的批次号
+WHERE a.dw_batch_number > u_batch_num
+);
+
+END IF;
+END IF;
+
+END;
