@@ -1,0 +1,4 @@
+#macro(say $word)
+    $word
+#end
+say("World!")

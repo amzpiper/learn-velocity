@@ -37,4 +37,14 @@ $greet $name
 
 ##声明宏
 #macro(sayHello $name)
+    hello $name
 #end
+sayHello("NICK")
+
+##引入外部vm文件
+##parse指令会先对其进行解析再输出
+#parse("header.vm")
+##include指令会将外部文件原样输出
+#include("footer.vm")
+
+
