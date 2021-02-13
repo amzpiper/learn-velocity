@@ -37,7 +37,7 @@ $greet $name
 
 ##ÉùÃ÷ºê
 #macro(sayHello $name)
-    hello $name
+    hello ${name}
 #end
 sayHello("NICK")
 

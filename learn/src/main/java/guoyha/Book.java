@@ -1,4 +1,4 @@
-package com.excel.guoyha;
+package guoyha;
 
 public class Book {
     private String name;

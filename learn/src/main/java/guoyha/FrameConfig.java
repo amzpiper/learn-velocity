@@ -1,4 +1,4 @@
-package com.excel.guoyha;
+package guoyha;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -56,8 +56,9 @@ public class FrameConfig {
         velocityContext.put("bookMap", bookMap);
 
         // Êä³ö
-        StringWriter sw = new StringWriter();
-        template.merge(velocityContext,sw);
-        System.out.println(sw.toString());
+        StringWriter stringWriter = new StringWriter();
+        template.merge(velocityContext,stringWriter);
+        System.out.println(stringWriter.toString());
+
     }
 }
