@@ -11,5 +11,6 @@
     <modules>
         <module>learn</module>
         <module>excel</module>
+        <module>velocity-web</module>
     </modules>
 </project>
