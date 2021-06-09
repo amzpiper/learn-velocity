@@ -1,0 +1,42 @@
+DECLARE
+records integer;
+u_batch_num integer;
+u_num integer;
+BEGIN
+--查询出dwr表中是否有数据,没有则全量插入
+SELECT count(*),max(dw_batch_number) FROM ${dwrTableName}  into records,u_batch_num;
+IF records=0
+THEN
+INSERT into ${dwrTableName}
+SELECT
+null,a.id,a.enterprise_name,a.enterprise_type,a.is_filiale,a.province,a.city,a.area,null,null,null,null,null,null,null,null,null,a.used_name,a.source_way,a.source_type,a.enterprise_population,a.investment_attraction_mode,a.investment_attraction_scale,a.belong_to_zone,a.belong_to_industry,a.industry_level,a.industry_broad_heading,a.industry_subclass,a.establish_date,a.enter_zone_year,a.is_operate,a.is_regulatory_industry,a.is_big_business,a.registered_capital,a.registered_type,a.credit_code,a.legal_person,a.legal_person_phone,a.legal_person_idcard,a.stock_name,a.stock_code,a.listing,a.president,a.president_phone,a.purchasing_person,a.purchasing_person_phone,a.sale_person,a.sale_person_phone,a.project_apply_person,a.project_apply_person_phone,a.enterprise_registered_address,a.enterprise_address,a.constract_appendix,a.investment_attraction_manager,a.marking_update,'{job_name}','${job_plan_time}','{job_name}','${job_plan_time}',a.dw_batch_number
+ FROM ${dwiTableName} a;
+ELSE
+--增量更新
+--查询出dwi表中是否有新增数据,有则增量更新
+SELECT count(*) FROM ${dwiTableName} WHERE dw_batch_number > u_batch_num into u_num;
+IF u_num <> 0
+THEN
+
+-- 删除DWR表中待修改的数据
+DELETE FROM  ${dwrTableName} WHERE record_id in (
+SELECT
+ a.id
+ FROM ${dwiTableName} a
+  JOIN ${dwrTableName} b ON (a.id = b.record_id)
+  WHERE a.dw_batch_number > u_batch_num
+);
+
+-- 2.新增数据
+INSERT into ${dwrTableName}
+(SELECT
+ a.id,b.id sys_id,a.enterprise_name,a.enterprise_type,a.is_filiale,a.province,a.city,a.area,null,null,null,null,null,null,null,null,null,a.used_name,a.source_way,a.source_type,a.enterprise_population,a.investment_attraction_mode,a.investment_attraction_scale,a.belong_to_zone,a.belong_to_industry,a.industry_level,a.industry_broad_heading,a.industry_subclass,a.establish_date,a.enter_zone_year,a.is_operate,a.is_regulatory_industry,a.is_big_business,a.registered_capital,a.registered_type,a.credit_code,a.legal_person,a.legal_person_phone,a.legal_person_idcard,a.stock_name,a.stock_code,a.listing,a.president,a.president_phone,a.purchasing_person,a.purchasing_person_phone,a.sale_person,a.sale_person_phone,a.project_apply_person,a.project_apply_person_phone,a.enterprise_registered_address,a.enterprise_address,a.constract_appendix,a.investment_attraction_manager,a.marking_update,'{job_name}','${job_plan_time}','{job_name}','${job_plan_time}',a.dw_batch_number
+ FROM ${dwiTableName} a
+--插入比dwr最大的批次号的企业
+WHERE a.dw_batch_number > u_batch_num
+);
+
+END IF;
+END IF;
+
+END;

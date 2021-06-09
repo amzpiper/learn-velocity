@@ -1,0 +1,119 @@
+{
+	"directoryId": null,
+	"pipelineObjectEntities": [
+	  #foreach($item in $list)
+	  #if ($velocityCount != 1)
+, 
+	  #end 
+	  {
+			"pipelineDatas": {
+				"name": "$item.name",
+				"saveType": 0,
+				"schedule": {
+					"startTime": "$item.startTime",
+					"interval": "$item.interval",
+					"scheduleType": "CRON",
+					"multiInstances": "false",
+					"dependPipeline": {
+						"dependPipelineList": [],
+						"dependPolicy": "EXIT",
+						"dependLast": "false"
+					},
+					"cronExpression": "$item.cronExpression",
+					"failPolicy": "EXIT",
+					"scheduleTimeType": 1,
+					"scheduleTimeDepJob": "",
+					"planTime": "$item.planTime",
+					"cronCustomize": 0,
+					"type": "SCHEDULE"
+				},
+				"coverVersion": false,
+				"objects": [{
+					"id": "${item.uuid}",
+					"name": "DWS_SQL_4731",
+					"properties": [{
+							"name": "imageStatus",
+							"value": "valid"
+						},
+						{
+							"name": "Script Path",
+							"value": "${item.pathName}"
+						},
+						{
+							"name": "Data Warehouse",
+							"value": "GaussDB_200_2383"
+						},
+						{
+							"name": "Database",
+							"value": "bishan_dws"
+						},
+						{
+							"name": "execTimeOut",
+							"value": "1 hour"
+						},
+						{
+							"name": "maximumRetries",
+							"value": "3"
+						},
+						{
+							"name": "retryDelay",
+							"value": "60 sec"
+						},
+						{
+							"name": "action",
+							"value": "SUSPEND"
+						},
+						{
+							"name": "Pipeline Name",
+							"value": "${item.name}"
+						},
+						{
+							"name": "processorType",
+							"value": "PROCESS_ACTIVITY"
+						},
+						{
+							"name": "type",
+							"value": "com.cloud.datacraft.processactivity.ExecuteDWSJob"
+						},
+						{
+							"name": "x",
+							"value": "308.0"
+						},
+						{
+							"name": "y",
+							"value": "168.0"
+						},
+						{
+							"name": "preconditionRelation"
+						},
+						{
+							"name": "preconditionAction"
+						}
+					],
+					"deactive": false,
+					"disable": false
+				}],
+				"params": [{
+						"name": "job_name",
+						"value": "$getTaskName(taskName)"
+					},
+					{
+						"name": "job_plan_time",
+						"value": "$getCurrentSystemTime(\"yyyy-MM-dd HH:mm:ss\", 0)"
+					},
+					{
+						"name": "current_day",
+						"value": "$getCurrentSystemTime(\"yyyy-MM-dd\", 0)"
+					}
+				],
+				"canvasVersion": "630",
+				"submitStatus": 0
+			},
+			"path": "${item.path}",
+			"createUser": "bishan_dws",
+			"description": null,
+			"purviewsLevel": "0"
+		}
+		#end
+	]
+}
