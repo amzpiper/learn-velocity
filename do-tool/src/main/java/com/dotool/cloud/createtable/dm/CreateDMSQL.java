@@ -19,21 +19,21 @@ public class CreateDMSQL {
 	public static void main(String[] args) throws Exception {
 		
 		
-		File file = new File("E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\专题");
-		List<File> files = getNeedFile(file);
-		for(File cf : files) {
-			if(cf.getName().indexOf("告警") != -1) {
-				System.out.println("9999999999");
-				createDWISQL(cf.getPath());
-				continue;
-			}
-			//createDWISQL(cf.getPath());
-			
-		}
+//		File file = new File("E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\专题");
+//		List<File> files = getNeedFile(file);
+//		for(File cf : files) {
+//			if(cf.getName().indexOf("告警") != -1) {
+//				System.out.println("9999999999");
+//				createDWISQL(cf.getPath());
+//				continue;
+//			}
+//			//createDWISQL(cf.getPath());
+//
+//		}
 		/*
 		 * for(String path :filePath) { createDWISQL(path); }
 		 */
-		//createDWISQL("E:\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\主题层\\企业服务\\02物理模型设计\\DM-企业服务-物理模型设计-V1.0.xlsx");
+		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\产业运营保障\\02物理模型设计\\DM-产业运营保障-物理表设计-V1.0.xlsx");
 	}
 
 	public static void createDWISQL(String filePath) throws Exception {
