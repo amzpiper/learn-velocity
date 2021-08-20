@@ -33,7 +33,8 @@ public class CreateDMSQL {
 		/*
 		 * for(String path :filePath) { createDWISQL(path); }
 		 */
-		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\产业运营保障\\02物理模型设计\\DM-产业运营保障-物理表设计-V1.0.xlsx");
+
+		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\智能运维\\02物理模型设计\\DM-智能运维-物理表设计-V1.0.xlsx");
 	}
 
 	public static void createDWISQL(String filePath) throws Exception {
@@ -145,9 +146,9 @@ public class CreateDMSQL {
 				}
 				//创建分区键
 
-				sb.append("\nPARTITION BY RANGE (dw_creation_date)" + "\n(\n"+
-						"    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),\n"
-						+ "    PARTITION PMAX VALUES LESS THAN(MAXVALUE)" + "\n)" );
+//				sb.append("\nPARTITION BY RANGE (dw_creation_date)" + "\n(\n"+
+//						"    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),\n"
+//						+ "    PARTITION PMAX VALUES LESS THAN(MAXVALUE)" + "\n)" );
 
 				sb.append(";\n");
 				sb.append("COMMENT ON TABLE \"" + schema + "\".\""
