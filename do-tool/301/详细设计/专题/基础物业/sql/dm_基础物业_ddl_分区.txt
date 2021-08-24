@@ -1,0 +1,370 @@
+
+
+-- 基础物业_总览 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_overview";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_overview"
+(
+    "id" serial,
+    "inspectors_total" varchar(100),
+    "inspectors_complete" varchar(100),
+    "inspectors_percent" varchar(100),
+    "order_total" varchar(100),
+    "order_complete" varchar(100),
+    "order_percent" varchar(100),
+    "report_total" varchar(100),
+    "report_complete" varchar(100),
+    "report_percent" varchar(100),
+    "complaint_total" varchar(100),
+    "complaint_complete" varchar(100),
+    "complaint_percent" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_overview" IS '基础物业_总览';
+COMMENT ON COLUMN dm_property.dm_property_overview.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_overview.inspectors_total IS '巡检任务总数';
+COMMENT ON COLUMN dm_property.dm_property_overview.inspectors_complete IS '巡检完成数';
+COMMENT ON COLUMN dm_property.dm_property_overview.inspectors_percent IS '巡检完成率';
+COMMENT ON COLUMN dm_property.dm_property_overview.order_total IS '工单任务总数';
+COMMENT ON COLUMN dm_property.dm_property_overview.order_complete IS '工单完成数';
+COMMENT ON COLUMN dm_property.dm_property_overview.order_percent IS '工单完成率';
+COMMENT ON COLUMN dm_property.dm_property_overview.report_total IS '报修量';
+COMMENT ON COLUMN dm_property.dm_property_overview.report_complete IS '报修解决数';
+COMMENT ON COLUMN dm_property.dm_property_overview.report_percent IS '报修解决率';
+COMMENT ON COLUMN dm_property.dm_property_overview.complaint_total IS '投诉量';
+COMMENT ON COLUMN dm_property.dm_property_overview.complaint_complete IS '投诉解决数';
+COMMENT ON COLUMN dm_property.dm_property_overview.complaint_percent IS '投诉解决率';
+COMMENT ON COLUMN dm_property.dm_property_overview.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_overview.create_time IS '创建时间';
+
+
+-- 基础物业_巡检任务 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_inspectors";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_inspectors"
+(
+    "id" serial,
+    "ontime_num" varchar(100),
+    "ontime_percent" varchar(100),
+    "special_num" varchar(100),
+    "special_percent" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_inspectors" IS '基础物业_巡检任务';
+COMMENT ON COLUMN dm_property.dm_property_inspectors.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_inspectors.ontime_num IS '按时完成数';
+COMMENT ON COLUMN dm_property.dm_property_inspectors.ontime_percent IS '按时完成率';
+COMMENT ON COLUMN dm_property.dm_property_inspectors.special_num IS '特殊关闭数';
+COMMENT ON COLUMN dm_property.dm_property_inspectors.special_percent IS '特殊关闭率';
+COMMENT ON COLUMN dm_property.dm_property_inspectors.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_inspectors.create_time IS '创建时间';
+
+
+-- 基础物业_环境巡检 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_inspectors_env";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_inspectors_env"
+(
+    "id" serial,
+    "inspectors_type" varchar(100),
+    "inspectors_complete" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_inspectors_env" IS '基础物业_环境巡检';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_env.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_env.inspectors_type IS '巡检类别';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_env.inspectors_complete IS '巡检完成数';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_env.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_env.create_time IS '创建时间';
+
+
+-- 基础物业_设备巡检 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_inspectors_device";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_inspectors_device"
+(
+    "id" serial,
+    "inspectors_type" varchar(100),
+    "inspectors_complete" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_inspectors_device" IS '基础物业_设备巡检';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_device.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_device.inspectors_type IS '巡检类别';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_device.inspectors_complete IS '巡检完成数';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_device.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_inspectors_device.create_time IS '创建时间';
+
+
+-- 基础物业_人员工时统计 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_staff";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_staff"
+(
+    "id" serial,
+    "staff_id" varchar(100),
+    "staff_name" varchar(100),
+    "avg_hour" varchar(100),
+    "order_num" varchar(100),
+    "sum_hour" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_staff" IS '基础物业_人员工时统计';
+COMMENT ON COLUMN dm_property.dm_property_staff.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_staff.staff_id IS '员工id';
+COMMENT ON COLUMN dm_property.dm_property_staff.staff_name IS '员工姓名';
+COMMENT ON COLUMN dm_property.dm_property_staff.avg_hour IS '平均工时';
+COMMENT ON COLUMN dm_property.dm_property_staff.order_num IS '任务数';
+COMMENT ON COLUMN dm_property.dm_property_staff.sum_hour IS '总工时';
+COMMENT ON COLUMN dm_property.dm_property_staff.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_staff.create_time IS '创建时间';
+
+
+-- 基础物业_服务满意度 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_service_satisfy";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_service_satisfy"
+(
+    "id" serial,
+    "satisfy_level" varchar(100),
+    "satisfy_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_service_satisfy" IS '基础物业_服务满意度';
+COMMENT ON COLUMN dm_property.dm_property_service_satisfy.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_service_satisfy.satisfy_level IS '满意度类型';
+COMMENT ON COLUMN dm_property.dm_property_service_satisfy.satisfy_num IS '数目';
+COMMENT ON COLUMN dm_property.dm_property_service_satisfy.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_service_satisfy.create_time IS '创建时间';
+
+
+-- 基础物业_服务类型 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_service_type";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_service_type"
+(
+    "id" serial,
+    "service_type" varchar(100),
+    "service_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_service_type" IS '基础物业_服务类型';
+COMMENT ON COLUMN dm_property.dm_property_service_type.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_service_type.service_type IS '服务类型';
+COMMENT ON COLUMN dm_property.dm_property_service_type.service_num IS '数目';
+COMMENT ON COLUMN dm_property.dm_property_service_type.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_service_type.create_time IS '创建时间';
+
+
+-- 基础物业_报修量 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_report_statistics";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_report_statistics"
+(
+    "id" serial,
+    "num" varchar(100),
+    "date_time" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_report_statistics" IS '基础物业_报修量';
+COMMENT ON COLUMN dm_property.dm_property_report_statistics.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_report_statistics.num IS '数目';
+COMMENT ON COLUMN dm_property.dm_property_report_statistics.date_time IS '数据时间';
+COMMENT ON COLUMN dm_property.dm_property_report_statistics.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_report_statistics.create_time IS '创建时间';
+
+
+-- 基础物业_投诉量 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_complaint_statistics";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_complaint_statistics"
+(
+    "id" serial,
+    "num" varchar(100),
+    "date_time" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_complaint_statistics" IS '基础物业_投诉量';
+COMMENT ON COLUMN dm_property.dm_property_complaint_statistics.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_complaint_statistics.num IS '数目';
+COMMENT ON COLUMN dm_property.dm_property_complaint_statistics.date_time IS '数据时间';
+COMMENT ON COLUMN dm_property.dm_property_complaint_statistics.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_complaint_statistics.create_time IS '创建时间';
+
+
+-- 基础物业_工单统计 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_order_statistics";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_order_statistics"
+(
+    "id" serial,
+    "timely_num" varchar(100),
+    "timely_percent" varchar(100),
+    "complete_percent" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_order_statistics" IS '基础物业_工单统计';
+COMMENT ON COLUMN dm_property.dm_property_order_statistics.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_order_statistics.timely_num IS '及时数';
+COMMENT ON COLUMN dm_property.dm_property_order_statistics.timely_percent IS '及时率';
+COMMENT ON COLUMN dm_property.dm_property_order_statistics.complete_percent IS '完成率';
+COMMENT ON COLUMN dm_property.dm_property_order_statistics.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_order_statistics.create_time IS '创建时间';
+
+
+-- 基础物业_工单类别分布 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_order_type";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_order_type"
+(
+    "id" serial,
+    "order_type" varchar(100),
+    "order_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_order_type" IS '基础物业_工单类别分布';
+COMMENT ON COLUMN dm_property.dm_property_order_type.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_order_type.order_type IS '工单类别';
+COMMENT ON COLUMN dm_property.dm_property_order_type.order_num IS '数目';
+COMMENT ON COLUMN dm_property.dm_property_order_type.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_order_type.create_time IS '创建时间';
+
+
+-- 基础物业_工单超时类别分布 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_order_overtime_type";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_order_overtime_type"
+(
+    "id" serial,
+    "order_type" varchar(100),
+    "order_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_order_overtime_type" IS '基础物业_工单超时类别分布';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_type.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_type.order_type IS '工单类别';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_type.order_num IS '数目';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_type.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_type.create_time IS '创建时间';
+
+
+-- 基础物业_工单及时分析 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_order_timely_analysis";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_order_timely_analysis"
+(
+    "id" serial,
+    "receive" varchar(100),
+    "complete" varchar(100),
+    "close" varchar(100),
+    "date_time" timestamp,
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_order_timely_analysis" IS '基础物业_工单及时分析';
+COMMENT ON COLUMN dm_property.dm_property_order_timely_analysis.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_order_timely_analysis.receive IS '接单及时数';
+COMMENT ON COLUMN dm_property.dm_property_order_timely_analysis.complete IS '按时完成数';
+COMMENT ON COLUMN dm_property.dm_property_order_timely_analysis.close IS '关单及时数';
+COMMENT ON COLUMN dm_property.dm_property_order_timely_analysis.date_time IS '刻度时间';
+COMMENT ON COLUMN dm_property.dm_property_order_timely_analysis.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_order_timely_analysis.create_time IS '创建时间';
+
+
+-- 基础物业_工单超时分析_时长 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_order_overtime_analysis_hours";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_order_overtime_analysis_hours"
+(
+    "id" serial,
+    "hour1" varchar(100),
+    "hour2" varchar(100),
+    "hour3" varchar(100),
+    "hour4" varchar(100),
+    "date_time" timestamp,
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_order_overtime_analysis_hours" IS '基础物业_工单超时分析_时长';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_hours.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_hours.hour1 IS '1小时内';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_hours.hour2 IS '1-2小时';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_hours.hour3 IS '2-3小时';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_hours.hour4 IS '超过3小时';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_hours.date_time IS '刻度时间';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_hours.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_hours.create_time IS '创建时间';
+
+
+-- 基础物业_工单超时分析_阶段 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_order_overtime_analysis_stage";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_order_overtime_analysis_stage"
+(
+    "id" serial,
+    "stage1" varchar(100),
+    "stage2" varchar(100),
+    "stage3" varchar(100),
+    "stage4" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_order_overtime_analysis_stage" IS '基础物业_工单超时分析_阶段';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_stage.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_stage.stage1 IS '起单-派单';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_stage.stage2 IS '派单-接单';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_stage.stage3 IS '接单-完成';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_stage.stage4 IS '完成-关闭';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_stage.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_order_overtime_analysis_stage.create_time IS '创建时间';
+
+
+-- 基础物业_工单部门统计 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_order_department_statistics";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_order_department_statistics"
+(
+    "id" serial,
+    "dep_name" varchar(100),
+    "order_sum" varchar(100),
+    "complete_num" varchar(100),
+    "complete_percent" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_order_department_statistics" IS '基础物业_工单部门统计';
+COMMENT ON COLUMN dm_property.dm_property_order_department_statistics.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_order_department_statistics.dep_name IS '部门名称';
+COMMENT ON COLUMN dm_property.dm_property_order_department_statistics.order_sum IS '工单总数';
+COMMENT ON COLUMN dm_property.dm_property_order_department_statistics.complete_num IS '完成数';
+COMMENT ON COLUMN dm_property.dm_property_order_department_statistics.complete_percent IS '完成率';
+COMMENT ON COLUMN dm_property.dm_property_order_department_statistics.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_order_department_statistics.create_time IS '创建时间';
+
+
+-- 基础物业_工单楼栋统计 --
+DROP TABLE IF EXISTS "dm_property"."dm_property_order_building_statistics";
+CREATE TABLE IF NOT EXISTS "dm_property"."dm_property_order_building_statistics"
+(
+    "id" serial,
+    "building_name" varchar(100),
+    "order_sum" varchar(100),
+    "complete_percent" varchar(100),
+    "consult_num" varchar(100),
+    "suggest_num" varchar(100),
+    "complaint_num" varchar(100),
+    "report_num" varchar(100),
+    "repair_num" varchar(100),
+    "hidden_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_property"."dm_property_order_building_statistics" IS '基础物业_工单楼栋统计';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.id IS '系统id';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.building_name IS '楼栋名称';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.order_sum IS '工单报修数';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.complete_percent IS '完成率';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.consult_num IS '咨询类';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.suggest_num IS '建议类';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.complaint_num IS '投诉类';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.report_num IS '报事类';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.repair_num IS '报修类';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.hidden_num IS '隐患类';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.company IS '所属公司';
+COMMENT ON COLUMN dm_property.dm_property_order_building_statistics.create_time IS '创建时间';

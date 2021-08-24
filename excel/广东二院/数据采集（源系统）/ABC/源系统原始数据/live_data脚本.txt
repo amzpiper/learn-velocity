@@ -1,0 +1,45 @@
+url
+/datasource/api/gd2hdev
+
+²ÎÊý
+url		
+tableName		
+lastModifiedDate		
+pageNum		
+pageSize
+
+
+
+
+importClass(com.huawei.livedata.lambdaservice.livedataprovider.HttpClient);
+importClass(com.huawei.livedata.lambdaservice.security.CipherUtils);
+    function excute(data) { 
+      var httpExecutor = new HttpClient();
+      
+      var plainPassword=CipherUtils.getPlainCipherText('client_secret');
+      var headers1 = {}; 
+      var oauthbody = {
+        'grant_type':'client_credentials',
+        'client_id':'#{client_id}',
+        'client_secret':plainPassword
+      };
+      var result = httpExecutor.post('#{abc_host}'+'/baas/auth/v1.0/oauth2/token',JSON.stringify(headers1),JSON.stringify(oauthbody), 'application/x-www-form-urlencoded')
+      var token_response_obj = JSON.parse(result.body().string());
+      // return token_response_obj;
+        
+        
+      var obj = JSON.parse(data);
+      var url = obj.param.url;
+      var headers = {'access-token':token_response_obj.access_token}; 
+      var reqBody = {
+        
+      };
+      if(obj.param.tableName){
+        reqBody.tableName = obj.param.tableName;
+      }
+       if(obj.param.lastModifiedDate){
+        reqBody.lastModifiedDate = obj.param.lastModifiedDate;
+      }
+      var fdiresult = httpExecutor.post('#{abc_host}'+url,JSON.stringify(headers),JSON.stringify(reqBody), 'application/json');
+      return fdiresult.body().string();
+}

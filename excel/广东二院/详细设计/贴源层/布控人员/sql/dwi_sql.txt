@@ -1,0 +1,75 @@
+
+
+-- 安全人员组 --
+DROP TABLE IF EXISTS dwi_abc.dwi_abc_security_person_group;
+CREATE TABLE IF NOT EXISTS dwi_abc.dwi_abc_security_person_group
+(
+    id character varying(100),
+    groupdesc character varying(50),
+    groupname character varying(50),
+    grouptype character varying(50),
+    isdeleted character varying(50),
+    islocked character varying(50),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_abc.dwi_abc_security_person_group IS '安全人员组';
+COMMENT ON COLUMN dwi_abc.dwi_abc_security_person_group.id IS '顺序号';
+COMMENT ON COLUMN dwi_abc.dwi_abc_security_person_group.groupdesc IS '组描述';
+COMMENT ON COLUMN dwi_abc.dwi_abc_security_person_group.groupname IS '组名';
+COMMENT ON COLUMN dwi_abc.dwi_abc_security_person_group.grouptype IS '组类型';
+COMMENT ON COLUMN dwi_abc.dwi_abc_security_person_group.isdeleted IS '是否删除';
+COMMENT ON COLUMN dwi_abc.dwi_abc_security_person_group.islocked IS '是否锁定';
+
+
+-- tbl人员组关系表 --
+DROP TABLE IF EXISTS dwi_abc.dwi_abc_tbl_persongroup_relation;
+CREATE TABLE IF NOT EXISTS dwi_abc.dwi_abc_tbl_persongroup_relation
+(
+    id character varying(100),
+    bingogroupid character varying(50),
+    vcmgroupid character varying(50),
+    isdeleted character varying(50),
+    islocked character varying(50),
+    name character varying(50),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_abc.dwi_abc_tbl_persongroup_relation IS 'tbl人员组关系表';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_persongroup_relation.id IS '顺序号';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_persongroup_relation.bingogroupid IS '组ID';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_persongroup_relation.vcmgroupid IS '视频组ID';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_persongroup_relation.isdeleted IS '是否删除';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_persongroup_relation.islocked IS '是否锁定';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_persongroup_relation.name IS '姓名';
+
+
+-- tbl人员关系表 --
+DROP TABLE IF EXISTS dwi_abc.dwi_abc_tbl_personinstance_relation;
+CREATE TABLE IF NOT EXISTS dwi_abc.dwi_abc_tbl_personinstance_relation
+(
+    id character varying(100),
+    bingopeopleid character varying(50),
+    vcmgroupid character varying(50),
+    name character varying(50),
+    isdeleted character varying(50),
+    islocked character varying(50),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_abc.dwi_abc_tbl_personinstance_relation IS 'tbl人员关系表';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_personinstance_relation.id IS '顺序号';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_personinstance_relation.bingopeopleid IS '人员ID';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_personinstance_relation.vcmgroupid IS '视频组ID';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_personinstance_relation.name IS '姓名';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_personinstance_relation.isdeleted IS '是否删除';
+COMMENT ON COLUMN dwi_abc.dwi_abc_tbl_personinstance_relation.islocked IS '是否锁定';

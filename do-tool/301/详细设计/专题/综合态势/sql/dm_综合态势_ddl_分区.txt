@@ -1,0 +1,120 @@
+
+
+-- 综合态势_总览 --
+DROP TABLE IF EXISTS "dm_comprehensive"."dm_comprehensive_overview";
+CREATE TABLE IF NOT EXISTS "dm_comprehensive"."dm_comprehensive_overview"
+(
+    "id" serial,
+    "area" varchar(100),
+    "department_num" varchar(100),
+    "visits_num" varchar(100),
+    "bed_num" varchar(100),
+    "service_num" varchar(100),
+    "park_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_comprehensive"."dm_comprehensive_overview" IS '综合态势_总览';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.id IS '系统id';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.area IS '建筑面积';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.department_num IS '科室数量';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.visits_num IS '日就诊量';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.bed_num IS '床位数';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.service_num IS '服务人员数';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.park_num IS '车位数';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.company IS '所属公司';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_overview.create_time IS '创建时间';
+
+
+-- 综合态势_服务人员分类统计 --
+DROP TABLE IF EXISTS "dm_comprehensive"."dm_comprehensive_service_people";
+CREATE TABLE IF NOT EXISTS "dm_comprehensive"."dm_comprehensive_service_people"
+(
+    "id" serial,
+    "service_type" varchar(100),
+    "people_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_comprehensive"."dm_comprehensive_service_people" IS '综合态势_服务人员分类统计';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_service_people.id IS '系统id';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_service_people.service_type IS '服务人员类型';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_service_people.people_num IS '人数';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_service_people.company IS '所属公司';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_service_people.create_time IS '创建时间';
+
+
+-- 综合态势_专项服务_医废月统计 --
+DROP TABLE IF EXISTS "dm_comprehensive"."dm_comprehensive_special_waste_month";
+CREATE TABLE IF NOT EXISTS "dm_comprehensive"."dm_comprehensive_special_waste_month"
+(
+    "id" serial,
+    "waste_num" varchar(100),
+    "date_time" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_comprehensive"."dm_comprehensive_special_waste_month" IS '综合态势_专项服务_医废月统计';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_waste_month.id IS '系统id';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_waste_month.waste_num IS '医废处理量';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_waste_month.date_time IS '刻度时间';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_waste_month.company IS '所属公司';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_waste_month.create_time IS '创建时间';
+
+
+-- 综合态势_专项服务_中央运送月统计 --
+DROP TABLE IF EXISTS "dm_comprehensive"."dm_comprehensive_special_transport_month";
+CREATE TABLE IF NOT EXISTS "dm_comprehensive"."dm_comprehensive_special_transport_month"
+(
+    "id" serial,
+    "transport_num" varchar(100),
+    "date_time" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_comprehensive"."dm_comprehensive_special_transport_month" IS '综合态势_专项服务_中央运送月统计';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_transport_month.id IS '系统id';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_transport_month.transport_num IS '中央运输量';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_transport_month.date_time IS '刻度时间';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_transport_month.company IS '所属公司';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_special_transport_month.create_time IS '创建时间';
+
+
+-- 综合态势_智慧通行 --
+DROP TABLE IF EXISTS "dm_comprehensive"."dm_comprehensive_access";
+CREATE TABLE IF NOT EXISTS "dm_comprehensive"."dm_comprehensive_access"
+(
+    "id" serial,
+    "car_sum" varchar(100),
+    "today_sum" varchar(100),
+    "in_num" varchar(100),
+    "out_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_comprehensive"."dm_comprehensive_access" IS '综合态势_智慧通行';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access.id IS '系统id';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access.car_sum IS '累计车流量(月)';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access.today_sum IS '当日车流量';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access.in_num IS '当日流入量';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access.out_num IS '当日流出量';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access.company IS '所属公司';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access.create_time IS '创建时间';
+
+
+-- 综合态势_智慧通行_车流月统计 --
+DROP TABLE IF EXISTS "dm_comprehensive"."dm_comprehensive_access_month";
+CREATE TABLE IF NOT EXISTS "dm_comprehensive"."dm_comprehensive_access_month"
+(
+    "id" serial,
+    "car_num" varchar(100),
+    "date_time" timestamp(6),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_comprehensive"."dm_comprehensive_access_month" IS '综合态势_智慧通行_车流月统计';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access_month.id IS '系统id';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access_month.car_num IS '车流量';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access_month.date_time IS '刻度时间';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access_month.company IS '所属公司';
+COMMENT ON COLUMN dm_comprehensive.dm_comprehensive_access_month.create_time IS '创建时间';

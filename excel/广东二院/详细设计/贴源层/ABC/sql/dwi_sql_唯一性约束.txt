@@ -1,0 +1,4 @@
+
+
+-- ÊÓÆµÑ²¸ü --
+alter table dwi_abc.dwi_abc_patrol_task_detail add constraint union_key_dwi_abc_patrol_task_detail  primary key (id);

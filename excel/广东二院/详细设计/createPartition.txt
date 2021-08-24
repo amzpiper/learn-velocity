@@ -1,0 +1,79 @@
+CREATE OR REPLACE procedure public.sp_add_day_partitions(
+	i_schema VARCHAR(100),
+	i_tablename VARCHAR(100),
+	i_parttion VARCHAR(100),
+	p_prefix VARCHAR(100),
+	result out text)
+AS
+DECLARE
+    v_str1 varchar2(1000); 
+    v_str2 varchar2(1000); 
+    v_par varchar2(1000);  
+    v_data varchar2(1000); 
+	
+	v_max_sql varchar2(1000); --拼接获取最大时间的sql
+	
+    v_tmp varchar2(1000);
+    v_drop varchar2(1000);
+    d_sql varchar2(1000);
+    v_hashname varchar2(1000);
+    v_num int;
+    pmax_name varchar2(1000); 
+    i int :=0;
+    i_start_dt timestamp;
+	i_end_dt timestamp; --记录maxvalue分区中最大的时间
+
+begin
+    --备份maxvalue分区的数据
+    select partition_name into v_par from dba_tab_partitions where high_value='MAXVALUE'  and table_name =i_tablename and schema=i_schema;
+    v_data = 'select count(*) from (select 1 from '||i_schema||'.'||i_tablename||' partition('||v_par||') limit 1);';
+    execute immediate v_data into v_num ;
+	
+    --dbms_output.put_line(v_num);
+    --dbms_output.put_line(v_data);
+    if v_num = 1 then
+        d_sql:='select getdistributekey('''||i_schema||'.'||i_tablename||''');';
+        execute immediate d_sql into v_hashname;
+        v_tmp:='create unlogged table '||i_schema||'.'||i_tablename||'_'||v_par||'_temp distribute by hash('||v_hashname||') as  select * from '||i_schema||'.'||i_tablename||' partition('||v_par||');'; 
+        execute immediate v_tmp ;
+		
+		--v_max_sql = 'select to_timestamp(max('||i_parttion||'),''yyyy-mm-dd hh24:mi:ss'') from '||i_schema||'.'||i_tablename||' partition('||v_par||') ;';
+		--execute immediate v_max_sql into i_end_dt ;
+    --dbms_output.put_line(v_tmp);
+    end if;
+ 
+    v_drop:='alter table '||i_schema||'.'||i_tablename|| ' drop partition '||v_par||';'; --drop分区maxvalue
+    execute immediate v_drop ;
+    --dbms_output.put_line(v_drop);
+
+    select to_timestamp(max(high_value),'yyyy-mm-dd hh24:mi:ss') into i_start_dt from dba_tab_partitions where high_value!='MAXVALUE' and  table_name = i_tablename  and schema = i_schema;
+    --select to_timestamp(now(),'yyyy-mm-dd hh24:mi:ss') into i_end_dt;
+    while i_start_dt <= now() LOOP  --生成添加分区语句
+
+        i_start_dt:=i_start_dt + interval '1 day'; 
+
+        v_str1 := 'alter table '||i_schema||'.'||i_tablename||' add partition '||p_prefix||to_char(i_start_dt-interval '1 day','yyyymmdd')||' VALUES LESS THAN ('''||to_char(i_start_dt)||''');';
+        --insert into result values (v_str1);  --添加分区
+        --dbms_output.put_line(v_str1);
+        execute immediate v_str1;
+        i:=i+1;
+
+    END LOOP;
+    v_str2 := 'alter table '||i_schema||'.'||i_tablename||' add partition '|| v_par ||' VALUES LESS THAN ('||'MAXVALUE'||');'; --添加maxvalue分区
+    execute immediate v_str2;
+    --dbms_output.put_line(v_str2);
+    if v_num = 1 
+    then
+    --insert into result values (v_str2);  --将max分区语句插入到结果表
+    v_str2 := 'insert into '||i_schema||'.'||i_tablename||' select * from '||i_schema||'.'||i_tablename||'_'||v_par||'_temp;';
+    execute immediate v_str2;
+    --dbms_output.put_line(v_str2);
+    v_str2 := 'drop table '||i_schema||'.'||i_tablename||'_'||v_par||'_temp;'; --drop 备份表
+    execute immediate v_str2;
+    --dbms_output.put_line(v_str2);
+    end if;
+    return  '创建['||i_start_dt||']-['||now()||']分区，共创建'||i;
+    EXCEPTION
+      WHEN OTHERS THEN
+         RAISE EXCEPTION '(%:%)',SQLCODE,SQLERRM; 
+end;

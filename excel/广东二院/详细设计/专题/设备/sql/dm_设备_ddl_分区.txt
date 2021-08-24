@@ -1,0 +1,80 @@
+
+
+-- 设备基本信息 --
+DROP TABLE IF EXISTS dm_gdeyy_device.dm_gdeyy_device_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_device.dm_gdeyy_device_f
+(
+    id serial,
+    record_id character varying(100),
+    device_code character varying(100),
+    device_external_system_id character varying(100),
+    device_name character varying(300),
+    device_system character varying(300),
+    device_type character varying(300),
+    device_longitude character varying(300),
+    device_latitude character varying(300),
+    building character varying(300),
+    floor character varying(300),
+    room_number character varying(300),
+    device_state character varying(300),
+    device_address character varying(300),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_device.dm_gdeyy_device_f IS '设备基本信息';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_code IS '设备实例编码';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_external_system_id IS '设备外部系统ID';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_name IS '设备名称';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_system IS '设备所属系统';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_type IS '设备类型';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_longitude IS '设备经度';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_latitude IS '设备维度';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.building IS '楼栋';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.floor IS '楼层';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.room_number IS '房间号';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_state IS '设备状态';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.device_address IS '设备地址';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_f.dw_batch_number IS '数据批次号';
+
+
+-- 设备状态情况 --
+DROP TABLE IF EXISTS dm_gdeyy_device.dm_gdeyy_device_status_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_device.dm_gdeyy_device_status_f
+(
+    id serial,
+    record_id character varying(100),
+    device_name character varying(300),
+    device_address character varying(300),
+    device_state character varying(300),
+    status_code character varying(300),
+    incident_code character varying(300),
+    level_code character varying(300),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_device.dm_gdeyy_device_status_f IS '设备状态情况';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.record_id IS '设备id';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.device_name IS '设备名称';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.device_address IS '设备地址';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.device_state IS '设备状态';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.status_code IS '告警状态';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.incident_code IS '告警编号';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.level_code IS '告警等级';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_device.dm_gdeyy_device_status_f.dw_batch_number IS '数据批次号';

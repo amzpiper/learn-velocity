@@ -34,7 +34,7 @@ public class CreateDMSQL {
 		 * for(String path :filePath) { createDWISQL(path); }
 		 */
 
-		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\智能运维\\02物理模型设计\\DM-智能运维-物理表设计-V1.0.xlsx");
+		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\综合态势\\02物理模型设计\\DM-综合态势-物理表设计-V1.0.xlsx");
 	}
 
 	public static void createDWISQL(String filePath) throws Exception {

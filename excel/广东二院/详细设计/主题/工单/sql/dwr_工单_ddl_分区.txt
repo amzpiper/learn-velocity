@@ -1,0 +1,32 @@
+
+
+-- 视频巡更 --
+DROP TABLE IF EXISTS dwr_patrol.dwd_patrol_patrol_task_detail_f;
+CREATE TABLE IF NOT EXISTS dwr_patrol.dwd_patrol_patrol_task_detail_f
+(
+    id serial,
+    record_id character varying(100),
+    actual_play_time character varying(100),
+    begin_date timestamp(6),
+    camera_code character varying(100),
+    camera_name character varying(100),
+    end_date timestamp(6),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_patrol.dwd_patrol_patrol_task_detail_f IS '视频巡更';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.id IS '系统id';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.record_id IS '顺序号';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.actual_play_time IS '实际巡更时间';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.begin_date IS '开始时间';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.camera_code IS '摄像头编码';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.camera_name IS '摄像头名称';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.end_date IS '结束时间';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_patrol.dwd_patrol_patrol_task_detail_f.dw_batch_number IS '数据批次号';

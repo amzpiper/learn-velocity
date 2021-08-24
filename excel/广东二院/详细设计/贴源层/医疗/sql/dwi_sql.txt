@@ -1,0 +1,116 @@
+
+
+-- 月度医疗收入_药品收入 --
+DROP TABLE IF EXISTS dwi_hospital.dwi_hospital_hospital_income;
+CREATE TABLE IF NOT EXISTS dwi_hospital.dwi_hospital_hospital_income
+(
+    id character varying(100),
+    acquisition_time timestamp(6) without time zone,
+    medical_income numeric(16,2),
+    medicine_income numeric(16,2),
+    inhospital_income numeric(16,2),
+    outpatient_income numeric(16,2),
+    total numeric(16,2),
+    medical_income_rate numeric(16,2),
+    drug_income_rate numeric(16,2),
+    inspection_income_rate numeric(16,2),
+    materials_income_rate numeric(16,2),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_hospital.dwi_hospital_hospital_income IS '月度医疗收入_药品收入';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.id IS '顺序号';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.medical_income IS '医疗收入';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.medicine_income IS '药品收入';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.inhospital_income IS '住院收入';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.outpatient_income IS '门诊收入';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.total IS '院区总收入';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.medical_income_rate IS '院区医疗收入占比';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.drug_income_rate IS '院区药品收入占比';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.inspection_income_rate IS '院区检查检验占比';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_income.materials_income_rate IS '院区卫生材料占比';
+
+
+-- 门诊流量监控（小时） --
+DROP TABLE IF EXISTS dwi_hospital.dwi_hospital_hospital_patient_flow;
+CREATE TABLE IF NOT EXISTS dwi_hospital.dwi_hospital_hospital_patient_flow
+(
+    id character varying(100),
+    acquisition_time timestamp(6) without time zone,
+    filing_person_num numeric(16),
+    outpatient_service_person_num numeric(16),
+    emergency_services_person_num numeric(16),
+    take_medicine_person_num numeric(16),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_hospital.dwi_hospital_hospital_patient_flow IS '门诊流量监控（小时）';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_patient_flow.id IS '顺序号';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_patient_flow.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_patient_flow.filing_person_num IS '建档人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_patient_flow.outpatient_service_person_num IS '门诊人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_patient_flow.emergency_services_person_num IS '急诊人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_patient_flow.take_medicine_person_num IS '取药人次';
+
+
+-- 院区人员分析 --
+DROP TABLE IF EXISTS dwi_hospital.dwi_hospital_hospital_people_analysis;
+CREATE TABLE IF NOT EXISTS dwi_hospital.dwi_hospital_hospital_people_analysis
+(
+    id character varying(100),
+    acquisition_time timestamp(6) without time zone,
+    outpatients_num numeric(16),
+    emergency_patients_num numeric(16),
+    inpatients_num numeric(16),
+    discharged_patients_num numeric(16),
+    people_in_hospital numeric(16),
+    operation_num numeric(16),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_hospital.dwi_hospital_hospital_people_analysis IS '院区人员分析';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_people_analysis.id IS '顺序号';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_people_analysis.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_people_analysis.outpatients_num IS '门诊人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_people_analysis.emergency_patients_num IS '急诊人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_people_analysis.inpatients_num IS '入院人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_people_analysis.discharged_patients_num IS '出院人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_people_analysis.people_in_hospital IS '在院人数';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_people_analysis.operation_num IS '手术例数';
+
+
+-- 基础数据分析 --
+DROP TABLE IF EXISTS dwi_hospital.dwi_hospital_hospital_basic_data_analysis;
+CREATE TABLE IF NOT EXISTS dwi_hospital.dwi_hospital_hospital_basic_data_analysis
+(
+    id character varying(100),
+    acquisition_time timestamp(6) without time zone,
+    inpatients_num numeric(16),
+    people_inspected_num numeric(16),
+    checkout_num numeric(16),
+    operation_application_num numeric(16),
+    advice_num numeric(16),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_hospital.dwi_hospital_hospital_basic_data_analysis IS '院区人员分析';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_basic_data_analysis.id IS '顺序号';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_basic_data_analysis.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_basic_data_analysis.inpatients_num IS '入院人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_basic_data_analysis.people_inspected_num IS '今日检验人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_basic_data_analysis.checkout_num IS '检查人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_basic_data_analysis.operation_application_num IS '手术申请人次';
+COMMENT ON COLUMN dwi_hospital.dwi_hospital_hospital_basic_data_analysis.advice_num IS '医嘱开立次数';

@@ -1,0 +1,50 @@
+
+
+-- 车辆入场信息 --
+DROP TABLE IF EXISTS dwi_park.dwi_park_car_traffic_in;
+CREATE TABLE IF NOT EXISTS dwi_park.dwi_park_car_traffic_in
+(
+    id character varying(100),
+    parkcode character varying(30),
+    parkname character varying(30),
+    acquisition_time timestamp(6) without time zone,
+    carnumber character varying(100),
+    vehicleinfo character varying(500),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_park.dwi_park_car_traffic_in IS '车辆出场信息';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_in.id IS '顺序号';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_in.parkcode IS '停车场编号';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_in.parkname IS '停车场名称';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_in.acquisition_time IS '入场时间';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_in.carnumber IS '车牌';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_in.vehicleinfo IS '车辆信息';
+
+
+-- 车辆出场信息 --
+DROP TABLE IF EXISTS dwi_park.dwi_park_car_traffic_out;
+CREATE TABLE IF NOT EXISTS dwi_park.dwi_park_car_traffic_out
+(
+    id character varying(100),
+    parkcode character varying(30),
+    parkname character varying(30),
+    acquisition_time timestamp(6) without time zone,
+    carnumber character varying(100),
+    vehicleinfo character varying(500),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_park.dwi_park_car_traffic_out IS '车辆出场信息';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_out.id IS '顺序号';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_out.parkcode IS '停车场编号';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_out.parkname IS '停车场名称';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_out.acquisition_time IS '出场时间';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_out.carnumber IS '车牌';
+COMMENT ON COLUMN dwi_park.dwi_park_car_traffic_out.vehicleinfo IS '车辆信息';

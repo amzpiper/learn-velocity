@@ -1,0 +1,16 @@
+
+
+--安全管护专题--
+CREATE SCHEMA dm_security;
+
+--产业运营保障专题--
+CREATE SCHEMA dm_assetoperation;
+
+--基础物业专题--
+--CREATE SCHEMA dm_property;
+
+--智能运维专题--
+CREATE SCHEMA dm_operation;
+
+
+

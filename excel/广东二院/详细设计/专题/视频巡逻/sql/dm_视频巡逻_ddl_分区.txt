@@ -1,0 +1,26 @@
+
+
+-- 月度视频巡逻 --
+DROP TABLE IF EXISTS dm_gdeyy_order.dm_gdeyy_order_video_task_m_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_order.dm_gdeyy_order_video_task_m_f
+(
+    id serial,
+    record_id character varying(100),
+    statistical_time timestamp(6),
+    statistical_number numeric(16,4),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_order.dm_gdeyy_order_video_task_m_f IS '月度视频巡逻';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.id IS '系统id';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.record_id IS '顺序号';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.statistical_time IS '统计时间';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.statistical_number IS '统计数量';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_order.dm_gdeyy_order_video_task_m_f.dw_batch_number IS '数据批次号';

@@ -1,0 +1,25 @@
+
+
+-- 视频巡更 --
+DROP TABLE IF EXISTS dwi_abc.dwi_abc_patrol_task_detail;
+CREATE TABLE IF NOT EXISTS dwi_abc.dwi_abc_patrol_task_detail
+(
+    id character varying(100),
+    actual_play_time character varying(100),
+    begin_date timestamp(6) without time zone,
+    camera_code character varying(100),
+    camera_name character varying(100),
+    end_date timestamp(6) without time zone,
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_abc.dwi_abc_patrol_task_detail IS '视频巡更';
+COMMENT ON COLUMN dwi_abc.dwi_abc_patrol_task_detail.id IS '顺序号';
+COMMENT ON COLUMN dwi_abc.dwi_abc_patrol_task_detail.actual_play_time IS '实际巡更时间';
+COMMENT ON COLUMN dwi_abc.dwi_abc_patrol_task_detail.begin_date IS '开始时间';
+COMMENT ON COLUMN dwi_abc.dwi_abc_patrol_task_detail.camera_code IS '摄像头编码';
+COMMENT ON COLUMN dwi_abc.dwi_abc_patrol_task_detail.camera_name IS '摄像头名称';
+COMMENT ON COLUMN dwi_abc.dwi_abc_patrol_task_detail.end_date IS '结束时间';

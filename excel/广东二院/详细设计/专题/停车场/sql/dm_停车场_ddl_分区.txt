@@ -1,0 +1,58 @@
+
+
+-- 停车场实时信息 --
+DROP TABLE IF EXISTS dm_gdeyy_park.dm_gdeyy_park_lot_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_park.dm_gdeyy_park_lot_f
+(
+    id character varying(300),
+    record_id character varying(100),
+    parking_number numeric(16,0),
+    enterprise_name numeric(16,0),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_park.dm_gdeyy_park_lot_f IS '停车场实时信息';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.id IS '系统id';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.record_id IS '顺序号';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.parking_number IS '车位总数';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.enterprise_name IS '空闲数';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_lot_f.dw_batch_number IS '数据批次号';
+
+
+-- 小时车流信息 --
+DROP TABLE IF EXISTS dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f
+(
+    id character varying(300),
+    record_id character varying(100),
+    statistical_time timestamp(6),
+    enterprise_name character varying(100),
+    vehicle_source character varying(100),
+    entrance_exit_signs character varying(100),
+    statistical_number numeric(16,0),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f IS '小时车流信息';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.id IS '系统id';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.record_id IS '顺序号';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.statistical_time IS '统计时间';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.enterprise_name IS '车辆类型';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.vehicle_source IS '车辆来源';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.entrance_exit_signs IS '进出标志';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.statistical_number IS '统计数量';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_park.dm_gdeyy_park_car_traffic_h_f.dw_batch_number IS '数据批次号';

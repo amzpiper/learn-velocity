@@ -1,0 +1,38 @@
+
+
+-- 用电信息 --
+DROP TABLE IF EXISTS dwr_energy.dwd_energy_electric_data_f;
+CREATE TABLE IF NOT EXISTS dwr_energy.dwd_energy_electric_data_f
+(
+    id serial,
+    record_id character varying(100),
+    device_id character varying(100),
+    collect_time timestamp(6),
+    voltage character varying(100),
+    current character varying(100),
+    power character varying(100),
+    power_factor character varying(100),
+    electric_quantity numeric(16,4),
+    power_quality character varying(100),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_energy.dwd_energy_electric_data_f IS '用电信息';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.id IS '系统id';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.record_id IS '顺序号';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.device_id IS '设备编号';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.collect_time IS '采集时间';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.voltage IS '电压';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.current IS '电流';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.power IS '功率';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.power_factor IS '功率因数';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.electric_quantity IS '电量';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.power_quality IS '电能质量';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_energy.dwd_energy_electric_data_f.dw_batch_number IS '数据批次号';

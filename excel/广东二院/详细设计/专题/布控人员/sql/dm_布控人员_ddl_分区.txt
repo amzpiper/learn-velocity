@@ -1,0 +1,124 @@
+
+
+-- 布控任务 --
+DROP TABLE IF EXISTS dm_gdeyy_person.dm_gdeyy_person_track_task_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_person.dm_gdeyy_person_track_task_f
+(
+    id serial,
+    record_id character varying(100),
+    track_name character varying(300),
+    create_name timestamp(6),
+    track_start_time character varying(300),
+    track_end_time character varying(300),
+    track_state character varying(300),
+    is_expired char(1),
+    alarm_level character varying(300),
+    track_type character varying(300),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_person.dm_gdeyy_person_track_task_f IS '布控任务';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.track_name IS '任务名称';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.create_name IS '创建时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.track_start_time IS '布控开始时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.track_end_time IS '布控结束时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.track_state IS '布控状态';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.is_expired IS '是否过期';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.alarm_level IS '告警级别';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.track_type IS '任务类型';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_f.dw_batch_number IS '数据批次号';
+
+
+-- 布控任务关联摄像机 --
+DROP TABLE IF EXISTS dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f
+(
+    id serial,
+    record_id character varying(100),
+    track_task_id character varying(100),
+    camera_no character varying(300),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f IS '布控任务关联摄像机';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.track_task_id IS '布控任务ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.camera_no IS '摄像机编号';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_track_task_camera_f.dw_batch_number IS '数据批次号';
+
+
+-- 布控人员表 --
+DROP TABLE IF EXISTS dm_gdeyy_person.dm_gdeyy_person_blacklist_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_person.dm_gdeyy_person_blacklist_f
+(
+    id serial,
+    record_id character varying(100),
+    name character varying(300),
+    sex character varying(20),
+    age character varying(300),
+    idcard character varying(300),
+    img_url text,
+    attention_type character varying(300),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_person.dm_gdeyy_person_blacklist_f IS '布控人员表';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.name IS '姓名';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.sex IS '性别';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.age IS '年龄';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.idcard IS '证件号码';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.img_url IS '照片';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.attention_type IS '关注类型';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_blacklist_f.dw_batch_number IS '数据批次号';
+
+
+-- 人流 --
+DROP TABLE IF EXISTS dm_gdeyy_person.dm_gdeyy_person_traffic_h_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_person.dm_gdeyy_person_traffic_h_f
+(
+    id serial,
+    record_id character varying(100),
+    record_time timestamp(6),
+    record_number numeric(16,0),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_person.dm_gdeyy_person_traffic_h_f IS '人流';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.record_time IS '统计时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.record_number IS '统计数量';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_person.dm_gdeyy_person_traffic_h_f.dw_batch_number IS '数据批次号';

@@ -1,0 +1,54 @@
+
+
+-- 告警表 --
+DROP TABLE IF EXISTS dm_gdeyy_alarm.dm_gdeyy_alarm_info_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_alarm.dm_gdeyy_alarm_info_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time character varying(300),
+    device_id character varying(300),
+    device_name character varying(300),
+    device_address character varying(300),
+    alarm_status character varying(300),
+    alarm_data timestamp(6),
+    alarm_source_sys character varying(300),
+    alarm_type character varying(300),
+    alarm_level character varying(300),
+    alarm_longitude character varying(300),
+    alarm_latitude character varying(300),
+    occurrence_place character varying(300),
+    alarm_mode character varying(300),
+    scene_photo character varying(300),
+    video character varying(300),
+    consumption character varying(300),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_alarm.dm_gdeyy_alarm_info_f IS '告警表';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.id IS '系统id';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.record_id IS '顺序号';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.acquisition_time IS '告警内容';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.device_id IS '关联设备id';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.device_name IS '关联设备名称';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.device_address IS '关联设备地址';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.alarm_status IS '告警状态';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.alarm_data IS '告警时间';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.alarm_source_sys IS '告警来源系统';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.alarm_type IS '告警类型';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.alarm_level IS '告警等级';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.alarm_longitude IS '告警经度';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.alarm_latitude IS '告警维度';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.occurrence_place IS '发生地点';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.alarm_mode IS '告警方式';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.scene_photo IS '现场照片';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.video IS '关联视频';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.consumption IS '关联设备状态';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_alarm.dm_gdeyy_alarm_info_f.dw_batch_number IS '数据批次号';

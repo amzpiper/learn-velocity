@@ -1,0 +1,2 @@
+-- 电量数据采集 --
+alter table dwi_ecm.dwi_ecm_electric_data add constraint union_key_dwi_hospital_hospital_income  primary key (device_code,collect_time);

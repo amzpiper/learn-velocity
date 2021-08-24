@@ -1,0 +1,35 @@
+
+-- 用电拓展信息    55个三级支路--
+DROP TABLE IF EXISTS dwi_ecm.dwi_ecm_electric_extend;
+create table IF NOT EXISTS dwi_ecm.dwi_ecm_electric_extend (
+	id  character varying(100),
+	building  character varying(100),
+	floor character varying(100),
+	dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+);
+COMMENT ON TABLE dwi_ecm.dwi_ecm_electric_extend IS '用电拓展信息';
+COMMENT ON COLUMN dwi_ecm.dwi_ecm_electric_extend.id IS '楼栋id';
+COMMENT ON COLUMN dwi_ecm.dwi_ecm_electric_extend.building IS '楼宇';
+COMMENT ON COLUMN dwi_ecm.dwi_ecm_electric_extend.floor IS '楼层';
+
+
+-- 用电拓展信息    6个二级支路 --
+DROP TABLE IF EXISTS dwi_ecm.dwi_ecm_electric_extend_type;
+create table IF NOT EXISTS dwi_ecm.dwi_ecm_electric_extend_type (
+	id  character varying(100),
+	building  character varying(100),
+	floor character varying(100),
+	dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+);
+COMMENT ON TABLE dwi_ecm.dwi_ecm_electric_extend_type IS '用电拓展信息';
+COMMENT ON COLUMN dwi_ecm.dwi_ecm_electric_extend_type.id IS '楼栋id';
+COMMENT ON COLUMN dwi_ecm.dwi_ecm_electric_extend_type.building IS '楼宇';
+COMMENT ON COLUMN dwi_ecm.dwi_ecm_electric_extend_type.floor IS '楼层';

@@ -1,0 +1,128 @@
+
+
+-- 安全管护_总览 --
+DROP TABLE IF EXISTS "dm_security"."dm_security_overview";
+CREATE TABLE IF NOT EXISTS "dm_security"."dm_security_overview"
+(
+    "id" serial,
+    "s_sum" varchar(100),
+    "now_num" varchar(100),
+    "mp_num" varchar(100),
+    "report_num" varchar(100),
+    "reform_num" varchar(100),
+    "reform_perent" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_security"."dm_security_overview" IS '安全管护_总览';
+COMMENT ON COLUMN dm_security.dm_security_overview.id IS '系统id';
+COMMENT ON COLUMN dm_security.dm_security_overview.s_sum IS '隐患总数';
+COMMENT ON COLUMN dm_security.dm_security_overview.now_num IS '现有隐患总数';
+COMMENT ON COLUMN dm_security.dm_security_overview.mp_num IS '管护系统来源数';
+COMMENT ON COLUMN dm_security.dm_security_overview.report_num IS '隐患报告来源数';
+COMMENT ON COLUMN dm_security.dm_security_overview.reform_num IS '整改数';
+COMMENT ON COLUMN dm_security.dm_security_overview.reform_perent IS '整改率';
+COMMENT ON COLUMN dm_security.dm_security_overview.company IS '所属公司';
+COMMENT ON COLUMN dm_security.dm_security_overview.create_time IS '创建时间';
+
+
+-- 安全管护_自查隐患_分类 --
+DROP TABLE IF EXISTS "dm_security"."dm_security_inspection_type";
+CREATE TABLE IF NOT EXISTS "dm_security"."dm_security_inspection_type"
+(
+    "id" serial,
+    "type_name" varchar(100),
+    "s_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_security"."dm_security_inspection_type" IS '安全管护_自查隐患_分类';
+COMMENT ON COLUMN dm_security.dm_security_inspection_type.id IS '系统id';
+COMMENT ON COLUMN dm_security.dm_security_inspection_type.type_name IS '服务类型';
+COMMENT ON COLUMN dm_security.dm_security_inspection_type.s_num IS '数目';
+COMMENT ON COLUMN dm_security.dm_security_inspection_type.company IS '所属公司';
+COMMENT ON COLUMN dm_security.dm_security_inspection_type.create_time IS '创建时间';
+
+
+-- 安全管护_自查隐患_等级 --
+DROP TABLE IF EXISTS "dm_security"."dm_security_inspection_level";
+CREATE TABLE IF NOT EXISTS "dm_security"."dm_security_inspection_level"
+(
+    "id" serial,
+    "s_level" varchar(100),
+    "s_num" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_security"."dm_security_inspection_level" IS '安全管护_自查隐患_等级';
+COMMENT ON COLUMN dm_security.dm_security_inspection_level.id IS '系统id';
+COMMENT ON COLUMN dm_security.dm_security_inspection_level.s_level IS '隐患等级';
+COMMENT ON COLUMN dm_security.dm_security_inspection_level.s_num IS '数目';
+COMMENT ON COLUMN dm_security.dm_security_inspection_level.company IS '所属公司';
+COMMENT ON COLUMN dm_security.dm_security_inspection_level.create_time IS '创建时间';
+
+
+-- 安全管护_自查隐患_整改月统计 --
+DROP TABLE IF EXISTS "dm_security"."dm_security_inspection_reform_month";
+CREATE TABLE IF NOT EXISTS "dm_security"."dm_security_inspection_reform_month"
+(
+    "id" serial,
+    "reform_num" varchar(100),
+    "reform_perent" varchar(100),
+    "date_time" timestamp(6),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_security"."dm_security_inspection_reform_month" IS '安全管护_自查隐患_整改月统计';
+COMMENT ON COLUMN dm_security.dm_security_inspection_reform_month.id IS '系统id';
+COMMENT ON COLUMN dm_security.dm_security_inspection_reform_month.reform_num IS '整改数';
+COMMENT ON COLUMN dm_security.dm_security_inspection_reform_month.reform_perent IS '整改率';
+COMMENT ON COLUMN dm_security.dm_security_inspection_reform_month.date_time IS '刻度时间';
+COMMENT ON COLUMN dm_security.dm_security_inspection_reform_month.company IS '所属公司';
+COMMENT ON COLUMN dm_security.dm_security_inspection_reform_month.create_time IS '创建时间';
+
+
+-- 安全管护_自查隐患_任务当月 --
+DROP TABLE IF EXISTS "dm_security"."dm_security_inspection_task";
+CREATE TABLE IF NOT EXISTS "dm_security"."dm_security_inspection_task"
+(
+    "id" serial,
+    "task_num" varchar(100),
+    "complete_num" varchar(100),
+    "overtime_num" varchar(100),
+    "complete_percent" varchar(100),
+    "overtime_percent" varchar(100),
+    "date_time" timestamp(6),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_security"."dm_security_inspection_task" IS '安全管护_自查隐患_任务当月';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.id IS '系统id';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.task_num IS '任务计划数';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.complete_num IS '任务计划完成数';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.overtime_num IS '任务计划逾期数';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.complete_percent IS '完成率';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.overtime_percent IS '逾期率';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.date_time IS '刻度时间';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.company IS '所属公司';
+COMMENT ON COLUMN dm_security.dm_security_inspection_task.create_time IS '创建时间';
+
+
+-- 安全管护_上报隐患_月统计 --
+DROP TABLE IF EXISTS "dm_security"."dm_security_customer_month";
+CREATE TABLE IF NOT EXISTS "dm_security"."dm_security_customer_month"
+(
+    "id" serial,
+    "s_sum" varchar(100),
+    "complete_num" varchar(100),
+    "date_time" varchar(100),
+    "company" varchar(100),
+    "create_time" timestamp(6)
+)WITH(orientation=row,compression=no) ;
+COMMENT ON TABLE "dm_security"."dm_security_customer_month" IS '安全管护_上报隐患_月统计';
+COMMENT ON COLUMN dm_security.dm_security_customer_month.id IS '系统id';
+COMMENT ON COLUMN dm_security.dm_security_customer_month.s_sum IS '隐患总数';
+COMMENT ON COLUMN dm_security.dm_security_customer_month.complete_num IS '隐患处理数';
+COMMENT ON COLUMN dm_security.dm_security_customer_month.date_time IS '刻度时间';
+COMMENT ON COLUMN dm_security.dm_security_customer_month.company IS '所属公司';
+COMMENT ON COLUMN dm_security.dm_security_customer_month.create_time IS '创建时间';

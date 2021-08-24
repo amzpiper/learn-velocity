@@ -1,0 +1,60 @@
+
+
+-- 月度医疗收入_药品收入趋势分析 --
+DROP TABLE IF EXISTS dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(300),
+    medical_income numeric(16,2),
+    medicine_income numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f IS '月度医疗收入_药品收入趋势分析';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.id IS '系统id';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.record_id IS '顺序号';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.medical_income IS '医疗收入';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.medicine_income IS '药品收入';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_income_m_f.dw_batch_number IS '数据批次号';
+
+
+-- 门诊流量监控（小时） --
+DROP TABLE IF EXISTS dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    filing_person_num numeric(16,2),
+    outpatient_service_person_num numeric(16,2),
+    emergency_services_person_num numeric(16,2),
+    take_medicine_person_num numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f IS '门诊流量监控（小时）';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.id IS '系统id';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.record_id IS '顺序号';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.filing_person_num IS '建档人次';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.outpatient_service_person_num IS '门诊人次';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.emergency_services_person_num IS '急诊人次';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.take_medicine_person_num IS '取药人次';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_hospital.dm_gdeyy_hospital_patient_flow_h_f.dw_batch_number IS '数据批次号';

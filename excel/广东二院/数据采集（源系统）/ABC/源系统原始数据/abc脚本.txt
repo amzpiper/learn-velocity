@@ -1,0 +1,61 @@
+import * as db from 'db'
+
+@action.object({ type: 'params' })
+export class ParamsInput {
+    @action.param({ type: "String", label: "tableName", required: true, description: "表名称" })
+    tableName: string;
+    @action.param({ type: "String", label: "lastModifiedDate", description: "最后修改时间。" })
+    lastModifiedDate: string;
+}
+
+@action.object({ type: 'params' })
+export class ParamsOutput {
+    @action.param({ type: 'any', label: 'res', description: "res" })
+    res: any;
+}
+
+@useObject(['DE_Devices', 'DE_DeviceProduct', 'DE_DeviceLocation', 'SmartCampus__Video_Patrol_Task__CST'])
+@action.object({ type: 'method' })
+export class QueryTableData {
+    @action.method({ input: 'ParamsInput', output: 'ParamsOutput' })
+    public run(input: ParamsInput): ParamsOutput {
+        let out = new ParamsOutput();
+        if (input.tableName == "DE_Devices") {
+            let sql = "select * from DE_Devices"
+            if (input.lastModifiedDate) {
+                sql = sql + " where lastModifiedDate > '" + input.lastModifiedDate + "'"
+            }
+            console.log(sql)
+            out.res = db.sql().exec(sql);
+        } else if (input.tableName == "DE_DeviceProduct") {
+            let sql = "select * from DE_DeviceProduct"
+            if (input.lastModifiedDate) {
+                sql = sql + " where lastModifiedDate > '" + input.lastModifiedDate + "'"
+            }
+            console.log(sql)
+            out.res = db.sql().exec(sql);
+        } else if (input.tableName == "DE_DeviceLocation") {
+            let sql = "select * from DE_DeviceLocation"
+            if (input.lastModifiedDate) {
+                sql = sql + " where lastModifiedDate> '" + input.lastModifiedDate + "'"
+            }
+            console.log(sql)
+            out.res = db.sql().exec(sql);
+        } else if (input.tableName == "SmartCampus__Video_Patrol_Task__CST") {
+            let sql = "select * from SmartCampus__Video_Patrol_Task__CST"
+            if (input.lastModifiedDate) {
+                sql = sql + " where lastModifiedDate > '" + input.lastModifiedDate + "'"
+            }
+            console.log(sql)
+            out.res = db.sql().exec(sql);
+        } else {
+            let sql = "select * from " + input.tableName;
+            if (input.lastModifiedDate) {
+                sql = sql + " where lastModifiedDate > '" + input.lastModifiedDate + "'"
+            }
+            console.log(sql)
+            out.res = db.sql().exec(sql);
+        }
+        return out;
+    }
+}

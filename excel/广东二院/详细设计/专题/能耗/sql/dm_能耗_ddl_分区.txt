@@ -1,0 +1,276 @@
+
+
+-- 用电数据采集（小时） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    acquisition_device character varying(300),
+    building character varying(300),
+    floor character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f IS '用电数据采集（小时）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.acquisition_device IS '采集设备';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.building IS '楼栋';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.floor IS '楼层';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f.dw_batch_number IS '数据批次号';
+
+
+-- 用电数据汇总（天） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    acquisition_device character varying(300),
+    building character varying(300),
+    floor character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f IS '用电数据汇总（天）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.acquisition_device IS '采集设备';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.building IS '楼栋';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.floor IS '楼层';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f.dw_batch_number IS '数据批次号';
+
+
+-- 用电数据汇总（月） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    acquisition_device character varying(300),
+    building character varying(300),
+    floor character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f IS '用电数据汇总（月）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.acquisition_device IS '采集设备';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.building IS '楼栋';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.floor IS '楼层';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f.dw_batch_number IS '数据批次号';
+
+
+-- 用电数据采集_设备类型（小时） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    type character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f IS '用电数据采集_设备类型（小时）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.type IS '类型';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_h_f.dw_batch_number IS '数据批次号';
+
+
+-- 用电数据汇总_设备类型（天） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    type character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f IS '用电数据汇总_设备类型（天）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.type IS '类型';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_d_f.dw_batch_number IS '数据批次号';
+
+
+-- 用电数据汇总_设备类型（月） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    type character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f IS '用电数据汇总_设备类型（月）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.type IS '类型';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_electric_type_m_f.dw_batch_number IS '数据批次号';
+
+
+-- 用水数据采集（小时） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_water_h_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_water_h_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    acquisition_device character varying(300),
+    building character varying(300),
+    floor character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_water_h_f IS '用水数据采集（小时）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.acquisition_device IS '采集设备';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.building IS '楼栋';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.floor IS '楼层';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_h_f.dw_batch_number IS '数据批次号';
+
+
+-- 用水数据汇总（天） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_water_d_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_water_d_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    acquisition_device character varying(300),
+    building character varying(300),
+    floor character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_water_d_f IS '用水数据汇总（天）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.acquisition_device IS '采集设备';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.building IS '楼栋';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.floor IS '楼层';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_d_f.dw_batch_number IS '数据批次号';
+
+
+-- 用水数据汇总（月） --
+DROP TABLE IF EXISTS dm_gdeyy_energy.dm_gdeyy_energy_water_m_f;
+CREATE TABLE IF NOT EXISTS dm_gdeyy_energy.dm_gdeyy_energy_water_m_f
+(
+    id serial,
+    record_id character varying(100),
+    acquisition_time timestamp(6),
+    acquisition_device character varying(300),
+    building character varying(300),
+    floor character varying(300),
+    consumption numeric(16,2),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_gdeyy_energy.dm_gdeyy_energy_water_m_f IS '用水数据汇总（月）';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.id IS '系统ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.record_id IS '数据来源表记录ID';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.acquisition_time IS '采集时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.acquisition_device IS '采集设备';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.building IS '楼栋';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.floor IS '楼层';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.consumption IS '用量';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_gdeyy_energy.dm_gdeyy_energy_water_m_f.dw_batch_number IS '数据批次号';

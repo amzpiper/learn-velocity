@@ -1,0 +1,2 @@
+--停车场实时信息--
+alter table dm_gdeyy_park.dm_gdeyy_park_lot_f add constraint union_key_dm_gdeyy_park_lot_f  primary key (id);

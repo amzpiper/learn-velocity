@@ -1,0 +1,17 @@
+update dm_gdeyy_alarm.dm_gdeyy_alarm_info_f a set
+a.scene_photo= b.path
+from (
+select * from dwi_alarm.dwi_alarm_attachment
+union
+select * from dwi_alarm.dwi_alarm_attachment_history 
+) b
+where a.record_id=b.alarm_number and b.type='picture';
+
+update dm_gdeyy_alarm.dm_gdeyy_alarm_info_f a set
+a.scene_photo= b.path
+from (
+select * from dwi_alarm.dwi_alarm_attachment
+union
+select * from dwi_alarm.dwi_alarm_attachment_history 
+) b
+where a.record_id=b.alarm_number and b.type='video';

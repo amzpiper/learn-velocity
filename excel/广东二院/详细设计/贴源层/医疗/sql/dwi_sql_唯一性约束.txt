@@ -1,0 +1,8 @@
+-- 月度医疗收入_药品收入 --
+alter table dwi_hospital.dwi_hospital_hospital_income add constraint union_key_dwi_hospital_hospital_income  primary key (acquisition_time);
+-- 门诊流量监控（小时） --
+alter table dwi_hospital.dwi_hospital_hospital_patient_flow add constraint union_key_dwi_hospital_hospital_patient_flow  primary key (acquisition_time);
+-- 院区人员分析 --
+alter table dwi_hospital.dwi_hospital_hospital_people_analysis add constraint union_key_dwi_hospital_hospital_people_analysis  primary key (id);
+-- 基础数据分析 --
+alter table dwi_hospital.dwi_hospital_hospital_basic_data_analysis add constraint union_key_dwi_hospital_hospital_basic_data_analysis  primary key (id);

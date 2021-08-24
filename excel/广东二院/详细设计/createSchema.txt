@@ -1,0 +1,45 @@
+--停车场贴源层--
+CREATE SCHEMA dwi_park;
+
+--医疗BI贴源层--
+CREATE SCHEMA dwi_hospital;
+
+--医疗BI主题层--
+CREATE SCHEMA dwr_hospital;
+
+
+--视频巡更贴源层--
+CREATE SCHEMA dwi_abc;
+
+--视频巡更主题层--
+CREATE SCHEMA dwr_patrol;
+
+
+--能耗贴源层--
+CREATE SCHEMA dwi_ecm;
+
+--能耗主题层--
+CREATE SCHEMA dwr_energy;
+
+
+--能耗专题--
+CREATE SCHEMA dm_gdeyy_energy;
+
+--告警专题--
+CREATE SCHEMA dm_gdeyy_alarm;
+
+--设备专题--
+CREATE SCHEMA dm_gdeyy_device;
+
+--视频巡逻专题--
+CREATE SCHEMA dm_gdeyy_order;
+
+--停车场专题--
+CREATE SCHEMA dm_gdeyy_park;
+
+--医疗专题--
+CREATE SCHEMA dm_gdeyy_hospital;
+
+
+--布控专题--
+CREATE SCHEMA dm_gdeyy_person;
