@@ -1,0 +1,124 @@
+
+
+-- 人员信息维表 --
+DROP TABLE IF EXISTS "dwr_dim"."dim_person_detail_info_d";
+CREATE TABLE IF NOT EXISTS "dwr_dim"."dim_person_detail_info_d"
+(
+    "id" serial,
+    "person_type" character varying(6),
+    "person_id" bigint,
+    "person_name" character varying(192),
+    "person_phone" character varying(192),
+    "person_status" integer,
+    "person_gender" integer,
+    "person_pic" character varying(768),
+    "person_certi_nbr" character varying(150),
+    "person_certi_type" integer,
+    "remark" character varying(1500),
+    "create_by" character varying(192),
+    "create_time" timestamp(6),
+    "update_by" character varying(192),
+    "update_time" timestamp(6),
+    "del_flag" char(1),
+    "com_id" bigint,
+    "audit_flag" integer,
+    "post_name" character varying(150),
+    "sig_cust_id" bigint,
+    "birthday" timestamp(6),
+    "cust_code" character varying(150),
+    "addr" character varying(192),
+    "inviter_id_pic" character varying(192),
+    "visit_com_name" character varying(192),
+    "visit_com_id" bigint,
+    "visit_man_name" character varying(192),
+    "visit_man_phone" character varying(192),
+    "visit_time" timestamp(6),
+    "visit_addr" character varying(192),
+    "visit_reason" integer,
+    "invite_status" integer,
+    "create_name" character varying(192),
+    "instance_id" character varying(108),
+    "invite_type" integer,
+    "business_key" character varying(108),
+    "building_id" bigint,
+    "area_code" character varying(30),
+    "validate_start" timestamp(6),
+    "validate_end" timestamp(6),
+    "dept_id" bigint,
+    "nick_name" character varying(90),
+    "user_type" character varying(6),
+    "email" character varying(150),
+    "password" character varying(300),
+    "login_ip" character varying(150),
+    "login_date" timestamp(6),
+    "staff_id" bigint,
+    "salt" character varying(48),
+    "u_id" character varying(150),
+    "dw_creation_by" character varying(100),
+    "dw_creation_date" timestamp(6),
+    "dw_last_update_by" character varying(100),
+    "dw_last_update_date" timestamp(6),
+    "dw_batch_number" bigint
+)WITH(orientation=row,compression=no) 
+DISTRIBUTE BY HASH("dept_id") 
+PARTITION BY RANGE (dw_creation_date)
+(
+    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),
+    PARTITION PMAX VALUES LESS THAN(MAXVALUE)
+);
+COMMENT ON TABLE "dwr_dim"."dim_person_detail_info_d" IS '人员信息维表';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.id IS '系统id';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_type IS '人员类型';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_id IS '人员id';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_name IS '人员姓名';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_phone IS '人员手机号';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_status IS '人员状态';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_gender IS '人员性别';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_pic IS '人员头像';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_certi_nbr IS '人员证件号';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.person_certi_type IS '证件类型';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.remark IS '备注';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.create_by IS '创建者';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.create_time IS '创建时间';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.update_by IS '更新者';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.update_time IS '更新时间';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.del_flag IS '删除标志';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.com_id IS '所属企业id';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.audit_flag IS '审批人标记';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.post_name IS '职位';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.sig_cust_id IS '四格员工信息id';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.birthday IS '出生日期';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.cust_code IS '四格客户编码';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.addr IS '地址';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.inviter_id_pic IS '访客身份证照片';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.visit_com_name IS '拜访公司名称';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.visit_com_id IS '拜访公司id';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.visit_man_name IS '拜访人姓名';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.visit_man_phone IS '拜访人电话';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.visit_time IS '拜访时间';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.visit_addr IS '拜访地址';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.visit_reason IS '拜访事由';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.invite_status IS '邀请状态';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.create_name IS '创建者名称';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.instance_id IS '流程实例ID';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.invite_type IS '访客邀请类型';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.business_key IS '访客邀请唯一编号';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.building_id IS '楼宇id';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.area_code IS '区域编号';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.validate_start IS '有效期开始';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.validate_end IS '有效期结束';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.dept_id IS '部门ID';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.nick_name IS '用户昵称';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.user_type IS '用户类型';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.email IS '用户邮箱';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.password IS '密码';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.login_ip IS '最后登录IP';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.login_date IS '最后登录时间';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.staff_id IS '员工id';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.salt IS '盐';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.u_id IS '用户唯一编号';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_dim.dim_person_detail_info_d.dw_batch_number IS '数据批次号';

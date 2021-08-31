@@ -1,0 +1,38 @@
+
+
+-- 通行信息表 --
+DROP TABLE IF EXISTS dwr_access.dwd_access_t_pass_data_f;
+CREATE TABLE IF NOT EXISTS dwr_access.dwd_access_t_pass_data_f
+(
+    id serial,
+    record_id integer,
+    code character varying(60),
+    card character varying(60),
+    name character varying(60),
+    area character varying(60),
+    snap_time timestamp(6),
+    direction integer,
+    pass_type character varying(135),
+    owner_id bigint,
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_access.dwd_access_t_pass_data_f IS '通行信息表';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.id IS '系统id';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.record_id IS '记录唯一标识';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.code IS '企业';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.card IS '卡号';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.name IS '姓名';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.area IS '通行区域';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.snap_time IS '记录时间';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.direction IS '进出门';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.pass_type IS '通行人员类型';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.owner_id IS '通行数据所有者主键';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_access.dwd_access_t_pass_data_f.dw_batch_number IS '数据批次号';

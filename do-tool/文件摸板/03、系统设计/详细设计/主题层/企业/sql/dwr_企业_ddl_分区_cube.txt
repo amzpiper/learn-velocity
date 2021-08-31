@@ -1,0 +1,148 @@
+
+
+-- 企业表 --
+DROP TABLE IF EXISTS dwr_enterprise.dwd_enterprise_t_com_f;
+CREATE TABLE IF NOT EXISTS dwr_enterprise.dwd_enterprise_t_com_f
+(
+    id serial,
+    com_id bigint,
+    com_name character varying(192),
+    com_type integer,
+    level_no integer,
+    del_flag integer,
+    create_time timestamp(6),
+    update_time timestamp(6),
+    update_by character varying(192),
+    create_by character varying(192),
+    cust_code character varying(150),
+    credit_code character varying(150),
+    company_address character varying(150),
+    email character varying(150),
+    establish_date timestamp(6),
+    company_legal character varying(60),
+    listed_comp_code character varying(60),
+    listing_type character varying(60),
+    regist_authority character varying(150),
+    regist_number character varying(150),
+    registered_capital character varying(150),
+    taxpayer_code character varying(150),
+    taxpayer_id character varying(150),
+    website character varying(150),
+    annual_output character varying(150),
+    annual_tax character varying(150),
+    employees_num character varying(150),
+    end_time timestamp(6),
+    open_time timestamp(6),
+    operation_scope character varying(150),
+    patents_number character varying(150),
+    approval_date timestamp(6),
+    com_status integer,
+    industry character varying(150),
+    registered_addr character varying(150),
+    sig_cust_id bigint,
+    sig_house_id bigint,
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_enterprise.dwd_enterprise_t_com_f IS '企业表';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.id IS '系统id';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.com_id IS '企业主键';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.com_name IS '企业名称';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.com_type IS '公司类型';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.level_no IS '企业等级';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.del_flag IS '删除标记';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.create_time IS '创建时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.update_time IS '更新时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.update_by IS '更新者';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.create_by IS '创建者';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.cust_code IS '客户编码';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.credit_code IS '统一社会信用代码';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.company_address IS '地址';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.email IS '电子邮箱';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.establish_date IS '成立日期';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.company_legal IS '法人代表';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.listed_comp_code IS '上市公司代码';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.listing_type IS '上市类型';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.regist_authority IS '登记机关';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.regist_number IS '工商注册号';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.registered_capital IS '注册资本';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.taxpayer_code IS '纳税人编号';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.taxpayer_id IS '纳税人识别号';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.website IS '网站地址';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.annual_output IS '年产值（万元)';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.annual_tax IS '年纳税额（万元)';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.employees_num IS '员工数量';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.end_time IS '停业日期';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.open_time IS '开始日期';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.operation_scope IS '经营范围';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.patents_number IS '专利数量';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.approval_date IS '核准日期';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.com_status IS '企业状态';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.industry IS '所属行业';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.registered_addr IS '注册地址';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.sig_cust_id IS '四格企业id';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.sig_house_id IS '房屋Id,关联更新 完成后删除';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_t_com_f.dw_batch_number IS '数据批次号';
+
+
+-- 企业与资源关系表 --
+DROP TABLE IF EXISTS dwr_enterprise.dwd_enterprise_com_res_f;
+CREATE TABLE IF NOT EXISTS dwr_enterprise.dwd_enterprise_com_res_f
+(
+    id serial,
+    res_id bigint,
+    sig_rel_type character varying(30),
+    sig_obj_id character varying(150),
+    resource_name character varying(150),
+    sig_community_id character varying(150),
+    sig_cust_id character varying(150),
+    sig_up_cust_id character varying(150),
+    cust_type character varying(30),
+    cust_status character varying(30),
+    decorate_time timestamp(6),
+    eff_time timestamp(6),
+    exp_time timestamp(6),
+    in_time timestamp(6),
+    join_time timestamp(6),
+    out_time timestamp(6),
+    credit_code character varying(150),
+    space_id bigint,
+    source_type integer,
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_enterprise.dwd_enterprise_com_res_f IS '企业与资源关系表';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.id IS '系统id';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.res_id IS '资源id';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.sig_rel_type IS '资源类型';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.sig_obj_id IS '资源ID';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.resource_name IS '资源名称';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.sig_community_id IS '项目ID';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.sig_cust_id IS '客户ID';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.sig_up_cust_id IS '四格上级客户ID';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.cust_type IS '客户类型';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.cust_status IS '客户状态';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.decorate_time IS '最新装修时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.eff_time IS '租赁起始时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.exp_time IS '租赁结束时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.in_time IS '入住时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.join_time IS '入伙时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.out_time IS '离开时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.credit_code IS '统一社会信用代码';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.space_id IS '空间数据主键';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.source_type IS '数据来源';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_enterprise.dwd_enterprise_com_res_f.dw_batch_number IS '数据批次号';

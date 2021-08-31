@@ -19,21 +19,21 @@ public class CreateDWRSQL {
 	public static void main(String[] args) throws Exception {
 		
 		
-		File file = new File("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\系统设计\\详细设计\\主题层");
-		List<File> files = getNeedFile(file);
-		for(File cf : files) {
+//		File file = new File("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\系统设计\\详细设计\\主题层");
+//		List<File> files = getNeedFile(file);
+//		for(File cf : files) {
 			//生成单独目录下的sql时放开
 //			if(cf.getName().indexOf("能耗") != -1) {
-				System.out.println("9999999999");
-				createDWISQL(cf.getPath());
-				continue;
+//				System.out.println("9999999999");
+//				createDWISQL(cf.getPath());
+//				continue;
 //			}
 			//createDWISQL(cf.getPath());
-		}
+//		}
 		/*
 		 * for(String path :filePath) { createDWISQL(path); }
 		 */
-		//createDWISQL("E:\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\主题层\\企业服务\\02物理模型设计\\DWR-企业服务-物理模型设计-V1.0.xlsx");
+		createDWISQL("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\主题层\\工单\\02物理模型设计\\DWR-工单-物理表设计-V1.0.xlsx");
 	}
 
 	public static void createDWISQL(String filePath) throws Exception {

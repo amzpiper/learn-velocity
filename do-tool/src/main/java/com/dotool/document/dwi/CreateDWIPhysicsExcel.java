@@ -228,7 +228,7 @@ public class CreateDWIPhysicsExcel {
 					String newType = changeType(type);
 					if (newType.equals("timestamp")) {
 						length = "6";
-					} else if (newType.toLowerCase().equals("character varying")) {
+					} else if (newType.toLowerCase().equals("varchar")) {
 						try {
 							length = (Integer.parseInt(length) * 3) + "";
 						} catch (Exception e) {
@@ -270,9 +270,9 @@ public class CreateDWIPhysicsExcel {
 
 				List<String> auditDataList = new ArrayList<>();
 
-				auditDataList.add("数据创建者,dw_creation_by,character varying,100");
+				auditDataList.add("数据创建者,dw_creation_by,varchar,100");
 				auditDataList.add("数据创建时间,dw_creation_date,timestamp,6");
-				auditDataList.add("数据最后更新者,dw_last_update_by,character varying,100");
+				auditDataList.add("数据最后更新者,dw_last_update_by,varchar,100");
 				auditDataList.add("数据最后更新时间,dw_last_update_date,timestamp,6");
 				auditDataList.add("数据批次号,dw_batch_number,bigint,");
 
@@ -353,9 +353,9 @@ public class CreateDWIPhysicsExcel {
 		type = type.toLowerCase();
 		switch(type) {
 			case "varchar2":
-				return "character varying("+length+")";
+				return "varchar("+length+")";
 			case "varchar":
-				return "character varying("+length+")";
+				return "varchar("+length+")";
 			case "date":
 				return "timestamp(6)";
 			case "datetime":
@@ -387,7 +387,7 @@ public class CreateDWIPhysicsExcel {
 			case "text":
 				return "text";
 		}
-		return "character varying(100)";
+		return "varchar(100)";
 	}
 
 	public static String changeType(String cell) {
@@ -400,10 +400,10 @@ public class CreateDWIPhysicsExcel {
 			return "int";
 		}
 		else if (cell.toUpperCase().startsWith("VARCHAR2")) {
-			return cell.toUpperCase().replace("VARCHAR2", " character varying");
+			return cell.toUpperCase().replace("VARCHAR2", " varchar");
 		}
 		else if (cell.toUpperCase().startsWith("VARCHAR")) {
-			return cell.toUpperCase().replace("VARCHAR", " character varying");
+			return cell.toUpperCase().replace("VARCHAR", " varchar");
 		} else if (cell.toUpperCase().startsWith("TIMESTAMP")) {
 			return cell.toLowerCase() ;
 		} else if (cell.toUpperCase().startsWith("DATETIME") || cell.toUpperCase().startsWith("DATE")) {

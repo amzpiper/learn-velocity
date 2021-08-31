@@ -1,0 +1,751 @@
+
+
+-- 通行 --
+DROP TABLE IF EXISTS `t_pass_data`;
+CREATE TABLE IF NOT EXISTS `t_pass_data`
+(
+    `通行` 记录唯一标识 primary key COMMENT 'record_id',
+    `通行` 企业 COMMENT 'code',
+    `通行` 卡号 COMMENT 'card',
+    `通行` 姓名 COMMENT 'name',
+    `通行` 通行区域 COMMENT 'area',
+    `通行` 记录时间 COMMENT 'snap_time',
+    `通行` 进出门 COMMENT 'direction',
+    `通行` 通行人员类型 COMMENT 'pass_type',
+    `通行` 通行数据所有者主键 COMMENT 'owner_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_pass_data(`通行`,``) values(0,0);
+insert into t_pass_data(`通行`,``) values(1,1);
+insert into t_pass_data(`通行`,``) values(2,2);
+insert into t_pass_data(`通行`,``) values(3,3);
+insert into t_pass_data(`通行`,``) values(4,4);
+insert into t_pass_data(`通行`,``) values(5,5);
+insert into t_pass_data(`通行`,``) values(6,6);
+insert into t_pass_data(`通行`,``) values(7,7);
+insert into t_pass_data(`通行`,``) values(8,8);
+insert into t_pass_data(`通行`,``) values(9,9);
+
+
+-- 员工 --
+DROP TABLE IF EXISTS `t_staff_info`;
+CREATE TABLE IF NOT EXISTS `t_staff_info`
+(
+    `员工` 员工id primary key COMMENT 'staff_id',
+    `员工` 员工姓名 COMMENT 'staff_name',
+    `员工` 员工手机号码 COMMENT 'staff_phone',
+    `员工` 添加时间 COMMENT 'create_time',
+    `员工` 更新时间 COMMENT 'update_time',
+    `员工` 所属企业id COMMENT 'com_id',
+    `员工` 审批人标记 COMMENT 'audit_flag',
+    `员工` 创建者 COMMENT 'create_by',
+    `员工` 更新者 COMMENT 'update_by',
+    `员工` 删除标记 COMMENT 'del_flag',
+    `员工` 职位 COMMENT 'post_name',
+    `员工` 四格员工信息id COMMENT 'sig_cust_id',
+    `员工` 出生日期 COMMENT 'birthday',
+    `员工` 证件号 COMMENT 'certi_nbr',
+    `员工` 证件类型 COMMENT 'certi_type',
+    `员工` 四格客户编码 COMMENT 'cust_code',
+    `员工` 性别 COMMENT 'gender',
+    `员工` 员工状态 COMMENT 'staff_status',
+    `员工` 地址 COMMENT 'addr',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_staff_info(`员工`,``) values(0,0);
+insert into t_staff_info(`员工`,``) values(1,1);
+insert into t_staff_info(`员工`,``) values(2,2);
+insert into t_staff_info(`员工`,``) values(3,3);
+insert into t_staff_info(`员工`,``) values(4,4);
+insert into t_staff_info(`员工`,``) values(5,5);
+insert into t_staff_info(`员工`,``) values(6,6);
+insert into t_staff_info(`员工`,``) values(7,7);
+insert into t_staff_info(`员工`,``) values(8,8);
+insert into t_staff_info(`员工`,``) values(9,9);
+
+
+-- 访客 --
+DROP TABLE IF EXISTS `t_invite`;
+CREATE TABLE IF NOT EXISTS `t_invite`
+(
+    `访客` 邀请主键id primary key COMMENT 'invite_id',
+    `访客` 访客姓名 COMMENT 'inviter_name',
+    `访客` 访客电话 COMMENT 'inviter_phone',
+    `访客` 访客头像 COMMENT 'inviter_pic',
+    `访客` 访客身份证照片 COMMENT 'inviter_id_pic',
+    `访客` 拜访公司名称 COMMENT 'visit_com_name',
+    `访客` 拜访公司id COMMENT 'visit_com_id',
+    `访客` 拜访人姓名 COMMENT 'visit_man_name',
+    `访客` 拜访人电话 COMMENT 'visit_man_phone',
+    `访客` 拜访时间 COMMENT 'visit_time',
+    `访客` 拜访地址 COMMENT 'visit_addr',
+    `访客` 拜访事由 COMMENT 'visit_reason',
+    `访客`  COMMENT 'create_time',
+    `访客`  COMMENT 'update_time',
+    `访客` 邀请状态 COMMENT 'invite_status',
+    `访客` 创建者 COMMENT 'create_by',
+    `访客` 创建者名称 COMMENT 'create_name',
+    `访客` 流程实例id COMMENT 'instance_id',
+    `访客` 访客邀请类型 COMMENT 'invite_type',
+    `访客` 删除标记 COMMENT 'delete_flag',
+    `访客` 访客证件号码 COMMENT 'inviter_idno',
+    `访客` 访客证件类型 COMMENT 'inviter_idtype',
+    `访客` 访客邀请唯一编号 COMMENT 'business_key',
+    `访客` 楼宇id COMMENT 'building_id',
+    `访客` 区域编号 COMMENT 'area_code',
+    `访客` 有效期开始 COMMENT 'validate_start',
+    `访客` 有效期结束 COMMENT 'validate_end',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_invite(`访客`,``) values(0,0);
+insert into t_invite(`访客`,``) values(1,1);
+insert into t_invite(`访客`,``) values(2,2);
+insert into t_invite(`访客`,``) values(3,3);
+insert into t_invite(`访客`,``) values(4,4);
+insert into t_invite(`访客`,``) values(5,5);
+insert into t_invite(`访客`,``) values(6,6);
+insert into t_invite(`访客`,``) values(7,7);
+insert into t_invite(`访客`,``) values(8,8);
+insert into t_invite(`访客`,``) values(9,9);
+
+
+-- 用户信息 --
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE IF NOT EXISTS `sys_user`
+(
+    `用户信息` 用户id primary key COMMENT 'user_id',
+    `用户信息` 部门id COMMENT 'dept_id',
+    `用户信息` 用户账号 COMMENT 'user_name',
+    `用户信息` 用户昵称 COMMENT 'nick_name',
+    `用户信息` 用户类型 COMMENT 'user_type',
+    `用户信息` 用户邮箱 COMMENT 'email',
+    `用户信息` 手机号码 COMMENT 'phonenumber',
+    `用户信息` 用户性别 COMMENT 'sex',
+    `用户信息` 头像地址 COMMENT 'avatar',
+    `用户信息` 密码 COMMENT 'password',
+    `用户信息` 帐号状态 COMMENT 'status',
+    `用户信息` 删除标志 COMMENT 'del_flag',
+    `用户信息` 最后登录ip COMMENT 'login_ip',
+    `用户信息` 最后登录时间 COMMENT 'login_date',
+    `用户信息` 创建者 COMMENT 'create_by',
+    `用户信息` 创建时间 COMMENT 'create_time',
+    `用户信息` 更新者 COMMENT 'update_by',
+    `用户信息` 更新时间 COMMENT 'update_time',
+    `用户信息` 备注 COMMENT 'remark',
+    `用户信息`  COMMENT 'staff_id',
+    `用户信息` 盐 COMMENT 'salt',
+    `用户信息` 用户唯一编号 COMMENT 'uid',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into sys_user(`用户信息`,``) values(0,0);
+insert into sys_user(`用户信息`,``) values(1,1);
+insert into sys_user(`用户信息`,``) values(2,2);
+insert into sys_user(`用户信息`,``) values(3,3);
+insert into sys_user(`用户信息`,``) values(4,4);
+insert into sys_user(`用户信息`,``) values(5,5);
+insert into sys_user(`用户信息`,``) values(6,6);
+insert into sys_user(`用户信息`,``) values(7,7);
+insert into sys_user(`用户信息`,``) values(8,8);
+insert into sys_user(`用户信息`,``) values(9,9);
+
+
+-- 报事报修工单 --
+DROP TABLE IF EXISTS `t_repairs_order`;
+CREATE TABLE IF NOT EXISTS `t_repairs_order`
+(
+    `报事报修工单`  primary key COMMENT 'order_id',
+    `报事报修工单` 工单号 COMMENT 'order_no',
+    `报事报修工单` 问题类型 COMMENT 'order_type',
+    `报事报修工单` 问题地点 COMMENT 'addr',
+    `报事报修工单` 问题描述 COMMENT 'desc',
+    `报事报修工单` 联系方式 COMMENT 'connect',
+    `报事报修工单` 联系人 COMMENT 'connector',
+    `报事报修工单` 紧急程度 COMMENT 'level',
+    `报事报修工单` 关联楼宇 COMMENT 'building_id',
+    `报事报修工单`  COMMENT 'create_time',
+    `报事报修工单`  COMMENT 'create_time',
+    `报事报修工单`  COMMENT 'create_by',
+    `报事报修工单` 来源类型 COMMENT 'source_type',
+    `报事报修工单` 语音描述存放文件表id COMMENT 'voice_file',
+    `报事报修工单` 报修时间 COMMENT 'order_time',
+    `报事报修工单` 工单状态 COMMENT 'order_status',
+    `报事报修工单` 版本锁 COMMENT 'version',
+    `报事报修工单` 创建者所属企业id COMMENT 'com_id',
+    `报事报修工单` 四格服务工单id COMMENT 'sige_order_id',
+    `报事报修工单` 录单人姓名 COMMENT 'order_create_name',
+    `报事报修工单` 录单人id COMMENT 'sige_transport_user_id',
+    `报事报修工单` 外部录单人id COMMENT 'sige_transport_euser_id',
+    `报事报修工单` 删除标识 COMMENT 'del_flag',
+    `报事报修工单` 超时状态 COMMENT 'outtime_status',
+    `报事报修工单` 四格问题子类型 COMMENT 'sig_order_subtype',
+    `报事报修工单` 四格项目id COMMENT 'sig_community_id',
+    `报事报修工单` 评价状态 COMMENT 'evalue_status',
+    `报事报修工单` 项目id COMMENT 'proj_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_repairs_order(`报事报修工单`,``) values(0,0);
+insert into t_repairs_order(`报事报修工单`,``) values(1,1);
+insert into t_repairs_order(`报事报修工单`,``) values(2,2);
+insert into t_repairs_order(`报事报修工单`,``) values(3,3);
+insert into t_repairs_order(`报事报修工单`,``) values(4,4);
+insert into t_repairs_order(`报事报修工单`,``) values(5,5);
+insert into t_repairs_order(`报事报修工单`,``) values(6,6);
+insert into t_repairs_order(`报事报修工单`,``) values(7,7);
+insert into t_repairs_order(`报事报修工单`,``) values(8,8);
+insert into t_repairs_order(`报事报修工单`,``) values(9,9);
+
+
+-- 环节 --
+DROP TABLE IF EXISTS `t_repair_track`;
+CREATE TABLE IF NOT EXISTS `t_repair_track`
+(
+    `环节` 环节主键 primary key COMMENT 'track_id',
+    `环节` 环节名称 COMMENT 'track_name',
+    `环节` 状态名称 COMMENT 'status_name',
+    `环节` 环节编码 COMMENT 'track_code',
+    `环节` 环节状态 COMMENT 'status',
+    `环节` 工单id COMMENT 'order_id',
+    `环节` 轨迹描述 COMMENT 'track_desc',
+    `环节` 处理人id（四格 COMMENT 'current_user_id',
+    `环节` 第三方处理人id COMMENT 'current_euser_id',
+    `环节` 待处理人员姓名 COMMENT 'current_user_name',
+    `环节` 待处理人员类型 COMMENT 'current_user_type',
+    `环节` 待处理人员电话 COMMENT 'current_user_tel',
+    `环节` 审核结果 COMMENT 'review_result',
+    `环节` 创建时间 COMMENT 'create_time',
+    `环节` 创建人 COMMENT 'create_by',
+    `环节` 更新时间 COMMENT 'update_time',
+    `环节` 更新人 COMMENT 'update_by',
+    `环节` 版本锁 COMMENT 'version',
+    `环节` 四格环节id COMMENT 'sige_track_id',
+    `环节` 四格服务工单id COMMENT 'sige_order_id',
+    `环节` 工单结束操作 COMMENT 'over_type',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_repair_track(`环节`,``) values(0,0);
+insert into t_repair_track(`环节`,``) values(1,1);
+insert into t_repair_track(`环节`,``) values(2,2);
+insert into t_repair_track(`环节`,``) values(3,3);
+insert into t_repair_track(`环节`,``) values(4,4);
+insert into t_repair_track(`环节`,``) values(5,5);
+insert into t_repair_track(`环节`,``) values(6,6);
+insert into t_repair_track(`环节`,``) values(7,7);
+insert into t_repair_track(`环节`,``) values(8,8);
+insert into t_repair_track(`环节`,``) values(9,9);
+
+
+-- 环节描述 --
+DROP TABLE IF EXISTS `t_repair_track_detail`;
+CREATE TABLE IF NOT EXISTS `t_repair_track_detail`
+(
+    `环节描述` 处理意见 primary key COMMENT 'deal_advise',
+    `环节描述` 处理拍照 COMMENT 'deal_photos',
+    `环节描述` 签名照片 COMMENT 'deal_sign_photos',
+    `环节描述` 环节主键 COMMENT 'track_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_repair_track_detail(`环节描述`,``) values(0,0);
+insert into t_repair_track_detail(`环节描述`,``) values(1,1);
+insert into t_repair_track_detail(`环节描述`,``) values(2,2);
+insert into t_repair_track_detail(`环节描述`,``) values(3,3);
+insert into t_repair_track_detail(`环节描述`,``) values(4,4);
+insert into t_repair_track_detail(`环节描述`,``) values(5,5);
+insert into t_repair_track_detail(`环节描述`,``) values(6,6);
+insert into t_repair_track_detail(`环节描述`,``) values(7,7);
+insert into t_repair_track_detail(`环节描述`,``) values(8,8);
+insert into t_repair_track_detail(`环节描述`,``) values(9,9);
+
+
+-- 事件 --
+DROP TABLE IF EXISTS `t_repair_event`;
+CREATE TABLE IF NOT EXISTS `t_repair_event`
+(
+    `事件` 事件id primary key COMMENT 'event_id',
+    `事件` 事件类型 COMMENT 'event_type',
+    `事件` 事件名称 COMMENT 'event_name',
+    `事件` 事件时间 COMMENT 'event_time',
+    `事件` 事件处理人id COMMENT 'event_user_id',
+    `事件` 事件处理人id COMMENT 'event_euser_id',
+    `事件` 事件处理人姓名 COMMENT 'event_user_name',
+    `事件` 目标用户id COMMENT 'target_user_id',
+    `事件` 目标用户id COMMENT 'target_euser_id',
+    `事件` 目标用户姓名 COMMENT 'target_user_name',
+    `事件` 所属环节 COMMENT 'track_id',
+    `事件` 预计解挂时间 COMMENT 'plan_relieve_time',
+    `事件` 事件描述 COMMENT 'remark',
+    `事件` 挂起结果 COMMENT 'hang_status',
+    `事件` 实际解挂时间 COMMENT 'fact_relieve_hang',
+    `事件` 挂起审核意见 COMMENT 'review_advise',
+    `事件` 类型 COMMENT 'comment_type',
+    `事件` 追记照片 COMMENT 'photo',
+    `事件` 督办级别 COMMENT 'sup_flag',
+    `事件` 创建时间 COMMENT 'create_time',
+    `事件` 四格环节id COMMENT 'sige_track_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_repair_event(`事件`,``) values(0,0);
+insert into t_repair_event(`事件`,``) values(1,1);
+insert into t_repair_event(`事件`,``) values(2,2);
+insert into t_repair_event(`事件`,``) values(3,3);
+insert into t_repair_event(`事件`,``) values(4,4);
+insert into t_repair_event(`事件`,``) values(5,5);
+insert into t_repair_event(`事件`,``) values(6,6);
+insert into t_repair_event(`事件`,``) values(7,7);
+insert into t_repair_event(`事件`,``) values(8,8);
+insert into t_repair_event(`事件`,``) values(9,9);
+
+
+-- 评价 --
+DROP TABLE IF EXISTS `t_evaluate`;
+CREATE TABLE IF NOT EXISTS `t_evaluate`
+(
+    `评价` 评价等级 primary key COMMENT 'evaluate_level',
+    `评价` 评价描述 COMMENT 'desc',
+    `评价`  COMMENT 'create_time',
+    `评价`  COMMENT 'create_by',
+    `评价` 工单id COMMENT 'order_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_evaluate(`评价`,``) values(0,0);
+insert into t_evaluate(`评价`,``) values(1,1);
+insert into t_evaluate(`评价`,``) values(2,2);
+insert into t_evaluate(`评价`,``) values(3,3);
+insert into t_evaluate(`评价`,``) values(4,4);
+insert into t_evaluate(`评价`,``) values(5,5);
+insert into t_evaluate(`评价`,``) values(6,6);
+insert into t_evaluate(`评价`,``) values(7,7);
+insert into t_evaluate(`评价`,``) values(8,8);
+insert into t_evaluate(`评价`,``) values(9,9);
+
+
+-- 项目 --
+DROP TABLE IF EXISTS `t_project`;
+CREATE TABLE IF NOT EXISTS `t_project`
+(
+    `项目` 项目主键 primary key COMMENT 'proj_id',
+    `项目` 项目id COMMENT 'sig_organ_id',
+    `项目` 项目名称 COMMENT 'organ_name',
+    `项目` 项目拼音名称 COMMENT 'organ_py',
+    `项目` 项目状态 COMMENT 'organ_status',
+    `项目` 收费方式 COMMENT 'charge_type',
+    `项目` 项目业态编码 COMMENT 'organ_code',
+    `项目` 地址 COMMENT 'organ_address',
+    `项目` 机构所属地区 COMMENT 'organ_region',
+    `项目` 竣工时间 COMMENT 'complete_date',
+    `项目` 入伙时间 COMMENT 'checkin_date',
+    `项目` 建筑面积 COMMENT 'build_area',
+    `项目` 占地面积 COMMENT 'total_area',
+    `项目` 省 COMMENT 'province',
+    `项目` 市 COMMENT 'city',
+    `项目` 区 COMMENT 'region',
+    `项目` 街道 COMMENT 'street',
+    `项目` 描述 COMMENT 'description',
+    `项目` 容积率 COMMENT 'plot_ratio',
+    `项目` 绿化率 COMMENT 'green_ratio',
+    `项目`  COMMENT 'create_time',
+    `项目` 创建者 COMMENT 'create_by',
+    `项目`  COMMENT 'update_time',
+    `项目`  COMMENT 'update_by',
+    `项目` 删除标记 COMMENT 'del_flag',
+    `项目` 数据来源 COMMENT 'source_type',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_project(`项目`,``) values(0,0);
+insert into t_project(`项目`,``) values(1,1);
+insert into t_project(`项目`,``) values(2,2);
+insert into t_project(`项目`,``) values(3,3);
+insert into t_project(`项目`,``) values(4,4);
+insert into t_project(`项目`,``) values(5,5);
+insert into t_project(`项目`,``) values(6,6);
+insert into t_project(`项目`,``) values(7,7);
+insert into t_project(`项目`,``) values(8,8);
+insert into t_project(`项目`,``) values(9,9);
+
+
+-- 楼宇 --
+DROP TABLE IF EXISTS `t_buliding`;
+CREATE TABLE IF NOT EXISTS `t_buliding`
+(
+    `楼宇` 楼宇主键id primary key COMMENT 'building_id',
+    `楼宇` 楼宇名称 COMMENT 'building_name',
+    `楼宇` 楼宇类型 COMMENT 'building_type',
+    `楼宇` 楼宇编号 COMMENT 'building_code',
+    `楼宇`  COMMENT 'create_time',
+    `楼宇` 创建者 COMMENT 'create_by',
+    `楼宇`  COMMENT 'update_time',
+    `楼宇` 更新者 COMMENT 'update_by',
+    `楼宇` 删除标记 COMMENT 'delete_flag',
+    `楼宇` 数据来源 COMMENT 'source_type',
+    `楼宇` 楼栋层数 COMMENT 'build_floor',
+    `楼宇` 楼栋状态 COMMENT 'build_status',
+    `楼宇` 四格楼栋id COMMENT 'sig_build_id',
+    `楼宇` 四格项目id COMMENT 'sig_organ_id',
+    `楼宇` 项目id COMMENT 'proj_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_buliding(`楼宇`,``) values(0,0);
+insert into t_buliding(`楼宇`,``) values(1,1);
+insert into t_buliding(`楼宇`,``) values(2,2);
+insert into t_buliding(`楼宇`,``) values(3,3);
+insert into t_buliding(`楼宇`,``) values(4,4);
+insert into t_buliding(`楼宇`,``) values(5,5);
+insert into t_buliding(`楼宇`,``) values(6,6);
+insert into t_buliding(`楼宇`,``) values(7,7);
+insert into t_buliding(`楼宇`,``) values(8,8);
+insert into t_buliding(`楼宇`,``) values(9,9);
+
+
+-- 单元 --
+DROP TABLE IF EXISTS `t_unit`;
+CREATE TABLE IF NOT EXISTS `t_unit`
+(
+    `单元` 单元主键 primary key COMMENT 'unit_id',
+    `单元` 单元id COMMENT 'sig_unit_id',
+    `单元` 单元名称 COMMENT 'unit_name',
+    `单元` 单元状态 COMMENT 'unit_status',
+    `单元` 单元编码 COMMENT 'unit_code',
+    `单元` 四格楼栋id COMMENT 'sig_build_id',
+    `单元` 四格项目id COMMENT 'sig_organ_id',
+    `单元`  COMMENT 'create_time',
+    `单元` 创建者 COMMENT 'create_by',
+    `单元`  COMMENT 'update_time',
+    `单元`  COMMENT 'update_by',
+    `单元` 删除标记 COMMENT 'del_flag',
+    `单元` 数据来源 COMMENT 'source_type',
+    `单元`  COMMENT 'proj_id',
+    `单元`  COMMENT 'building_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_unit(`单元`,``) values(0,0);
+insert into t_unit(`单元`,``) values(1,1);
+insert into t_unit(`单元`,``) values(2,2);
+insert into t_unit(`单元`,``) values(3,3);
+insert into t_unit(`单元`,``) values(4,4);
+insert into t_unit(`单元`,``) values(5,5);
+insert into t_unit(`单元`,``) values(6,6);
+insert into t_unit(`单元`,``) values(7,7);
+insert into t_unit(`单元`,``) values(8,8);
+insert into t_unit(`单元`,``) values(9,9);
+
+
+-- 楼层 --
+DROP TABLE IF EXISTS `t_floor`;
+CREATE TABLE IF NOT EXISTS `t_floor`
+(
+    `楼层` 楼层主键 primary key COMMENT 'floor_id',
+    `楼层` 楼层标识 COMMENT 'sig_floor_id',
+    `楼层` 楼层名称 COMMENT 'floor_name',
+    `楼层` 楼层状态 COMMENT 'floor_status',
+    `楼层` 楼层编码 COMMENT 'floor_code',
+    `楼层` 楼层顺序必填且唯一 COMMENT 'floor_index',
+    `楼层` 建筑面积 COMMENT 'build_area',
+    `楼层` 计费面积 COMMENT 'bill_area',
+    `楼层` 使用面积 COMMENT 'use_area',
+    `楼层` 描述 COMMENT 'describe',
+    `楼层` 四格单元id COMMENT 'sig_unit_id',
+    `楼层` 四格楼栋id COMMENT 'sig_build_id',
+    `楼层` 四格项目id COMMENT 'sig_organ_id',
+    `楼层`  COMMENT 'create_time',
+    `楼层` 创建者 COMMENT 'create_by',
+    `楼层`  COMMENT 'update_time',
+    `楼层`  COMMENT 'update_by',
+    `楼层` 删除标记 COMMENT 'del_flag',
+    `楼层` 数据来源 COMMENT 'source_type',
+    `楼层`  COMMENT 'unit_id',
+    `楼层`  COMMENT 'building_id',
+    `楼层`  COMMENT 'proj_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_floor(`楼层`,``) values(0,0);
+insert into t_floor(`楼层`,``) values(1,1);
+insert into t_floor(`楼层`,``) values(2,2);
+insert into t_floor(`楼层`,``) values(3,3);
+insert into t_floor(`楼层`,``) values(4,4);
+insert into t_floor(`楼层`,``) values(5,5);
+insert into t_floor(`楼层`,``) values(6,6);
+insert into t_floor(`楼层`,``) values(7,7);
+insert into t_floor(`楼层`,``) values(8,8);
+insert into t_floor(`楼层`,``) values(9,9);
+
+
+-- 房屋 --
+DROP TABLE IF EXISTS `t_house`;
+CREATE TABLE IF NOT EXISTS `t_house`
+(
+    `房屋` 房屋主键 primary key COMMENT 'house_id',
+    `房屋` 房屋id COMMENT 'sig_house_id',
+    `房屋` 房屋名称 COMMENT 'house_name',
+    `房屋` 房屋状态 COMMENT 'house_status',
+    `房屋` 房屋业态编码 COMMENT 'house_code',
+    `房屋` 房号 COMMENT 'house_no',
+    `房屋` 房屋类型编码 COMMENT 'house_type',
+    `房屋` 使用面积 COMMENT 'use_area',
+    `房屋` 花园面积 COMMENT 'garden_area',
+    `房屋` 分摊面积 COMMENT 'share_area',
+    `房屋` 建筑面积 COMMENT 'build_area',
+    `房屋` 计费面积 COMMENT 'bill_area',
+    `房屋` 楼层标识 COMMENT 'sig_floor_id',
+    `房屋` 四格单元id COMMENT 'sig_unit_id',
+    `房屋` 四格楼栋id COMMENT 'sig_build_id',
+    `房屋` 四格项目id COMMENT 'sig_organ_id',
+    `房屋`  COMMENT 'create_time',
+    `房屋` 创建者 COMMENT 'create_by',
+    `房屋`  COMMENT 'update_time',
+    `房屋`  COMMENT 'update_by',
+    `房屋` 删除标记 COMMENT 'del_flag',
+    `房屋` 数据来源 COMMENT 'source_type',
+    `房屋`  COMMENT 'floor_id',
+    `房屋`  COMMENT 'unit_id',
+    `房屋`  COMMENT 'building_id',
+    `房屋`  COMMENT 'proj_id',
+    `房屋` 资源类型 COMMENT 'resource_type',
+    `房屋` 房屋生命周期 COMMENT 'life_cycle',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_house(`房屋`,``) values(0,0);
+insert into t_house(`房屋`,``) values(1,1);
+insert into t_house(`房屋`,``) values(2,2);
+insert into t_house(`房屋`,``) values(3,3);
+insert into t_house(`房屋`,``) values(4,4);
+insert into t_house(`房屋`,``) values(5,5);
+insert into t_house(`房屋`,``) values(6,6);
+insert into t_house(`房屋`,``) values(7,7);
+insert into t_house(`房屋`,``) values(8,8);
+insert into t_house(`房屋`,``) values(9,9);
+
+
+-- 部门 --
+DROP TABLE IF EXISTS `sys_dept`;
+CREATE TABLE IF NOT EXISTS `sys_dept`
+(
+    `部门` 部门id primary key COMMENT 'dept_id',
+    `部门` 父部门id COMMENT 'parent_id',
+    `部门` 祖级列表 COMMENT 'ancestors',
+    `部门` 部门名称 COMMENT 'dept_name',
+    `部门` 显示顺序 COMMENT 'order_num',
+    `部门` 负责人 COMMENT 'leader',
+    `部门` 联系电话 COMMENT 'phone',
+    `部门` 邮箱 COMMENT 'email',
+    `部门` 部门状态 COMMENT 'status',
+    `部门` 删除标志 COMMENT 'del_flag',
+    `部门` 创建者 COMMENT 'create_by',
+    `部门` 创建时间 COMMENT 'create_time',
+    `部门` 更新者 COMMENT 'update_by',
+    `部门` 更新时间 COMMENT 'update_time',
+    `部门` 组织机构类型 COMMENT 'dept_type',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into sys_dept(`部门`,``) values(0,0);
+insert into sys_dept(`部门`,``) values(1,1);
+insert into sys_dept(`部门`,``) values(2,2);
+insert into sys_dept(`部门`,``) values(3,3);
+insert into sys_dept(`部门`,``) values(4,4);
+insert into sys_dept(`部门`,``) values(5,5);
+insert into sys_dept(`部门`,``) values(6,6);
+insert into sys_dept(`部门`,``) values(7,7);
+insert into sys_dept(`部门`,``) values(8,8);
+insert into sys_dept(`部门`,``) values(9,9);
+
+
+-- 企业 --
+DROP TABLE IF EXISTS `t_com_info`;
+CREATE TABLE IF NOT EXISTS `t_com_info`
+(
+    `企业` 企业主键 primary key COMMENT 'com_id',
+    `企业` 企业名称 COMMENT 'com_name',
+    `企业` 公司类型 COMMENT 'com_type',
+    `企业` 企业等级 COMMENT 'level',
+    `企业` 删除标记 COMMENT 'del_flag',
+    `企业` 创建时间 COMMENT 'create_time',
+    `企业` 更新时间 COMMENT 'update_time',
+    `企业` 更新者 COMMENT 'update_by',
+    `企业` 创建者 COMMENT 'create_by',
+    `企业` 客户编码 COMMENT 'cust_code',
+    `企业` 统一社会信用代码 COMMENT 'credit_code',
+    `企业` 地址 COMMENT 'company_address',
+    `企业` 电子邮箱 COMMENT 'email',
+    `企业` 成立日期 COMMENT 'establish_date',
+    `企业` 法人代表 COMMENT 'company_legal',
+    `企业` 上市公司代码 COMMENT 'listed_comp_code',
+    `企业` 上市类型 COMMENT 'listing_type',
+    `企业` 登记机关 COMMENT 'regist_authority',
+    `企业` 工商注册号 COMMENT 'regist_number',
+    `企业` 注册资本 COMMENT 'registered_capital',
+    `企业` 纳税人编号 COMMENT 'taxpayer_code',
+    `企业` 纳税人识别号 COMMENT 'taxpayer_id',
+    `企业` 网站地址 COMMENT 'website',
+    `企业` 年产值 COMMENT 'annual_output',
+    `企业` 年纳税额 COMMENT 'annual_tax',
+    `企业` 员工数量 COMMENT 'employees_num',
+    `企业` 停业日期 COMMENT 'end_time',
+    `企业` 开始日期 COMMENT 'open_time',
+    `企业` 经营范围 COMMENT 'operation_scope',
+    `企业` 专利数量 COMMENT 'patents_number',
+    `企业` 核准日期 COMMENT 'approval_date',
+    `企业` 企业状态 COMMENT 'com_status',
+    `企业` 所属行业 COMMENT 'industry',
+    `企业` 注册地址 COMMENT 'registered_addr',
+    `企业` 四格企业id COMMENT 'sig_cust_id',
+    `企业` 房屋id,关联更新完成后删除 COMMENT 'sig_house_id',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_com_info(`企业`,``) values(0,0);
+insert into t_com_info(`企业`,``) values(1,1);
+insert into t_com_info(`企业`,``) values(2,2);
+insert into t_com_info(`企业`,``) values(3,3);
+insert into t_com_info(`企业`,``) values(4,4);
+insert into t_com_info(`企业`,``) values(5,5);
+insert into t_com_info(`企业`,``) values(6,6);
+insert into t_com_info(`企业`,``) values(7,7);
+insert into t_com_info(`企业`,``) values(8,8);
+insert into t_com_info(`企业`,``) values(9,9);
+
+
+-- 企业与资源关系表 --
+DROP TABLE IF EXISTS `t_com_res`;
+CREATE TABLE IF NOT EXISTS `t_com_res`
+(
+    `企业与资源关系表` 资源id primary key COMMENT 'res_id',
+    `企业与资源关系表` 资源类型 COMMENT 'sig_rel_type',
+    `企业与资源关系表` 资源id COMMENT 'sig_obj_id',
+    `企业与资源关系表` 资源名称 COMMENT 'resource_name',
+    `企业与资源关系表` 项目id COMMENT 'sig_community_id',
+    `企业与资源关系表` 客户id COMMENT 'sig_cust_id',
+    `企业与资源关系表` 四格上级客户id COMMENT 'sig_up_cust_id',
+    `企业与资源关系表` 客户类型 COMMENT 'cust_type',
+    `企业与资源关系表` 客户状态 COMMENT 'cust_status',
+    `企业与资源关系表` 最新装修时间 COMMENT 'decorate_time',
+    `企业与资源关系表` 租赁起始时间 COMMENT 'eff_time',
+    `企业与资源关系表` 租赁结束时间 COMMENT 'exp_time',
+    `企业与资源关系表` 入住时间 COMMENT 'in_time',
+    `企业与资源关系表` 入伙时间 COMMENT 'join_time',
+    `企业与资源关系表` 离开时间 COMMENT 'out_time',
+    `企业与资源关系表` 企业id COMMENT 'com_id',
+    `企业与资源关系表` 空间数据主键 COMMENT 'space_id',
+    `企业与资源关系表` 数据来源 COMMENT 'source_type',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_com_res(`企业与资源关系表`,``) values(0,0);
+insert into t_com_res(`企业与资源关系表`,``) values(1,1);
+insert into t_com_res(`企业与资源关系表`,``) values(2,2);
+insert into t_com_res(`企业与资源关系表`,``) values(3,3);
+insert into t_com_res(`企业与资源关系表`,``) values(4,4);
+insert into t_com_res(`企业与资源关系表`,``) values(5,5);
+insert into t_com_res(`企业与资源关系表`,``) values(6,6);
+insert into t_com_res(`企业与资源关系表`,``) values(7,7);
+insert into t_com_res(`企业与资源关系表`,``) values(8,8);
+insert into t_com_res(`企业与资源关系表`,``) values(9,9);
+
+
+-- 环节待处理人 --
+DROP TABLE IF EXISTS `t_repair_track_user`;
+CREATE TABLE IF NOT EXISTS `t_repair_track_user`
+(
+    `环节人员` 环节主键 primary key COMMENT 'track_id',
+    `环节人员` 第三方处理人id（四格） COMMENT 'current_euser_id',
+    `环节人员` 处理人id（四格） COMMENT 'current_user_id',
+    `环节人员` 待处理人员姓名（四格） COMMENT 'current_user_name',
+    `环节人员` 待处理人员电话（四格） COMMENT 'current_user_tel',
+    `环节人员` 待处理人员类型（1：客户；2：员工）（四格） COMMENT 'current_user_type',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT '',
+    ``  COMMENT ''
+);
+
+insert into t_repair_track_user(`环节人员`,``) values(0,0);
+insert into t_repair_track_user(`环节人员`,``) values(1,1);
+insert into t_repair_track_user(`环节人员`,``) values(2,2);
+insert into t_repair_track_user(`环节人员`,``) values(3,3);
+insert into t_repair_track_user(`环节人员`,``) values(4,4);
+insert into t_repair_track_user(`环节人员`,``) values(5,5);
+insert into t_repair_track_user(`环节人员`,``) values(6,6);
+insert into t_repair_track_user(`环节人员`,``) values(7,7);
+insert into t_repair_track_user(`环节人员`,``) values(8,8);
+insert into t_repair_track_user(`环节人员`,``) values(9,9);

@@ -55,15 +55,15 @@ public class DocumentMain {
 	public static String needTableString = "";*/
 
 	// D:\programing\learn-velocity\do-tool\文件摸板\数据采集（源系统）\融通物管—一碑.xlsx
-	public static String fileName = "E:\\SVN仓库\\301医院\\02、项目需求\\数据采集（源系统）\\一碑\\融通物管—一碑.xlsx";
-	//主题域
-	public static String domainName = "融通地产";
-	//主题系统简称
-	public static String sourceSystemName = "融通地产";
-	//专题域
-	public static String domainNameDwi = "01_01 融通地产_融通地产采集";
-	//专题系统简称
-	public static String sourceSystemNameDwi = "融通地产";
+	public static String fileName = "D:\\programing\\learn-velocity\\do-tool\\文件摸板\\02、项目需求\\数据采集（源系统）\\商管\\北京华贸-商管.xlsx";
+	//题域
+	public static String domainName = "商管";
+	//系统简称
+	public static String sourceSystemName = "商管";
+	//题域
+	public static String domainNameDwi = "商管";
+	//系统简称
+	public static String sourceSystemNameDwi = "商管";
 	//
 	public static String name = "energy";
 	//
@@ -262,11 +262,12 @@ public class DocumentMain {
 	
 	public static String changeType(String type , String length) {
 		type = type.toLowerCase();
+		String varchar = "varchar";
 		switch(type) {
 			case "varchar2":
-				return "character varying("+length+")";
+				return "varchar("+length+")";
 		   case "varchar":
-			   return "character varying("+length+")";
+			   return "varchar("+length+")";
 		   case "date":
 			   return "timestamp(6)";
 		   case "datetime":
@@ -298,7 +299,7 @@ public class DocumentMain {
 		   case "text":
 			   return "text";
 		}
-		return "character varying(100)";
+		return "varchar(100)";
 	}
 	
 	public static String getTypeString1(String type,String length) {

@@ -65,7 +65,7 @@ import java.util.List;
 //public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-办公-MAPPING映射-V1.0.xlsx";
 //public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DM-企业-MAPPING映射-V1.0.xlsx";
 //public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-产业-MAPPING映射-V1.0.xlsx";
-public static String fileName = "E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\主题层\\项目\\03Mapping\\DWR-项目-MAPPING映射-V1.1.xlsx";
+public static String fileName = "D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\主题层\\工单\\03Mapping\\DWR-工单-MAPPING映射-V1.0.xlsx";
 
 
 //		public static String fileName = "E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\专题\\能耗\\03Mapping\\DM-能耗-MAPPING映射-V1.0.xlsx";

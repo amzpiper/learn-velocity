@@ -200,9 +200,9 @@ public class CreateFQExcel {
 		System.out.println(type);
 		switch(type) {
 			case "varchar2":
-				return "character varying("+length+")";
+				return "varchar("+length+")";
 		   case "varchar":
-			   return "character varying("+length+")";
+			   return "varchar("+length+")";
 		   case "date":
 			   return "timestamp(6)";
 		   case "datetime":
@@ -236,7 +236,7 @@ public class CreateFQExcel {
 		   case "text":
 			   return "text";
 		}
-		return "character varying(100)";
+		return "varchar(100)";
 	}
 	
 	public static String getTypeString1(String type,String length) {

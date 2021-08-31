@@ -1,0 +1,236 @@
+
+
+-- 报事报修工单表 --
+DROP TABLE IF EXISTS dwr_order.dwd_order_t_repairs_order_f;
+CREATE TABLE IF NOT EXISTS dwr_order.dwd_order_t_repairs_order_f
+(
+    id serial,
+    order_id bigint,
+    order_no character varying(96),
+    order_type integer,
+    addr character varying(384),
+    description character varying(1500),
+    connect_no character varying(60),
+    connector character varying(192),
+    level_no integer,
+    building_id bigint,
+    create_time timestamp(6),
+    create_by character varying(192),
+    source_type integer,
+    voice_file bigint,
+    order_time timestamp(6),
+    order_status character varying(6),
+    version bigint,
+    credit_code character varying(60),
+    sige_order_id character varying(60),
+    order_create_name character varying(192),
+    sige_transport_user_id character varying(192),
+    sige_transport_euser_id character varying(192),
+    del_flag integer,
+    outtime_status integer,
+    sig_order_subtype integer,
+    sig_community_id character varying(150),
+    evalue_status integer,
+    proj_id bigint,
+    evaluate_level integer,
+    evaluate_description character varying(768),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_order.dwd_order_t_repairs_order_f IS '报事报修工单表';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.id IS '系统id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.order_id IS '';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.order_no IS '工单号';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.order_type IS '问题类型';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.addr IS '问题地点';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.description IS '问题描述';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.connect_no IS '联系方式';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.connector IS '联系人';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.level_no IS '紧急程度';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.building_id IS '关联楼宇';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.create_time IS '';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.create_by IS '';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.source_type IS '来源类型';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.voice_file IS '语音描述';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.order_time IS '报修时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.order_status IS '工单状态';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.version IS '版本 锁';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.credit_code IS '统一社会信用代码';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.sige_order_id IS '四格服务工单id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.order_create_name IS '录单人姓名';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.sige_transport_user_id IS '录单人ID';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.sige_transport_euser_id IS '外部录单人ID';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.del_flag IS '删除标识';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.outtime_status IS '超时状态';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.sig_order_subtype IS '四格问题子类型';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.sig_community_id IS '四格项目id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.evalue_status IS '评价状态';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.proj_id IS '项目id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.evaluate_level IS '评价等级';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.evaluate_description IS '评价描述';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.dw_batch_number IS '数据批次号';
+
+
+-- 工单环节表 --
+DROP TABLE IF EXISTS dwr_order.dwd_order_t_repair_track_f;
+CREATE TABLE IF NOT EXISTS dwr_order.dwd_order_t_repair_track_f
+(
+    id serial,
+    track_id bigint,
+    track_name character varying(192),
+    status_name character varying(192),
+    track_code character varying(192),
+    status integer,
+    order_id bigint,
+    track_desc character varying(384),
+    current_user_id character varying(192),
+    current_euser_id character varying(192),
+    current_user_name character varying(192),
+    current_user_type integer,
+    current_user_tel character varying(60),
+    review_result character varying(3),
+    create_time timestamp(6),
+    create_by character varying(192),
+    update_time timestamp(6),
+    update_by character varying(192),
+    version bigint,
+    sige_track_id bigint,
+    sige_order_id character varying(60),
+    over_type integer,
+    deal_advise varchar(3072),
+    deal_photos varchar(3072),
+    deal_sign_photos varchar(3072),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_order.dwd_order_t_repair_track_f IS '工单环节表';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.id IS '系统id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.track_id IS '环节主键';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.track_name IS '环节名称';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.status_name IS '状态名称';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.track_code IS '环节编码';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.status IS '环节状态';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.order_id IS '工单id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.track_desc IS '轨迹描述';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.current_user_id IS '处理人ID（四格）';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.current_euser_id IS '第三方处理人ID（四格）';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.current_user_name IS '待处理人员姓名';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.current_user_type IS '待处理人员类型';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.current_user_tel IS '待处理人员电话（四格）';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.review_result IS '审核结果';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.create_time IS '创建时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.create_by IS '创建人';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.update_time IS '更新时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.update_by IS '更新人';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.version IS '版本 锁';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.sige_track_id IS '四格环节ID';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.sige_order_id IS '四格服务工单id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.over_type IS '工单结束类型';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.deal_advise IS '处理意见';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.deal_photos IS '处理拍照';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.deal_sign_photos IS '签名照片';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.dw_batch_number IS '数据批次号';
+
+
+-- 环节事件表 --
+DROP TABLE IF EXISTS dwr_order.dwd_order_t_repair_event_f;
+CREATE TABLE IF NOT EXISTS dwr_order.dwd_order_t_repair_event_f
+(
+    id serial,
+    event_id bigint,
+    event_type integer,
+    event_name character varying(60),
+    event_time timestamp(6),
+    event_user_id character varying(192),
+    event_euser_id character varying(192),
+    event_user_name character varying(192),
+    target_user_id character varying(192),
+    target_euser_id character varying(192),
+    target_user_name character varying(192),
+    track_id bigint,
+    plan_relieve_time timestamp(6),
+    remark character varying(192),
+    hang_status integer,
+    fact_relieve_hang timestamp(6),
+    review_advise character varying(192),
+    comment_type integer,
+    photo character varying(384),
+    sup_flag character varying(60),
+    create_time timestamp(6),
+    sige_track_id bigint,
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_order.dwd_order_t_repair_event_f IS '环节事件表';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.id IS '系统id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.event_id IS '事件id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.event_type IS '事件类型';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.event_name IS '事件名称';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.event_time IS '事件时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.event_user_id IS '事件处理人id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.event_euser_id IS '事件处理人id（第三方）';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.event_user_name IS '事件处理人姓名';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.target_user_id IS '目标用户id';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.target_euser_id IS '目标用户id（第三方）';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.target_user_name IS '目标用户姓名';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.track_id IS '所属环节';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.plan_relieve_time IS '预计解挂时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.remark IS '事件描述';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.hang_status IS '挂起结果';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.fact_relieve_hang IS '实际解挂时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.review_advise IS '挂起审核意见';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.comment_type IS '类型';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.photo IS '追记照片';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.sup_flag IS '督办级别';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.create_time IS '创建时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.sige_track_id IS '四格环节ID';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.dw_batch_number IS '数据批次号';
+
+
+-- 工单标准表 --
+DROP TABLE IF EXISTS dwr_order.dwd_order_dictionary_d;
+CREATE TABLE IF NOT EXISTS dwr_order.dwd_order_dictionary_d
+(
+    id serial,
+    dictionary_value character varying(50),
+    dictionary_name character varying(100),
+    type character varying(50),
+    type_name character varying(255),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dwr_order.dwd_order_dictionary_d IS '工单标准表';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.id IS '系统ID';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.dictionary_value IS '字典值';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.dictionary_name IS '字典名称';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.type IS '类别';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.type_name IS '类别名称';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.dw_batch_number IS '数据批次号';

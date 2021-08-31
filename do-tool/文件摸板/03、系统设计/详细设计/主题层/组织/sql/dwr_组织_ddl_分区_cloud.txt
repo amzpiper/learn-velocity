@@ -1,0 +1,56 @@
+
+
+-- 部门信息表 --
+DROP TABLE IF EXISTS "dwr_dim"."dim_org_sys_dept_d";
+CREATE TABLE IF NOT EXISTS "dwr_dim"."dim_org_sys_dept_d"
+(
+    "id" serial,
+    "dept_id" bigint,
+    "parent_id" bigint,
+    "ancestors" character varying(150),
+    "dept_name" character varying(90),
+    "order_num" integer,
+    "leader" character varying(60),
+    "phone" character varying(33),
+    "email" character varying(150),
+    "status" char(1),
+    "del_flag" char(1),
+    "create_by" character varying(192),
+    "create_time" timestamp(6),
+    "update_by" character varying(192),
+    "update_time" timestamp(6),
+    "dept_type" character varying(6),
+    "dw_creation_by" character varying(100),
+    "dw_creation_date" timestamp(6),
+    "dw_last_update_by" character varying(100),
+    "dw_last_update_date" timestamp(6),
+    "dw_batch_number" bigint
+)WITH(orientation=row,compression=no) 
+DISTRIBUTE BY HASH("parent_id") 
+PARTITION BY RANGE (dw_creation_date)
+(
+    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),
+    PARTITION PMAX VALUES LESS THAN(MAXVALUE)
+);
+COMMENT ON TABLE "dwr_dim"."dim_org_sys_dept_d" IS '部门信息表';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.id IS '系统id';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.dept_id IS '部门id';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.parent_id IS '父部门id';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.ancestors IS '祖级列表';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.dept_name IS '部门名称';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.order_num IS '显示顺序';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.leader IS '负责人';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.phone IS '联系电话';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.email IS '邮箱';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.status IS '部门状态';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.del_flag IS '删除标志';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.create_by IS '创建者';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.create_time IS '创建时间';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.update_by IS '更新者';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.update_time IS '更新时间';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.dept_type IS '组织机构类型';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_dim.dim_org_sys_dept_d.dw_batch_number IS '数据批次号';

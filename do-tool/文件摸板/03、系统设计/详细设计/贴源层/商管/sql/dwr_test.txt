@@ -1,0 +1,1106 @@
+
+
+-- 通行 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_pass_data_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_pass_data_info
+(
+    record_id integer(),
+    code character varying(60),
+    card character varying(60),
+    name character varying(60),
+    area character varying(60),
+    snap_time timestamp(6) without time zone,
+    direction integer(),
+    pass_type character varying(135),
+    owner_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_pass_data_info IS '通行';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.record_id IS '记录唯一标识';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.code IS '企业';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.card IS '卡号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.name IS '姓名';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.area IS '通行区域';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.snap_time IS '记录时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.direction IS '进出门';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.pass_type IS '通行人员类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_pass_data_info.owner_id IS '通行数据所有者主键';
+
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(1,2,3,4,5,'2021-07-13 11:20:44',7,8,9,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(11,12,13,14,15,'2021-07-13 11:20:44',17,18,19,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(21,22,23,24,25,'2021-07-13 11:20:44',27,28,29,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(31,32,33,34,35,'2021-07-13 11:20:44',37,38,39,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(41,42,43,44,45,'2021-07-13 11:20:44',47,48,49,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(51,52,53,54,55,'2021-07-13 11:20:44',57,58,59,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(61,62,63,64,65,'2021-07-13 11:20:44',67,68,69,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(71,72,73,74,75,'2021-07-13 11:20:44',77,78,79,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(81,82,83,84,85,'2021-07-13 11:20:44',87,88,89,'20210713112044');
+insert into dwi_bm.dwi_bm_t_pass_data_info("record_id","code","card","name","area","snap_time","direction","pass_type","owner_id","dw_batch_number") values(91,92,93,94,95,'2021-07-13 11:20:44',97,98,99,'20210713112044');
+
+
+-- 员工 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_staff_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_staff_info
+(
+    staff_id bigint(),
+    staff_name character varying(192),
+    staff_phone character varying(192),
+    create_time timestamp(6) without time zone,
+    update_time timestamp(6) without time zone,
+    com_id bigint(),
+    audit_flag integer(),
+    create_by character varying(192),
+    update_by character varying(192),
+    del_flag integer(),
+    post_name character varying(150),
+    sig_cust_id bigint(),
+    birthday timestamp(6) without time zone,
+    certi_nbr character varying(150),
+    certi_type integer(),
+    cust_code character varying(150),
+    gender integer(),
+    staff_status integer(),
+    addr character varying(192),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_staff_info IS '员工';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.staff_id IS '员工id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.staff_name IS '员工姓名';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.staff_phone IS '员工手机号码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.create_time IS '添加时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.update_time IS '更新时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.com_id IS '所属企业id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.audit_flag IS '审批人标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.update_by IS '更新者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.del_flag IS '删除标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.post_name IS '职位';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.sig_cust_id IS '四格员工信息id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.birthday IS '出生日期';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.certi_nbr IS '证件号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.certi_type IS '证件类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.cust_code IS '四格客户编码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.gender IS '性别';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.staff_status IS '员工状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_staff_info.addr IS '地址';
+
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(1,2,3,'2021-07-13 11:20:44','2021-07-13 11:20:44',6,7,8,9,10,11,12,'2021-07-13 11:20:44',14,15,16,17,18,19,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(11,12,13,'2021-07-13 11:20:44','2021-07-13 11:20:44',16,17,18,19,110,111,112,'2021-07-13 11:20:44',114,115,116,117,118,119,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(21,22,23,'2021-07-13 11:20:44','2021-07-13 11:20:44',26,27,28,29,210,211,212,'2021-07-13 11:20:44',214,215,216,217,218,219,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(31,32,33,'2021-07-13 11:20:44','2021-07-13 11:20:44',36,37,38,39,310,311,312,'2021-07-13 11:20:44',314,315,316,317,318,319,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(41,42,43,'2021-07-13 11:20:44','2021-07-13 11:20:44',46,47,48,49,410,411,412,'2021-07-13 11:20:44',414,415,416,417,418,419,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(51,52,53,'2021-07-13 11:20:44','2021-07-13 11:20:44',56,57,58,59,510,511,512,'2021-07-13 11:20:44',514,515,516,517,518,519,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(61,62,63,'2021-07-13 11:20:44','2021-07-13 11:20:44',66,67,68,69,610,611,612,'2021-07-13 11:20:44',614,615,616,617,618,619,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(71,72,73,'2021-07-13 11:20:44','2021-07-13 11:20:44',76,77,78,79,710,711,712,'2021-07-13 11:20:44',714,715,716,717,718,719,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(81,82,83,'2021-07-13 11:20:44','2021-07-13 11:20:44',86,87,88,89,810,811,812,'2021-07-13 11:20:44',814,815,816,817,818,819,'20210713112044');
+insert into dwi_bm.dwi_bm_t_staff_info("staff_id","staff_name","staff_phone","create_time","update_time","com_id","audit_flag","create_by","update_by","del_flag","post_name","sig_cust_id","birthday","certi_nbr","certi_type","cust_code","gender","staff_status","addr","dw_batch_number") values(91,92,93,'2021-07-13 11:20:44','2021-07-13 11:20:44',96,97,98,99,910,911,912,'2021-07-13 11:20:44',914,915,916,917,918,919,'20210713112044');
+
+
+-- 访客 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_invite_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_invite_info
+(
+    invite_id bigint(),
+    inviter_name character varying(192),
+    inviter_phone character varying(192),
+    inviter_pic character varying(192),
+    inviter_id_pic character varying(192),
+    visit_com_name character varying(192),
+    visit_com_id bigint(),
+    visit_man_name character varying(192),
+    visit_man_phone character varying(192),
+    visit_time timestamp(6) without time zone,
+    visit_addr character varying(192),
+    visit_reason integer(),
+    create_time timestamp(6) without time zone,
+    update_time timestamp(6) without time zone,
+    invite_status integer(),
+    create_by character varying(192),
+    create_name character varying(192),
+    instance_id character varying(108),
+    invite_type integer(),
+    delete_flag integer(),
+    inviter_idno character varying(192),
+    inviter_idtype integer(),
+    business_key character varying(108),
+    building_id bigint(),
+    area_code character varying(30),
+    validate_start timestamp(6) without time zone,
+    validate_end timestamp(6) without time zone,
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_invite_info IS '访客';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.invite_id IS '邀请主键id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.inviter_name IS '访客姓名';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.inviter_phone IS '访客电话';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.inviter_pic IS '访客头像';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.inviter_id_pic IS '访客身份证照片';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.visit_com_name IS '拜访公司名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.visit_com_id IS '拜访公司id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.visit_man_name IS '拜访人姓名';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.visit_man_phone IS '拜访人电话';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.visit_time IS '拜访时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.visit_addr IS '拜访地址';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.visit_reason IS '拜访事由';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.create_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.update_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.invite_status IS '邀请状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.create_name IS '创建者名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.instance_id IS '流程实例ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.invite_type IS '访客邀请类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.delete_flag IS '删除标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.inviter_idno IS '访客证件号码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.inviter_idtype IS '访客证件类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.business_key IS '访客邀请唯一编号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.building_id IS '楼宇id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.area_code IS '区域编号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.validate_start IS '有效期开始';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_invite_info.validate_end IS '有效期结束';
+
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(1,2,3,4,5,6,7,8,9,'2021-07-13 11:20:44',11,12,'2021-07-13 11:20:44','2021-07-13 11:20:44',15,16,17,18,19,20,21,22,23,24,25,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(11,12,13,14,15,16,17,18,19,'2021-07-13 11:20:44',111,112,'2021-07-13 11:20:44','2021-07-13 11:20:44',115,116,117,118,119,120,121,122,123,124,125,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(21,22,23,24,25,26,27,28,29,'2021-07-13 11:20:44',211,212,'2021-07-13 11:20:44','2021-07-13 11:20:44',215,216,217,218,219,220,221,222,223,224,225,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(31,32,33,34,35,36,37,38,39,'2021-07-13 11:20:44',311,312,'2021-07-13 11:20:44','2021-07-13 11:20:44',315,316,317,318,319,320,321,322,323,324,325,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(41,42,43,44,45,46,47,48,49,'2021-07-13 11:20:44',411,412,'2021-07-13 11:20:44','2021-07-13 11:20:44',415,416,417,418,419,420,421,422,423,424,425,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(51,52,53,54,55,56,57,58,59,'2021-07-13 11:20:44',511,512,'2021-07-13 11:20:44','2021-07-13 11:20:44',515,516,517,518,519,520,521,522,523,524,525,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(61,62,63,64,65,66,67,68,69,'2021-07-13 11:20:44',611,612,'2021-07-13 11:20:44','2021-07-13 11:20:44',615,616,617,618,619,620,621,622,623,624,625,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(71,72,73,74,75,76,77,78,79,'2021-07-13 11:20:44',711,712,'2021-07-13 11:20:44','2021-07-13 11:20:44',715,716,717,718,719,720,721,722,723,724,725,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(81,82,83,84,85,86,87,88,89,'2021-07-13 11:20:44',811,812,'2021-07-13 11:20:44','2021-07-13 11:20:44',815,816,817,818,819,820,821,822,823,824,825,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+insert into dwi_bm.dwi_bm_t_invite_info("invite_id","inviter_name","inviter_phone","inviter_pic","inviter_id_pic","visit_com_name","visit_com_id","visit_man_name","visit_man_phone","visit_time","visit_addr","visit_reason","create_time","update_time","invite_status","create_by","create_name","instance_id","invite_type","delete_flag","inviter_idno","inviter_idtype","business_key","building_id","area_code","validate_start","validate_end","dw_batch_number") values(91,92,93,94,95,96,97,98,99,'2021-07-13 11:20:44',911,912,'2021-07-13 11:20:44','2021-07-13 11:20:44',915,916,917,918,919,920,921,922,923,924,925,'2021-07-13 11:20:44','2021-07-13 11:20:44','20210713112044');
+
+
+-- 用户信息 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_sys_user_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_sys_user_info
+(
+    user_id bigint(),
+    dept_id bigint(),
+    user_name character varying(90),
+    nick_name character varying(90),
+    user_type character varying(6),
+    email character varying(150),
+    phonenumber character varying(33),
+    sex char(1),
+    avatar character varying(768),
+    password character varying(300),
+    status char(1),
+    del_flag char(1),
+    login_ip character varying(150),
+    login_date timestamp(6) without time zone,
+    create_by character varying(192),
+    create_time timestamp(6) without time zone,
+    update_by character varying(192),
+    update_time timestamp(6) without time zone,
+    remark character varying(1500),
+    staff_id bigint(),
+    salt character varying(48),
+    u_id character varying(150),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_sys_user_info IS '用户信息';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.user_id IS '用户ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.dept_id IS '部门ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.user_name IS '用户账号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.nick_name IS '用户昵称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.user_type IS '用户类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.email IS '用户邮箱';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.phonenumber IS '手机号码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.sex IS '用户性别';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.avatar IS '头像地址';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.password IS '密码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.status IS '帐号状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.del_flag IS '删除标志';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.login_ip IS '最后登录IP';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.login_date IS '最后登录时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.create_time IS '创建时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.update_by IS '更新者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.update_time IS '更新时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.remark IS '备注';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.staff_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.salt IS '盐';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_user_info.u_id IS '用户唯一编号';
+
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(1,2,3,4,5,6,7,8,9,10,11,12,13,'2021-07-13 11:20:45',15,'2021-07-13 11:20:45',17,'2021-07-13 11:20:45',19,20,21,22,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(11,12,13,14,15,16,17,18,19,110,111,112,113,'2021-07-13 11:20:45',115,'2021-07-13 11:20:45',117,'2021-07-13 11:20:45',119,120,121,122,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(21,22,23,24,25,26,27,28,29,210,211,212,213,'2021-07-13 11:20:45',215,'2021-07-13 11:20:45',217,'2021-07-13 11:20:45',219,220,221,222,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(31,32,33,34,35,36,37,38,39,310,311,312,313,'2021-07-13 11:20:45',315,'2021-07-13 11:20:45',317,'2021-07-13 11:20:45',319,320,321,322,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(41,42,43,44,45,46,47,48,49,410,411,412,413,'2021-07-13 11:20:45',415,'2021-07-13 11:20:45',417,'2021-07-13 11:20:45',419,420,421,422,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(51,52,53,54,55,56,57,58,59,510,511,512,513,'2021-07-13 11:20:45',515,'2021-07-13 11:20:45',517,'2021-07-13 11:20:45',519,520,521,522,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(61,62,63,64,65,66,67,68,69,610,611,612,613,'2021-07-13 11:20:45',615,'2021-07-13 11:20:45',617,'2021-07-13 11:20:45',619,620,621,622,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(71,72,73,74,75,76,77,78,79,710,711,712,713,'2021-07-13 11:20:45',715,'2021-07-13 11:20:45',717,'2021-07-13 11:20:45',719,720,721,722,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(81,82,83,84,85,86,87,88,89,810,811,812,813,'2021-07-13 11:20:45',815,'2021-07-13 11:20:45',817,'2021-07-13 11:20:45',819,820,821,822,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_user_info("user_id","dept_id","user_name","nick_name","user_type","email","phonenumber","sex","avatar","password","status","del_flag","login_ip","login_date","create_by","create_time","update_by","update_time","remark","staff_id","salt","u_id","dw_batch_number") values(91,92,93,94,95,96,97,98,99,910,911,912,913,'2021-07-13 11:20:45',915,'2021-07-13 11:20:45',917,'2021-07-13 11:20:45',919,920,921,922,'20210713112045');
+
+
+-- 报事报修工单 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_repairs_order_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_repairs_order_info
+(
+    order_id bigint(),
+    order_no character varying(96),
+    order_type integer(),
+    addr character varying(384),
+    description character varying(1500),
+    connect_no character varying(60),
+    connector character varying(192),
+    level_no integer(),
+    building_id bigint(),
+    create_time timestamp(6) without time zone,
+    update_time timestamp(6) without time zone,
+    create_by character varying(192),
+    source_type integer(),
+    voice_file bigint(),
+    order_time timestamp(6) without time zone,
+    order_status character varying(6),
+    version bigint(),
+    com_id bigint(),
+    sige_order_id character varying(60),
+    order_create_name character varying(192),
+    sige_transport_user_id character varying(192),
+    sige_transport_euser_id character varying(192),
+    del_flag integer(),
+    outtime_status integer(),
+    sig_order_subtype integer(),
+    sig_community_id character varying(150),
+    evalue_status integer(),
+    proj_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_repairs_order_info IS '报事报修工单';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.order_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.order_no IS '工单号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.order_type IS '问题类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.addr IS '问题地点';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.description IS '问题描述';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.connect_no IS '联系方式';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.connector IS '联系人';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.level_no IS '紧急程度';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.building_id IS '关联楼宇';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.create_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.update_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.create_by IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.source_type IS '来源类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.voice_file IS '语音描述 存放文件表id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.order_time IS '报修时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.order_status IS '工单状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.version IS '版本 锁';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.com_id IS '创建者所属企业id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.sige_order_id IS '四格服务工单id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.order_create_name IS '录单人姓名';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.sige_transport_user_id IS '录单人ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.sige_transport_euser_id IS '外部录单人ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.del_flag IS '删除标识';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.outtime_status IS '超时状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.sig_order_subtype IS '四格问题子类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.sig_community_id IS '四格项目id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.evalue_status IS '评价状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repairs_order_info.proj_id IS '项目id';
+
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(1,2,3,4,5,6,7,8,9,'2021-07-13 11:20:45','2021-07-13 11:20:45',12,13,14,'2021-07-13 11:20:45',16,17,18,19,20,21,22,23,24,25,26,27,28,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(11,12,13,14,15,16,17,18,19,'2021-07-13 11:20:45','2021-07-13 11:20:45',112,113,114,'2021-07-13 11:20:45',116,117,118,119,120,121,122,123,124,125,126,127,128,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(21,22,23,24,25,26,27,28,29,'2021-07-13 11:20:45','2021-07-13 11:20:45',212,213,214,'2021-07-13 11:20:45',216,217,218,219,220,221,222,223,224,225,226,227,228,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(31,32,33,34,35,36,37,38,39,'2021-07-13 11:20:45','2021-07-13 11:20:45',312,313,314,'2021-07-13 11:20:45',316,317,318,319,320,321,322,323,324,325,326,327,328,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(41,42,43,44,45,46,47,48,49,'2021-07-13 11:20:45','2021-07-13 11:20:45',412,413,414,'2021-07-13 11:20:45',416,417,418,419,420,421,422,423,424,425,426,427,428,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(51,52,53,54,55,56,57,58,59,'2021-07-13 11:20:45','2021-07-13 11:20:45',512,513,514,'2021-07-13 11:20:45',516,517,518,519,520,521,522,523,524,525,526,527,528,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(61,62,63,64,65,66,67,68,69,'2021-07-13 11:20:45','2021-07-13 11:20:45',612,613,614,'2021-07-13 11:20:45',616,617,618,619,620,621,622,623,624,625,626,627,628,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(71,72,73,74,75,76,77,78,79,'2021-07-13 11:20:45','2021-07-13 11:20:45',712,713,714,'2021-07-13 11:20:45',716,717,718,719,720,721,722,723,724,725,726,727,728,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(81,82,83,84,85,86,87,88,89,'2021-07-13 11:20:45','2021-07-13 11:20:45',812,813,814,'2021-07-13 11:20:45',816,817,818,819,820,821,822,823,824,825,826,827,828,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repairs_order_info("order_id","order_no","order_type","addr","description","connect_no","connector","level_no","building_id","create_time","update_time","create_by","source_type","voice_file","order_time","order_status","version","com_id","sige_order_id","order_create_name","sige_transport_user_id","sige_transport_euser_id","del_flag","outtime_status","sig_order_subtype","sig_community_id","evalue_status","proj_id","dw_batch_number") values(91,92,93,94,95,96,97,98,99,'2021-07-13 11:20:45','2021-07-13 11:20:45',912,913,914,'2021-07-13 11:20:45',916,917,918,919,920,921,922,923,924,925,926,927,928,'20210713112045');
+
+
+-- 环节 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_repair_track_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_repair_track_info
+(
+    track_id bigint(),
+    track_name character varying(192),
+    status_name character varying(192),
+    track_code character varying(192),
+    status integer(),
+    order_id bigint(),
+    track_desc character varying(384),
+    current_user_id character varying(192),
+    current_euser_id character varying(192),
+    current_user_name character varying(192),
+    current_user_type integer(),
+    current_user_tel character varying(60),
+    review_result character varying(3),
+    create_time timestamp(6) without time zone,
+    create_by character varying(192),
+    update_time timestamp(6) without time zone,
+    update_by character varying(192),
+    version bigint(),
+    sige_track_id bigint(),
+    sige_order_id character varying(60),
+    over_type integer(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_repair_track_info IS '环节';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.track_id IS '环节主键';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.track_name IS '环节名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.status_name IS '状态名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.track_code IS '环节编码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.status IS '环节状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.order_id IS '工单id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.track_desc IS '轨迹描述';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.current_user_id IS '处理人ID（四格';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.current_euser_id IS '第三方处理人ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.current_user_name IS '待处理人员姓名';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.current_user_type IS '待处理人员类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.current_user_tel IS '待处理人员电话';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.review_result IS '审核结果';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.create_time IS '创建时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.create_by IS '创建人';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.update_time IS '更新时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.update_by IS '更新人';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.version IS '版本 锁';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.sige_track_id IS '四格环节ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.sige_order_id IS '四格服务工单id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_info.over_type IS '工单结束操作';
+
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(1,2,3,4,5,6,7,8,9,10,11,12,13,'2021-07-13 11:20:45',15,'2021-07-13 11:20:45',17,18,19,20,21,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(11,12,13,14,15,16,17,18,19,110,111,112,113,'2021-07-13 11:20:45',115,'2021-07-13 11:20:45',117,118,119,120,121,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(21,22,23,24,25,26,27,28,29,210,211,212,213,'2021-07-13 11:20:45',215,'2021-07-13 11:20:45',217,218,219,220,221,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(31,32,33,34,35,36,37,38,39,310,311,312,313,'2021-07-13 11:20:45',315,'2021-07-13 11:20:45',317,318,319,320,321,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(41,42,43,44,45,46,47,48,49,410,411,412,413,'2021-07-13 11:20:45',415,'2021-07-13 11:20:45',417,418,419,420,421,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(51,52,53,54,55,56,57,58,59,510,511,512,513,'2021-07-13 11:20:45',515,'2021-07-13 11:20:45',517,518,519,520,521,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(61,62,63,64,65,66,67,68,69,610,611,612,613,'2021-07-13 11:20:45',615,'2021-07-13 11:20:45',617,618,619,620,621,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(71,72,73,74,75,76,77,78,79,710,711,712,713,'2021-07-13 11:20:45',715,'2021-07-13 11:20:45',717,718,719,720,721,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(81,82,83,84,85,86,87,88,89,810,811,812,813,'2021-07-13 11:20:45',815,'2021-07-13 11:20:45',817,818,819,820,821,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_info("track_id","track_name","status_name","track_code","status","order_id","track_desc","current_user_id","current_euser_id","current_user_name","current_user_type","current_user_tel","review_result","create_time","create_by","update_time","update_by","version","sige_track_id","sige_order_id","over_type","dw_batch_number") values(91,92,93,94,95,96,97,98,99,910,911,912,913,'2021-07-13 11:20:45',915,'2021-07-13 11:20:45',917,918,919,920,921,'20210713112045');
+
+
+-- 环节描述 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_repair_track_detail_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_repair_track_detail_info
+(
+    deal_advise character varying(3072),
+    deal_photos character varying(3072),
+    deal_sign_photos character varying(3072),
+    track_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_repair_track_detail_info IS '环节描述';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_detail_info.deal_advise IS '处理意见';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_detail_info.deal_photos IS '处理拍照';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_detail_info.deal_sign_photos IS '签名照片';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_detail_info.track_id IS '环节主键';
+
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(1,2,3,4,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(11,12,13,14,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(21,22,23,24,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(31,32,33,34,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(41,42,43,44,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(51,52,53,54,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(61,62,63,64,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(71,72,73,74,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(81,82,83,84,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_detail_info("deal_advise","deal_photos","deal_sign_photos","track_id","dw_batch_number") values(91,92,93,94,'20210713112045');
+
+
+-- 事件 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_repair_event_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_repair_event_info
+(
+    event_id bigint(),
+    event_type integer(),
+    event_name character varying(180),
+    event_time timestamp(6) without time zone,
+    event_user_id character varying(192),
+    event_euser_id character varying(192),
+    event_user_name character varying(192),
+    target_user_id character varying(192),
+    target_euser_id character varying(192),
+    target_user_name character varying(192),
+    track_id bigint(),
+    plan_relieve_time timestamp(6) without time zone,
+    remark character varying(192),
+    hang_status integer(),
+    fact_relieve_hang timestamp(6) without time zone,
+    review_advise character varying(192),
+    comment_type integer(),
+    photo character varying(384),
+    sup_flag character varying(60),
+    create_time timestamp(6) without time zone,
+    sige_track_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_repair_event_info IS '事件';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.event_id IS '事件id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.event_type IS '事件类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.event_name IS '事件名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.event_time IS '事件时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.event_user_id IS '事件处理人id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.event_euser_id IS '事件处理人id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.event_user_name IS '事件处理人姓名';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.target_user_id IS '目标用户id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.target_euser_id IS '目标用户id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.target_user_name IS '目标用户姓名';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.track_id IS '所属环节';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.plan_relieve_time IS '预计解挂时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.remark IS '事件描述';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.hang_status IS '挂起结果';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.fact_relieve_hang IS '实际解挂时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.review_advise IS '挂起审核意见';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.comment_type IS '类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.photo IS '追记照片';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.sup_flag IS '督办级别';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.create_time IS '创建时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_event_info.sige_track_id IS '四格环节ID';
+
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(1,2,3,'2021-07-13 11:20:45',5,6,7,8,9,10,11,'2021-07-13 11:20:45',13,14,'2021-07-13 11:20:45',16,17,18,19,'2021-07-13 11:20:45',21,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(11,12,13,'2021-07-13 11:20:45',15,16,17,18,19,110,111,'2021-07-13 11:20:45',113,114,'2021-07-13 11:20:45',116,117,118,119,'2021-07-13 11:20:45',121,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(21,22,23,'2021-07-13 11:20:45',25,26,27,28,29,210,211,'2021-07-13 11:20:45',213,214,'2021-07-13 11:20:45',216,217,218,219,'2021-07-13 11:20:45',221,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(31,32,33,'2021-07-13 11:20:45',35,36,37,38,39,310,311,'2021-07-13 11:20:45',313,314,'2021-07-13 11:20:45',316,317,318,319,'2021-07-13 11:20:45',321,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(41,42,43,'2021-07-13 11:20:45',45,46,47,48,49,410,411,'2021-07-13 11:20:45',413,414,'2021-07-13 11:20:45',416,417,418,419,'2021-07-13 11:20:45',421,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(51,52,53,'2021-07-13 11:20:45',55,56,57,58,59,510,511,'2021-07-13 11:20:45',513,514,'2021-07-13 11:20:45',516,517,518,519,'2021-07-13 11:20:45',521,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(61,62,63,'2021-07-13 11:20:45',65,66,67,68,69,610,611,'2021-07-13 11:20:45',613,614,'2021-07-13 11:20:45',616,617,618,619,'2021-07-13 11:20:45',621,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(71,72,73,'2021-07-13 11:20:45',75,76,77,78,79,710,711,'2021-07-13 11:20:45',713,714,'2021-07-13 11:20:45',716,717,718,719,'2021-07-13 11:20:45',721,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(81,82,83,'2021-07-13 11:20:45',85,86,87,88,89,810,811,'2021-07-13 11:20:45',813,814,'2021-07-13 11:20:45',816,817,818,819,'2021-07-13 11:20:45',821,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_event_info("event_id","event_type","event_name","event_time","event_user_id","event_euser_id","event_user_name","target_user_id","target_euser_id","target_user_name","track_id","plan_relieve_time","remark","hang_status","fact_relieve_hang","review_advise","comment_type","photo","sup_flag","create_time","sige_track_id","dw_batch_number") values(91,92,93,'2021-07-13 11:20:45',95,96,97,98,99,910,911,'2021-07-13 11:20:45',913,914,'2021-07-13 11:20:45',916,917,918,919,'2021-07-13 11:20:45',921,'20210713112045');
+
+
+-- 评价 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_evaluate_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_evaluate_info
+(
+    evaluate_level integer(),
+    description character varying(768),
+    create_time timestamp(6) without time zone,
+    create_by character varying(192),
+    order_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_evaluate_info IS '评价';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_evaluate_info.evaluate_level IS '评价等级';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_evaluate_info.description IS '评价描述';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_evaluate_info.create_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_evaluate_info.create_by IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_evaluate_info.order_id IS '工单id';
+
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(1,2,'2021-07-13 11:20:45',4,5,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(11,12,'2021-07-13 11:20:45',14,15,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(21,22,'2021-07-13 11:20:45',24,25,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(31,32,'2021-07-13 11:20:45',34,35,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(41,42,'2021-07-13 11:20:45',44,45,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(51,52,'2021-07-13 11:20:45',54,55,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(61,62,'2021-07-13 11:20:45',64,65,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(71,72,'2021-07-13 11:20:45',74,75,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(81,82,'2021-07-13 11:20:45',84,85,'20210713112045');
+insert into dwi_bm.dwi_bm_t_evaluate_info("evaluate_level","description","create_time","create_by","order_id","dw_batch_number") values(91,92,'2021-07-13 11:20:45',94,95,'20210713112045');
+
+
+-- 项目 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_project_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_project_info
+(
+    proj_id bigint(),
+    sig_organ_id bigint(),
+    organ_name character varying(192),
+    organ_py character varying(300),
+    organ_status integer(),
+    charge_type integer(),
+    organ_code character varying(30),
+    organ_address character varying(300),
+    organ_region character varying(3),
+    complete_date timestamp(6) without time zone,
+    checkin_date timestamp(6) without time zone,
+    build_area character varying(30),
+    total_area character varying(30),
+    province integer(),
+    city integer(),
+    region integer(),
+    street integer(),
+    description character varying(300),
+    plot_ratio character varying(30),
+    green_ratio character varying(30),
+    create_time timestamp(6) without time zone,
+    create_by character varying(96),
+    update_time timestamp(6) without time zone,
+    update_by character varying(96),
+    del_flag integer(),
+    source_type integer(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_project_info IS '项目';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.proj_id IS '项目主键';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.sig_organ_id IS '项目id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.organ_name IS '项目名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.organ_py IS '项目拼音名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.organ_status IS '项目状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.charge_type IS '收费方式';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.organ_code IS '项目业态编码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.organ_address IS '地址';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.organ_region IS '机构所属地区';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.complete_date IS '竣工时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.checkin_date IS '入伙时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.build_area IS '建筑面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.total_area IS '占地面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.province IS '省';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.city IS '市';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.region IS '区';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.street IS '街道';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.description IS '描述';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.plot_ratio IS '容积率';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.green_ratio IS '绿化率';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.create_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.update_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.update_by IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.del_flag IS '删除标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_project_info.source_type IS '数据来源';
+
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(1,2,3,4,5,6,7,8,9,'2021-07-13 11:20:45','2021-07-13 11:20:45',12,13,14,15,16,17,18,19,20,'2021-07-13 11:20:45',22,'2021-07-13 11:20:45',24,25,26,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(11,12,13,14,15,16,17,18,19,'2021-07-13 11:20:45','2021-07-13 11:20:45',112,113,114,115,116,117,118,119,120,'2021-07-13 11:20:45',122,'2021-07-13 11:20:45',124,125,126,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(21,22,23,24,25,26,27,28,29,'2021-07-13 11:20:45','2021-07-13 11:20:45',212,213,214,215,216,217,218,219,220,'2021-07-13 11:20:45',222,'2021-07-13 11:20:45',224,225,226,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(31,32,33,34,35,36,37,38,39,'2021-07-13 11:20:45','2021-07-13 11:20:45',312,313,314,315,316,317,318,319,320,'2021-07-13 11:20:45',322,'2021-07-13 11:20:45',324,325,326,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(41,42,43,44,45,46,47,48,49,'2021-07-13 11:20:45','2021-07-13 11:20:45',412,413,414,415,416,417,418,419,420,'2021-07-13 11:20:45',422,'2021-07-13 11:20:45',424,425,426,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(51,52,53,54,55,56,57,58,59,'2021-07-13 11:20:45','2021-07-13 11:20:45',512,513,514,515,516,517,518,519,520,'2021-07-13 11:20:45',522,'2021-07-13 11:20:45',524,525,526,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(61,62,63,64,65,66,67,68,69,'2021-07-13 11:20:45','2021-07-13 11:20:45',612,613,614,615,616,617,618,619,620,'2021-07-13 11:20:45',622,'2021-07-13 11:20:45',624,625,626,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(71,72,73,74,75,76,77,78,79,'2021-07-13 11:20:45','2021-07-13 11:20:45',712,713,714,715,716,717,718,719,720,'2021-07-13 11:20:45',722,'2021-07-13 11:20:45',724,725,726,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(81,82,83,84,85,86,87,88,89,'2021-07-13 11:20:45','2021-07-13 11:20:45',812,813,814,815,816,817,818,819,820,'2021-07-13 11:20:45',822,'2021-07-13 11:20:45',824,825,826,'20210713112045');
+insert into dwi_bm.dwi_bm_t_project_info("proj_id","sig_organ_id","organ_name","organ_py","organ_status","charge_type","organ_code","organ_address","organ_region","complete_date","checkin_date","build_area","total_area","province","city","region","street","description","plot_ratio","green_ratio","create_time","create_by","update_time","update_by","del_flag","source_type","dw_batch_number") values(91,92,93,94,95,96,97,98,99,'2021-07-13 11:20:45','2021-07-13 11:20:45',912,913,914,915,916,917,918,919,920,'2021-07-13 11:20:45',922,'2021-07-13 11:20:45',924,925,926,'20210713112045');
+
+
+-- 楼宇 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_buliding_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_buliding_info
+(
+    building_id integer(),
+    building_name character varying(192),
+    building_type integer(),
+    building_code character varying(60),
+    create_time character varying(135),
+    create_by character varying(192),
+    update_time character varying(135),
+    update_by character varying(192),
+    delete_flag integer(),
+    source_type integer(),
+    build_floor integer(),
+    build_status integer(),
+    sig_build_id bigint(),
+    sig_organ_id bigint(),
+    proj_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_buliding_info IS '楼宇';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.building_id IS '楼宇主键id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.building_name IS '楼宇名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.building_type IS '楼宇类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.building_code IS '楼宇编号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.create_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.update_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.update_by IS '更新者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.delete_flag IS '删除标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.source_type IS '数据来源';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.build_floor IS '楼栋层数';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.build_status IS '楼栋状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.sig_build_id IS '四格楼栋Id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.sig_organ_id IS '四格项目id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_buliding_info.proj_id IS '项目id';
+
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(11,12,13,14,15,16,17,18,19,110,111,112,113,114,115,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(21,22,23,24,25,26,27,28,29,210,211,212,213,214,215,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(31,32,33,34,35,36,37,38,39,310,311,312,313,314,315,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(41,42,43,44,45,46,47,48,49,410,411,412,413,414,415,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(51,52,53,54,55,56,57,58,59,510,511,512,513,514,515,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(61,62,63,64,65,66,67,68,69,610,611,612,613,614,615,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(71,72,73,74,75,76,77,78,79,710,711,712,713,714,715,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(81,82,83,84,85,86,87,88,89,810,811,812,813,814,815,'20210713112045');
+insert into dwi_bm.dwi_bm_t_buliding_info("building_id","building_name","building_type","building_code","create_time","create_by","update_time","update_by","delete_flag","source_type","build_floor","build_status","sig_build_id","sig_organ_id","proj_id","dw_batch_number") values(91,92,93,94,95,96,97,98,99,910,911,912,913,914,915,'20210713112045');
+
+
+-- 单元 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_unit_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_unit_info
+(
+    unit_id bigint(),
+    sig_unit_id bigint(),
+    unit_name character varying(135),
+    unit_status character varying(135),
+    unit_code character varying(135),
+    sig_build_id bigint(),
+    sig_organ_id bigint(),
+    create_time timestamp(6) without time zone,
+    create_by character varying(135),
+    update_time timestamp(6) without time zone,
+    update_by character varying(135),
+    del_flag integer(),
+    source_type integer(),
+    proj_id bigint(),
+    building_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_unit_info IS '单元';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.unit_id IS '单元主键';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.sig_unit_id IS '单元Id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.unit_name IS '单元名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.unit_status IS '单元状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.unit_code IS '单元编码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.sig_build_id IS '四格楼栋Id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.sig_organ_id IS '四格项目id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.create_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.update_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.update_by IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.del_flag IS '删除标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.source_type IS '数据来源';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.proj_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_unit_info.building_id IS '';
+
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(1,2,3,4,5,6,7,'2021-07-13 11:20:45',9,'2021-07-13 11:20:45',11,12,13,14,15,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(11,12,13,14,15,16,17,'2021-07-13 11:20:45',19,'2021-07-13 11:20:45',111,112,113,114,115,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(21,22,23,24,25,26,27,'2021-07-13 11:20:45',29,'2021-07-13 11:20:45',211,212,213,214,215,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(31,32,33,34,35,36,37,'2021-07-13 11:20:45',39,'2021-07-13 11:20:45',311,312,313,314,315,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(41,42,43,44,45,46,47,'2021-07-13 11:20:45',49,'2021-07-13 11:20:45',411,412,413,414,415,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(51,52,53,54,55,56,57,'2021-07-13 11:20:45',59,'2021-07-13 11:20:45',511,512,513,514,515,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(61,62,63,64,65,66,67,'2021-07-13 11:20:45',69,'2021-07-13 11:20:45',611,612,613,614,615,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(71,72,73,74,75,76,77,'2021-07-13 11:20:45',79,'2021-07-13 11:20:45',711,712,713,714,715,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(81,82,83,84,85,86,87,'2021-07-13 11:20:45',89,'2021-07-13 11:20:45',811,812,813,814,815,'20210713112045');
+insert into dwi_bm.dwi_bm_t_unit_info("unit_id","sig_unit_id","unit_name","unit_status","unit_code","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","proj_id","building_id","dw_batch_number") values(91,92,93,94,95,96,97,'2021-07-13 11:20:45',99,'2021-07-13 11:20:45',911,912,913,914,915,'20210713112045');
+
+
+-- 楼层 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_floor_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_floor_info
+(
+    floor_id bigint(),
+    sig_floor_id bigint(),
+    floor_name character varying(135),
+    floor_status character varying(135),
+    floor_code character varying(135),
+    floor_index character varying(135),
+    build_area character varying(30),
+    bill_area character varying(30),
+    use_area character varying(30),
+    description character varying(300),
+    sig_unit_id hao(),
+    sig_build_id bigint(),
+    sig_organ_id bigint(),
+    create_time timestamp(6) without time zone,
+    create_by character varying(135),
+    update_time timestamp(6) without time zone,
+    update_by character varying(135),
+    del_flag integer(),
+    source_type integer(),
+    unit_id bigint(),
+    building_id bigint(),
+    proj_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_floor_info IS '楼层';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.floor_id IS '楼层主键';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.sig_floor_id IS '楼层标识';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.floor_name IS '楼层名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.floor_status IS '楼层状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.floor_code IS '楼层编码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.floor_index IS '楼层顺序必填且唯一';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.build_area IS '建筑面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.bill_area IS '计费面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.use_area IS '使用面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.description IS '描述';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.sig_unit_id IS '四格单元Id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.sig_build_id IS '四格楼栋Id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.sig_organ_id IS '四格项目id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.create_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.update_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.update_by IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.del_flag IS '删除标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.source_type IS '数据来源';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.unit_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.building_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_floor_info.proj_id IS '';
+
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(1,2,3,4,5,6,7,8,9,10,11,12,13,'2021-07-13 11:20:45',15,'2021-07-13 11:20:45',17,18,19,20,21,22,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(11,12,13,14,15,16,17,18,19,110,111,112,113,'2021-07-13 11:20:45',115,'2021-07-13 11:20:45',117,118,119,120,121,122,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(21,22,23,24,25,26,27,28,29,210,211,212,213,'2021-07-13 11:20:45',215,'2021-07-13 11:20:45',217,218,219,220,221,222,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(31,32,33,34,35,36,37,38,39,310,311,312,313,'2021-07-13 11:20:45',315,'2021-07-13 11:20:45',317,318,319,320,321,322,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(41,42,43,44,45,46,47,48,49,410,411,412,413,'2021-07-13 11:20:45',415,'2021-07-13 11:20:45',417,418,419,420,421,422,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(51,52,53,54,55,56,57,58,59,510,511,512,513,'2021-07-13 11:20:45',515,'2021-07-13 11:20:45',517,518,519,520,521,522,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(61,62,63,64,65,66,67,68,69,610,611,612,613,'2021-07-13 11:20:45',615,'2021-07-13 11:20:45',617,618,619,620,621,622,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(71,72,73,74,75,76,77,78,79,710,711,712,713,'2021-07-13 11:20:45',715,'2021-07-13 11:20:45',717,718,719,720,721,722,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(81,82,83,84,85,86,87,88,89,810,811,812,813,'2021-07-13 11:20:45',815,'2021-07-13 11:20:45',817,818,819,820,821,822,'20210713112045');
+insert into dwi_bm.dwi_bm_t_floor_info("floor_id","sig_floor_id","floor_name","floor_status","floor_code","floor_index","build_area","bill_area","use_area","description","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","unit_id","building_id","proj_id","dw_batch_number") values(91,92,93,94,95,96,97,98,99,910,911,912,913,'2021-07-13 11:20:45',915,'2021-07-13 11:20:45',917,918,919,920,921,922,'20210713112045');
+
+
+-- 房屋 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_house_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_house_info
+(
+    house_id bigint(),
+    sig_house_id bigint(),
+    house_name character varying(192),
+    house_status integer(),
+    house_code character varying(30),
+    house_no character varying(100),
+    house_type integer(),
+    use_area character varying(30),
+    garden_area character varying(30),
+    share_area character varying(30),
+    build_area character varying(30),
+    bill_area character varying(30),
+    sig_floor_id bigint(),
+    sig_unit_id bigint(),
+    sig_build_id bigint(),
+    sig_organ_id bigint(),
+    create_time timestamp(6) without time zone,
+    create_by character varying(135),
+    update_time timestamp(6) without time zone,
+    update_by character varying(135),
+    del_flag integer(),
+    source_type integer(),
+    floor_id bigint(),
+    unit_id bigint(),
+    building_id bigint(),
+    proj_id bigint(),
+    resource_type integer(),
+    life_cycle integer(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_house_info IS '房屋';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.house_id IS '房屋主键';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.sig_house_id IS '房屋Id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.house_name IS '房屋名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.house_status IS '房屋状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.house_code IS '房屋业态编码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.house_no IS '房号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.house_type IS '房屋类型编码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.use_area IS '使用面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.garden_area IS '花园面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.share_area IS '分摊面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.build_area IS '建筑面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.bill_area IS '计费面积';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.sig_floor_id IS '楼层标识';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.sig_unit_id IS '四格单元Id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.sig_build_id IS '四格楼栋Id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.sig_organ_id IS '四格项目id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.create_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.update_time IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.update_by IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.del_flag IS '删除标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.source_type IS '数据来源';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.floor_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.unit_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.building_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.proj_id IS '';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.resource_type IS '资源类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_house_info.life_cycle IS '房屋生命周期';
+
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,'2021-07-13 11:20:45',18,'2021-07-13 11:20:45',20,21,22,23,24,25,26,27,28,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(11,12,13,14,15,16,17,18,19,110,111,112,113,114,115,116,'2021-07-13 11:20:45',118,'2021-07-13 11:20:45',120,121,122,123,124,125,126,127,128,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(21,22,23,24,25,26,27,28,29,210,211,212,213,214,215,216,'2021-07-13 11:20:45',218,'2021-07-13 11:20:45',220,221,222,223,224,225,226,227,228,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(31,32,33,34,35,36,37,38,39,310,311,312,313,314,315,316,'2021-07-13 11:20:45',318,'2021-07-13 11:20:45',320,321,322,323,324,325,326,327,328,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(41,42,43,44,45,46,47,48,49,410,411,412,413,414,415,416,'2021-07-13 11:20:45',418,'2021-07-13 11:20:45',420,421,422,423,424,425,426,427,428,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(51,52,53,54,55,56,57,58,59,510,511,512,513,514,515,516,'2021-07-13 11:20:45',518,'2021-07-13 11:20:45',520,521,522,523,524,525,526,527,528,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(61,62,63,64,65,66,67,68,69,610,611,612,613,614,615,616,'2021-07-13 11:20:45',618,'2021-07-13 11:20:45',620,621,622,623,624,625,626,627,628,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(71,72,73,74,75,76,77,78,79,710,711,712,713,714,715,716,'2021-07-13 11:20:45',718,'2021-07-13 11:20:45',720,721,722,723,724,725,726,727,728,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(81,82,83,84,85,86,87,88,89,810,811,812,813,814,815,816,'2021-07-13 11:20:45',818,'2021-07-13 11:20:45',820,821,822,823,824,825,826,827,828,'20210713112045');
+insert into dwi_bm.dwi_bm_t_house_info("house_id","sig_house_id","house_name","house_status","house_code","house_no","house_type","use_area","garden_area","share_area","build_area","bill_area","sig_floor_id","sig_unit_id","sig_build_id","sig_organ_id","create_time","create_by","update_time","update_by","del_flag","source_type","floor_id","unit_id","building_id","proj_id","resource_type","life_cycle","dw_batch_number") values(91,92,93,94,95,96,97,98,99,910,911,912,913,914,915,916,'2021-07-13 11:20:45',918,'2021-07-13 11:20:45',920,921,922,923,924,925,926,927,928,'20210713112045');
+
+
+-- 部门 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_sys_dept_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_sys_dept_info
+(
+    dept_id bigint(),
+    parent_id bigint(),
+    ancestors character varying(150),
+    dept_name character varying(90),
+    order_num integer(),
+    leader character varying(60),
+    phone character varying(33),
+    email character varying(150),
+    status char(1),
+    del_flag char(1),
+    create_by character varying(192),
+    create_time timestamp(6) without time zone,
+    update_by character varying(192),
+    update_time timestamp(6) without time zone,
+    dept_type character varying(6),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_sys_dept_info IS '部门';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.dept_id IS '部门id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.parent_id IS '父部门id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.ancestors IS '祖级列表';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.dept_name IS '部门名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.order_num IS '显示顺序';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.leader IS '负责人';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.phone IS '联系电话';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.email IS '邮箱';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.status IS '部门状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.del_flag IS '删除标志';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.create_time IS '创建时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.update_by IS '更新者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.update_time IS '更新时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_sys_dept_info.dept_type IS '组织机构类型';
+
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(1,2,3,4,5,6,7,8,9,10,11,'2021-07-13 11:20:45',13,'2021-07-13 11:20:45',15,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(11,12,13,14,15,16,17,18,19,110,111,'2021-07-13 11:20:45',113,'2021-07-13 11:20:45',115,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(21,22,23,24,25,26,27,28,29,210,211,'2021-07-13 11:20:45',213,'2021-07-13 11:20:45',215,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(31,32,33,34,35,36,37,38,39,310,311,'2021-07-13 11:20:45',313,'2021-07-13 11:20:45',315,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(41,42,43,44,45,46,47,48,49,410,411,'2021-07-13 11:20:45',413,'2021-07-13 11:20:45',415,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(51,52,53,54,55,56,57,58,59,510,511,'2021-07-13 11:20:45',513,'2021-07-13 11:20:45',515,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(61,62,63,64,65,66,67,68,69,610,611,'2021-07-13 11:20:45',613,'2021-07-13 11:20:45',615,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(71,72,73,74,75,76,77,78,79,710,711,'2021-07-13 11:20:45',713,'2021-07-13 11:20:45',715,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(81,82,83,84,85,86,87,88,89,810,811,'2021-07-13 11:20:45',813,'2021-07-13 11:20:45',815,'20210713112045');
+insert into dwi_bm.dwi_bm_sys_dept_info("dept_id","parent_id","ancestors","dept_name","order_num","leader","phone","email","status","del_flag","create_by","create_time","update_by","update_time","dept_type","dw_batch_number") values(91,92,93,94,95,96,97,98,99,910,911,'2021-07-13 11:20:45',913,'2021-07-13 11:20:45',915,'20210713112045');
+
+
+-- 企业 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_com_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_com_info
+(
+    com_id bigint(),
+    com_name character varying(192),
+    com_type integer(),
+    level integer(),
+    del_flag integer(),
+    create_time timestamp(6) without time zone,
+    update_time timestamp(6) without time zone,
+    update_by character varying(192),
+    create_by character varying(192),
+    cust_code character varying(150),
+    credit_code character varying(150),
+    company_address character varying(150),
+    email character varying(150),
+    establish_date timestamp(6) without time zone,
+    company_legal character varying(60),
+    listed_comp_code character varying(60),
+    listing_type character varying(60),
+    regist_authority character varying(150),
+    regist_number character varying(150),
+    registered_capital character varying(150),
+    taxpayer_code character varying(150),
+    taxpayer_id character varying(150),
+    website character varying(150),
+    annual_output character varying(150),
+    annual_tax character varying(150),
+    employees_num character varying(150),
+    end_time timestamp(6) without time zone,
+    open_time timestamp(6) without time zone,
+    operation_scope character varying(150),
+    patents_number character varying(150),
+    approval_date timestamp(6) without time zone,
+    com_status integer(),
+    industry character varying(150),
+    registered_addr character varying(150),
+    sig_cust_id bigint(),
+    sig_house_id bigint(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_com_info IS '企业';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.com_id IS '企业主键';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.com_name IS '企业名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.com_type IS '公司类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.level IS '企业等级';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.del_flag IS '删除标记';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.create_time IS '创建时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.update_time IS '更新时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.update_by IS '更新者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.create_by IS '创建者';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.cust_code IS '客户编码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.credit_code IS '统一社会信用代码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.company_address IS '地址';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.email IS '电子邮箱';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.establish_date IS '成立日期';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.company_legal IS '法人代表';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.listed_comp_code IS '上市公司代码';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.listing_type IS '上市类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.regist_authority IS '登记机关';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.regist_number IS '工商注册号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.registered_capital IS '注册资本';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.taxpayer_code IS '纳税人编号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.taxpayer_id IS '纳税人识别号';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.website IS '网站地址';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.annual_output IS '年产值';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.annual_tax IS '年纳税额';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.employees_num IS '员工数量';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.end_time IS '停业日期';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.open_time IS '开始日期';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.operation_scope IS '经营范围';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.patents_number IS '专利数量';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.approval_date IS '核准日期';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.com_status IS '企业状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.industry IS '所属行业';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.registered_addr IS '注册地址';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.sig_cust_id IS '四格企业id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_info.sig_house_id IS '房屋Id,关联更新 完成后删除';
+
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(1,2,3,4,5,'2021-07-13 11:20:45','2021-07-13 11:20:45',8,9,10,11,12,13,'2021-07-13 11:20:45',15,16,17,18,19,20,21,22,23,24,25,26,'2021-07-13 11:20:45','2021-07-13 11:20:45',29,30,'2021-07-13 11:20:45',32,33,34,35,36,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(11,12,13,14,15,'2021-07-13 11:20:45','2021-07-13 11:20:45',18,19,110,111,112,113,'2021-07-13 11:20:45',115,116,117,118,119,120,121,122,123,124,125,126,'2021-07-13 11:20:45','2021-07-13 11:20:45',129,130,'2021-07-13 11:20:45',132,133,134,135,136,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(21,22,23,24,25,'2021-07-13 11:20:45','2021-07-13 11:20:45',28,29,210,211,212,213,'2021-07-13 11:20:45',215,216,217,218,219,220,221,222,223,224,225,226,'2021-07-13 11:20:45','2021-07-13 11:20:45',229,230,'2021-07-13 11:20:45',232,233,234,235,236,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(31,32,33,34,35,'2021-07-13 11:20:45','2021-07-13 11:20:45',38,39,310,311,312,313,'2021-07-13 11:20:45',315,316,317,318,319,320,321,322,323,324,325,326,'2021-07-13 11:20:45','2021-07-13 11:20:45',329,330,'2021-07-13 11:20:45',332,333,334,335,336,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(41,42,43,44,45,'2021-07-13 11:20:45','2021-07-13 11:20:45',48,49,410,411,412,413,'2021-07-13 11:20:45',415,416,417,418,419,420,421,422,423,424,425,426,'2021-07-13 11:20:45','2021-07-13 11:20:45',429,430,'2021-07-13 11:20:45',432,433,434,435,436,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(51,52,53,54,55,'2021-07-13 11:20:45','2021-07-13 11:20:45',58,59,510,511,512,513,'2021-07-13 11:20:45',515,516,517,518,519,520,521,522,523,524,525,526,'2021-07-13 11:20:45','2021-07-13 11:20:45',529,530,'2021-07-13 11:20:45',532,533,534,535,536,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(61,62,63,64,65,'2021-07-13 11:20:45','2021-07-13 11:20:45',68,69,610,611,612,613,'2021-07-13 11:20:45',615,616,617,618,619,620,621,622,623,624,625,626,'2021-07-13 11:20:45','2021-07-13 11:20:45',629,630,'2021-07-13 11:20:45',632,633,634,635,636,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(71,72,73,74,75,'2021-07-13 11:20:45','2021-07-13 11:20:45',78,79,710,711,712,713,'2021-07-13 11:20:45',715,716,717,718,719,720,721,722,723,724,725,726,'2021-07-13 11:20:45','2021-07-13 11:20:45',729,730,'2021-07-13 11:20:45',732,733,734,735,736,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(81,82,83,84,85,'2021-07-13 11:20:45','2021-07-13 11:20:45',88,89,810,811,812,813,'2021-07-13 11:20:45',815,816,817,818,819,820,821,822,823,824,825,826,'2021-07-13 11:20:45','2021-07-13 11:20:45',829,830,'2021-07-13 11:20:45',832,833,834,835,836,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_info("com_id","com_name","com_type","level","del_flag","create_time","update_time","update_by","create_by","cust_code","credit_code","company_address","email","establish_date","company_legal","listed_comp_code","listing_type","regist_authority","regist_number","registered_capital","taxpayer_code","taxpayer_id","website","annual_output","annual_tax","employees_num","end_time","open_time","operation_scope","patents_number","approval_date","com_status","industry","registered_addr","sig_cust_id","sig_house_id","dw_batch_number") values(91,92,93,94,95,'2021-07-13 11:20:45','2021-07-13 11:20:45',98,99,910,911,912,913,'2021-07-13 11:20:45',915,916,917,918,919,920,921,922,923,924,925,926,'2021-07-13 11:20:45','2021-07-13 11:20:45',929,930,'2021-07-13 11:20:45',932,933,934,935,936,'20210713112045');
+
+
+-- 企业与资源关系表 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_com_res_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_com_res_info
+(
+    res_id bigint(),
+    sig_rel_type character varying(30),
+    sig_obj_id character varying(150),
+    resource_name character varying(150),
+    sig_community_id character varying(150),
+    sig_cust_id character varying(150),
+    sig_up_cust_id character varying(150),
+    cust_type character varying(30),
+    cust_status character varying(30),
+    decorate_time timestamp(6) without time zone,
+    eff_time timestamp(6) without time zone,
+    exp_time timestamp(6) without time zone,
+    in_time timestamp(6) without time zone,
+    join_time timestamp(6) without time zone,
+    out_time timestamp(6) without time zone,
+    com_id bigint(),
+    space_id bigint(),
+    source_type integer(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_com_res_info IS '企业与资源关系表';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.res_id IS '资源id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.sig_rel_type IS '资源类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.sig_obj_id IS '资源ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.resource_name IS '资源名称';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.sig_community_id IS '项目ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.sig_cust_id IS '客户ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.sig_up_cust_id IS '四格上级客户ID';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.cust_type IS '客户类型';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.cust_status IS '客户状态';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.decorate_time IS '最新装修时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.eff_time IS '租赁起始时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.exp_time IS '租赁结束时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.in_time IS '入住时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.join_time IS '入伙时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.out_time IS '离开时间';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.com_id IS '企业id';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.space_id IS '空间数据主键';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_com_res_info.source_type IS '数据来源';
+
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(1,2,3,4,5,6,7,8,9,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',16,17,18,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(11,12,13,14,15,16,17,18,19,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',116,117,118,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(21,22,23,24,25,26,27,28,29,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',216,217,218,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(31,32,33,34,35,36,37,38,39,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',316,317,318,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(41,42,43,44,45,46,47,48,49,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',416,417,418,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(51,52,53,54,55,56,57,58,59,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',516,517,518,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(61,62,63,64,65,66,67,68,69,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',616,617,618,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(71,72,73,74,75,76,77,78,79,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',716,717,718,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(81,82,83,84,85,86,87,88,89,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',816,817,818,'20210713112045');
+insert into dwi_bm.dwi_bm_t_com_res_info("res_id","sig_rel_type","sig_obj_id","resource_name","sig_community_id","sig_cust_id","sig_up_cust_id","cust_type","cust_status","decorate_time","eff_time","exp_time","in_time","join_time","out_time","com_id","space_id","source_type","dw_batch_number") values(91,92,93,94,95,96,97,98,99,'2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45','2021-07-13 11:20:45',916,917,918,'20210713112045');
+
+
+-- 环节待处理人 --
+DROP TABLE IF EXISTS dwi_bm.dwi_bm_t_repair_track_user_info;
+CREATE TABLE IF NOT EXISTS dwi_bm.dwi_bm_t_repair_track_user_info
+(
+    track_id bigint(),
+    current_euser_id character varying(192),
+    current_user_id character varying(192),
+    current_user_name character varying(192),
+    current_user_tel character varying(60),
+    current_user_type integer(),
+    dw_creation_by  character varying(100),
+    dw_creation_date timestamp(6) without time zone default now(),
+    dw_last_update_by  character varying(100),
+    dw_last_update_date timestamp(6) without time zone default now(),
+    dw_batch_number  bigint
+) ;
+COMMENT ON TABLE dwi_bm.dwi_bm_t_repair_track_user_info IS '环节人员';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_user_info.track_id IS '环节主键';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_user_info.current_euser_id IS '第三方处理人ID（四格）';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_user_info.current_user_id IS '处理人ID（四格）';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_user_info.current_user_name IS '待处理人员姓名（四格）';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_user_info.current_user_tel IS '待处理人员电话（四格）';
+COMMENT ON COLUMN dwi_bm.dwi_bm_t_repair_track_user_info.current_user_type IS '待处理人员类型（1：客户；2：员工）（四格）';
+
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(1,2,3,4,5,6,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(11,12,13,14,15,16,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(21,22,23,24,25,26,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(31,32,33,34,35,36,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(41,42,43,44,45,46,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(51,52,53,54,55,56,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(61,62,63,64,65,66,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(71,72,73,74,75,76,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(81,82,83,84,85,86,'20210713112045');
+insert into dwi_bm.dwi_bm_t_repair_track_user_info("track_id","current_euser_id","current_user_id","current_user_name","current_user_tel","current_user_type","dw_batch_number") values(91,92,93,94,95,96,'20210713112045');

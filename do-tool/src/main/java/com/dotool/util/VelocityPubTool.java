@@ -25,7 +25,7 @@ public class VelocityPubTool {
 	private static HashMap dataMap = new HashMap();
 
     //ÓÊ¼þÄ£°åµØÖ·
-    public static final String MailTemplateDir = "D:\\workspace\\excel\\";
+    public static final String MailTemplateDir = "D:\\programing\\learn-velocity\\do-tool\\";
 
     public static VelocityEngine getVelocityEngine()
 	{

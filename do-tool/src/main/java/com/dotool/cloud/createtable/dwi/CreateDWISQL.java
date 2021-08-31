@@ -64,7 +64,8 @@ public class CreateDWISQL {
 //				"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\医疗\\数据及集成服务-DWI设计汇总表（医疗BI）-V1.0.xlsx",
 //				"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\ABC\\数据及集成服务-DWI设计汇总表（安防）-V1.0.xlsx",
 //				"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\能耗\\数据及集成服务-DWI设计汇总表（安防）-V1.0.xlsx",
-"D:\\programing\\learn-velocity\\do-tool\\文件摸板\\系统设计\\详细设计\\贴源层\\一碑\\融通地产-数据及集成服务-DWI设计汇总表-V1.0-摸板.xlsx"
+//				"D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\贴源层\\商管\\北京华贸-数据及集成服务-DWI设计汇总表-V1.0.xlsx",
+				"E:\\融通地产-数据及集成服务-DWI设计汇总表-V1.0.xlsx"
 //				"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\服务平台\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（园区服务平台）-V1.1.xlsx",
 
 //				"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\管理平台（飞企）\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（园区管理平台_飞企）-V1.1.xlsx"
