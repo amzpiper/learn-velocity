@@ -1,0 +1,68 @@
+
+==========================
+本月安防情况分析。含本月安防告警总数、各类安防告警的数量
+SELECT a.alarm_type,a.alarmCount FROM 
+ (SELECT alarm_type as alarm_type,count(alarm_type) as alarmCount FROM dm_gdeyy_alarm.dm_gdeyy_alarm_info_f where alarm_source_sys = '安防' GROUP BY alarm_type) a 
+ union all 
+SELECT '总计' alarm_type,  count(*) as alarmCount FROM dm_gdeyy_alarm.dm_gdeyy_alarm_info_f where alarm_source_sys = '安防'
+
+
+=======================
+本月消防情况分析。含本月消防告警总数、各类消防告警的数量及占比
+SELECT a. alarm_type,a.alarmCount,a.alarmCount/b.tatolCount*100 percentage FROM 
+ (SELECT alarm_type as alarm_type,count(alarm_type) as alarmCount FROM dm_gdeyy_alarm.dm_gdeyy_alarm_info_f where alarm_source_sys = '消防' GROUP BY alarm_type) a 
+ ,(SELECT count(*) as tatolCount FROM dm_gdeyy_alarm.dm_gdeyy_alarm_info_f where alarm_source_sys = '消防') b
+ union all 
+ (SELECT '总计' alarm_type,  count(*) as alarmCount, 100.00 percentage FROM dm_gdeyy_alarm.dm_gdeyy_alarm_info_f where alarm_source_sys = '消防')
+
+
+
+用电
+SELECT TO_CHAR((to_date(acquisition_time)), 'yyyy-MM') as acquisition_time ,sum(consumption) as consumption FROM dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f WHERE 
+acquisition_time > TO_CHAR(now() - INTERVAL '6 month','yyyy-MM-01 00:00:00') and acquisition_time < now() 
+ group by TO_CHAR((to_date(acquisition_time)), 'yyyy-MM')
+ order by acquisition_time
+ 
+用水
+select sum(consumption) consumption,TO_CHAR(acquisition_time, 'yyyy-MM') as month
+from dm_gdeyy_energy.dm_gdeyy_energy_water_m_f 
+where 
+acquisition_time > TO_CHAR(now() - INTERVAL '7 month','yyyy-MM-01 00:00:00') and acquisition_time < now() 
+group by TO_CHAR(acquisition_time, 'yyyy-MM')
+order by TO_CHAR(acquisition_time, 'yyyy-MM') desc
+ 
+ 
+
+
+=======================
+进7小时人流
+SELECT sum(record_number),TO_CHAR(record_time, 'hh24:00') as day FROM dm_gdeyy_person.dm_gdeyy_person_traffic_h_f
+WHERE  record_time >= TO_CHAR(now() - INTERVAL '7 hours','yyyy-MM-dd hh24:mi:ss') and record_time < now()
+group by TO_CHAR(record_time, 'hh24:00')
+order by TO_CHAR(record_time, 'hh24:00') desc
+
+
+
+
+近7小时用电量
+SELECT sum(consumption) as consumption,TO_CHAR(acquisition_time, 'hh24:00') as day FROM dm_gdeyy_energy.dm_gdeyy_energy_electric_h_f
+WHERE  acquisition_time >= TO_CHAR(now() - INTERVAL '7 hours','yyyy-MM-dd hh24:mi:ss') and acquisition_time < now()
+group by TO_CHAR(acquisition_time, 'hh24:00')
+order by TO_CHAR(acquisition_time, 'hh24:00') desc
+
+
+近6个月用电量
+select sum(consumption) consumption,TO_CHAR(acquisition_time, 'yyyy-MM') as month
+from dm_gdeyy_energy.dm_gdeyy_energy_electric_m_f 
+where 
+acquisition_time > TO_CHAR(now() - INTERVAL '6 month','yyyy-MM-01 00:00:00') and acquisition_time < now() 
+group by TO_CHAR(acquisition_time, 'yyyy-MM')
+order by TO_CHAR(acquisition_time, 'yyyy-MM') desc
+
+
+近6个天用电量
+SELECT sum(consumption) as consumption,TO_CHAR(acquisition_time, 'yyyy-MM-dd') as day FROM dm_gdeyy_energy.dm_gdeyy_energy_electric_d_f
+WHERE  acquisition_time >= TO_CHAR(now() - INTERVAL '6 day','yyyy-MM-dd hh24:mi:ss') and acquisition_time < now()
+group by TO_CHAR(acquisition_time, 'yyyy-MM-dd')
+order by TO_CHAR(acquisition_time, 'yyyy-MM-dd') desc
+

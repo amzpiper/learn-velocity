@@ -19,16 +19,16 @@ public class CreateDWRSQL {
 	public static void main(String[] args) throws Exception {
 		
 		
-		File file = new File("E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\专题");
+		File file = new File("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\系统设计\\详细设计\\主题层");
 		List<File> files = getNeedFile(file);
 		for(File cf : files) {
-			if(cf.getName().indexOf("能耗") != -1) {
+			//生成单独目录下的sql时放开
+//			if(cf.getName().indexOf("能耗") != -1) {
 				System.out.println("9999999999");
 				createDWISQL(cf.getPath());
 				continue;
-			}
+//			}
 			//createDWISQL(cf.getPath());
-			
 		}
 		/*
 		 * for(String path :filePath) { createDWISQL(path); }

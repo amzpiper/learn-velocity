@@ -16,17 +16,17 @@ import java.io.StringWriter;
 import java.util.List;
 
 public class DMCreateDLFScript {
-/*public static String author = "chenqm";
-public static String adtecDwiTimestampField = "marking_update";*/
+    /*public static String author = "chenqm";
+    public static String adtecDwiTimestampField = "marking_update";*/
 
-/*public static String author = "zhouxu";
-public static String adtecDwiTimestampField = "marking_update";*/
+    /*public static String author = "zhouxu";
+    public static String adtecDwiTimestampField = "marking_update";*/
 
-/*public static String author = "yuepei";
-public static String adtecDwiTimestampField = "last_update_time";*/
+    /*public static String author = "yuepei";
+    public static String adtecDwiTimestampField = "last_update_time";*/
 
-/*public static String author = "renyi";
-public static String adtecDwiTimestampField = "last_update_time";*/
+    /*public static String author = "renyi";
+    public static String adtecDwiTimestampField = "last_update_time";*/
 
     public static String author = "lixj";
     public static String adtecDwiTimestampField = "acquisition_time";
@@ -63,10 +63,10 @@ public static String adtecDwiTimestampField = "last_update_time";*/
 //	public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-项目-MAPPING映射-V1.1.xlsx";
 //	public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-组织-MAPPING映射-V1.1.xlsx";
 //	public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-人员-MAPPING映射-V1.1.xlsx";
-//public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-资产-MAPPING映射-V1.1.xlsx";
-//public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-办公-MAPPING映射-V1.0.xlsx";
-//public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DM-企业-MAPPING映射-V1.0.xlsx";
-//public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-产业-MAPPING映射-V1.0.xlsx";
+    //public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-资产-MAPPING映射-V1.1.xlsx";
+    //public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-办公-MAPPING映射-V1.0.xlsx";
+    //public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DM-企业-MAPPING映射-V1.0.xlsx";
+    //public static String fileName = "C:\\Users\\chenqm\\Desktop\\20200519\\20200601\\第二批次\\DWR-产业-MAPPING映射-V1.0.xlsx";
 
 
 //    public static String fileName = "E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\专题\\能耗\\03Mapping\\DM-能耗-MAPPING映射-V1.0.xlsx";
@@ -76,8 +76,8 @@ public static String adtecDwiTimestampField = "last_update_time";*/
 
 
 public static void main(String[] args) throws Exception {
-        List<MappingTable> tableList = ReadMappingExcel.read(fileName);
-        System.out.println(tableList.size());
+    List<MappingTable> tableList = ReadMappingExcel.read(fileName);
+    System.out.println(tableList.size());
 
     File f = new File(fileName);
     String p = f.getParent();

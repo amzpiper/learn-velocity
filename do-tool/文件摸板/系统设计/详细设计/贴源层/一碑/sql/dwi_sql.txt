@@ -1,0 +1,1112 @@
+
+
+-- 问题主表 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbb_building_ques_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbb_building_ques_info"
+(
+    "questask_id"  varchar(256),
+    "submit_date" timestamp(6) without time zone,
+    "create_date" timestamp(6) without time zone,
+    "is_public" integer(1),
+    "start_date" timestamp(6) without time zone,
+    "give_out_date" timestamp(6) without time zone,
+    "give_out_date_line" timestamp(6) without time zone,
+    "accept_date" timestamp(6) without time zone,
+    "accept_date_line" timestamp(6) without time zone,
+    "finish_date" timestamp(6) without time zone,
+    "end_date" timestamp(6) without time zone,
+    "close_date" timestamp(6) without time zone,
+    "close_date_line" timestamp(6) without time zone,
+    "bi_problem_category"  varchar(20),
+    "multimaintain_state" integer(11),
+    "opera_date" bigint,
+    "update_date" timestamp(6) without time zone,
+    "ques_desc"  varchar(256),
+    "qusetask_state" integer(1),
+    "builder_name"  varchar(256),
+    "builder_id"  varchar(256),
+    "building_id"  varchar(256),
+    "emergency_degree"  varchar(256),
+    "info_id"  varchar(256),
+    "ori_userid"  varchar(256),
+    "server_id"  varchar(256),
+    "room_part_id"  varchar(256),
+    "room_part"  varchar(256),
+    "room_type_id"  varchar(256),
+    "updater"  varchar(256),
+    "close_approval_date" timestamp(6) without time zone,
+    "close_status" integer(1),
+    "close_submit_date" timestamp(6) without time zone,
+    "pause_deadline" timestamp(6) without time zone,
+    "pause_status" integer(1),
+    "pause_approval_date" timestamp(6) without time zone,
+    "pause_submit_date" timestamp(6) without time zone,
+    "type_name"  varchar(256),
+    "reason" bigint,
+    "questask_code"  varchar(256),
+    "repair_num"  varchar(256),
+    "contact_address" timestamp(6) without time zone,
+    "contact_name"  varchar(256),
+    "contact_phone"  varchar(256),
+    "question_type"  varchar(256),
+    "owner_info_id"  varchar(256),
+    "problem_tmp_name"  varchar(256),
+    "task_source"  varchar(256),
+    "task_type" bigint,
+    "state" integer(1),
+    "applicant"  varchar(256),
+    "appointment_date" timestamp(6) without time zone,
+    "followup_processor"  varchar(256),
+    "house_floor"  varchar(256),
+    "project_id"  varchar(256),
+    "project_name"  varchar(256),
+    "revoke_url"  varchar(256),
+    "area_id" integer(11),
+    "area_name"  varchar(256),
+    "abnormity_close_status" integer(1),
+    "abnormity_close_submit_date" timestamp(6) without time zone,
+    "abnormity_close_approval_date" timestamp(6) without time zone,
+    "room_type"  varchar(256),
+    "room_part_name"  varchar(256),
+    "house_building"  varchar(256),
+    "house_cell"  varchar(256),
+    "house_room"  varchar(256),
+    "building_property"  varchar(256),
+    "orig_user_name"  varchar(256),
+    "followup_processor_name"  varchar(256),
+    "owner_name"  varchar(256),
+    "reason_name"  varchar(256),
+    "delay_reason"  varchar(256),
+    "member_id"  varchar(256),
+    "warranty_start_date" timestamp(6) without time zone,
+    "warranty_end_date" timestamp(6) without time zone,
+    "parent_questask_code"  varchar(256),
+    "parent_id"  varchar(256),
+    "maintenance_man"  varchar(256),
+    "send_userid"  varchar(256),
+    "complaint_channel"  varchar(256),
+    "mtain_userid"  varchar(256),
+    "visit_type"  varchar(256),
+    "visit_state"  varchar(256),
+    "is_need_material" integer(1),
+    "out_order_task_system"  varchar(256),
+    "dc_questask_id"  varchar(256),
+    "dc_questask_code"  varchar(256),
+    "satisfied"  varchar(256),
+    "visit_id"  varchar(256),
+    "reply_approval_date" timestamp(6) without time zone,
+    "reply_submit_date" timestamp(6) without time zone,
+    "external_reply"  varchar(256),
+    "reply_review_status" integer(1),
+    "pay_type" integer(1),
+    "work_hour" number,
+    "rated_work_hour" number(16,2),
+    "price" number(16,2),
+    "rated_amount" number(16,2),
+    "material_price" number(16,2),
+    "manmade_price" number(16,2),
+    "receivable_id"  varchar(256),
+    "pay_status" integer(1),
+    "is_paid" integer(1),
+    "orign_source" integer(1),
+    "source_type" integer(1),
+    "cate_id"  varchar(256),
+    "mtain_taskid"  varchar(256),
+    "room_info"  varchar(256),
+    "house_fix_status" integer(1),
+    "housefix_close_status" integer(1),
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint);
+COMMENT ON TABLE "dwi_em"."dwi_em_tbb_building_ques_info" IS '问题主表';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.questask_id IS '问题任务ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.submit_date IS '任务提交时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.create_date IS '创建时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.is_public IS '是否公共区域';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.start_date IS '开始时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.give_out_date IS '派单时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.give_out_date_line IS '派单时限';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.accept_date IS '接单时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.accept_date_line IS '接单时限';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.finish_date IS '完成时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.end_date IS '处理时限';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.close_date IS '关闭时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.close_date_line IS '关闭时限';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.bi_problem_category IS '任务类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.multimaintain_state IS '返工次数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.opera_date IS '操作时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.update_date IS '更新时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.ques_desc IS '问题描述';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.qusetask_state IS '任务状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.builder_name IS '承建商名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.builder_id IS '承建商ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.building_id IS '关联楼栋ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.emergency_degree IS '问题级别';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.info_id IS '关联房间ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.ori_userid IS '受理人ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.server_id IS '最后一级任务分类ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.room_part_id IS '房间部位ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.room_part IS '部位';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.room_type_id IS '功能分区ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.updater IS '更新者ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.close_approval_date IS '作废审批时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.close_status IS '作废状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.close_submit_date IS '作废提交时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.pause_deadline IS '中止期限';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.pause_status IS '中止状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.pause_approval_date IS '中止审批时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.pause_submit_date IS '中止提交时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.type_name IS '类型名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.reason IS '原因';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.questask_code IS '问题编码';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.repair_num IS '返修次数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.contact_address IS '联系地址';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.contact_name IS '联系人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.contact_phone IS '联系电话';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.question_type IS '问题类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.owner_info_id IS '业主ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.problem_tmp_name IS '各级分类拼接内容';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.task_source IS '请求来源';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.task_type IS '任务类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.state IS '状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.applicant IS '中止作废申请人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.appointment_date IS '预约时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.followup_processor IS '后续处理人ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.house_floor IS '楼层';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.project_id IS '项目Id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.project_name IS '项目名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.revoke_url IS '回调地址';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.area_id IS '区域主键';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.area_name IS '区域名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.abnormity_close_status IS '非正常关闭状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.abnormity_close_submit_date IS '非正常关闭申请时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.abnormity_close_approval_date IS '非正常关闭审批通过';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.room_type IS '功能分区名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.room_part_name IS '部位名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.house_building IS '楼栋名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.house_cell IS '单元';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.house_room IS '房号';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.building_property IS '产品类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.orig_user_name IS '受理人姓名';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.followup_processor_name IS '处理人姓名';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.owner_name IS '业主姓名';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.reason_name IS '中止作废原因';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.delay_reason IS '中止原因';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.member_id IS '业主会员ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.warranty_start_date IS '质保开始时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.warranty_end_date IS '质保结束时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.parent_questask_code IS '父任务编号';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.parent_id IS '父任务ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.maintenance_man IS '维修人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.send_userid IS '派单人ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.complaint_channel IS '投诉渠道';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.mtain_userid IS '维修人ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.visit_type IS '评价（回访）方式';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.visit_state IS '回访状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.is_need_material IS '是否需要材料';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.out_order_task_system IS 'App下单系统';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.dc_questask_id IS '地产任务id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.dc_questask_code IS '地产任务编号';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.satisfied IS '回访评价满意度';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.visit_id IS '回访任务id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.reply_approval_date IS '对外回复审批通过时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.reply_submit_date IS '对外回复申请时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.external_reply IS '对外回复内容';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.reply_review_status IS '对外回复状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.pay_type IS '支付方式';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.work_hour IS '实际工时';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.rated_work_hour IS '额定工时';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.price IS '费用';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.rated_amount IS '参考金额';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.material_price IS '材料费用';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.manmade_price IS '人工费用';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.receivable_id IS '应收ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.pay_status IS '支付状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.is_paid IS '是否支付';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.orign_source IS '起单来源';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.source_type IS '录单系统';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.cate_id IS '维修分类ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.mtain_taskid IS '关联的维修单ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.room_info IS '问题位置';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.house_fix_status IS '是否房修单';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_building_ques_info.housefix_close_status IS '房修关闭状态';
+
+
+-- 维修协助人表 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbb_ques_helper_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbb_ques_helper_info"
+(
+    "id" bigint,
+    "create_date" timestamp(6) without time zone,
+    "percent" number(16,2),
+    "task_id"  varchar(256),
+    "state" integer(1),
+    "user_id"  varchar(256),
+    "user_name"  varchar(256),
+    "work_minutes" number(16,2),
+    "area_id" bigint,
+    "area_name"  varchar(256),
+    "project_id"  varchar(256),
+    "project_name"  varchar(256),
+    "user_type" integer(1),
+    "orign_source" integer(1),
+    "task_code"  varchar(256),
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint);
+COMMENT ON TABLE "dwi_em"."dwi_em_tbb_ques_helper_info" IS '维修协助人表';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.id IS '表主键';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.create_date IS '创建时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.percent IS '工作量百分比';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.task_id IS '关联任务ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.state IS '有效标识';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.user_id IS '协助人 或者维修人ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.user_name IS '协助人 或者维修人姓名';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.work_minutes IS '工作时长（分钟）';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.area_id IS '区域ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.area_name IS '区域名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.project_id IS '项目ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.project_name IS '项目名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.user_type IS '人员类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.orign_source IS '任务注来源';
+COMMENT ON COLUMN dwi_em.dwi_em_tbb_ques_helper_info.task_code IS '任务编号';
+
+
+-- 核查任务 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbg_quality_task_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbg_quality_task_info"
+(
+    "task_id" integer(1),
+    "plan_id" bigint,
+    "task_name" bigint,
+    "project_id"  varchar(256),
+    "create_date" bigint,
+    "creator" timestamp(6) without time zone,
+    "operate_date" bigint,
+    "operator" timestamp(6) without time zone,
+    "task_state" bigint,
+    "handle_state" integer(2),
+    "start_date" timestamp(6) without time zone,
+    "end_date" timestamp(6) without time zone,
+    "state" integer(2),
+    "company_id" integer(1),
+    "check_time" bigint,
+    "complete_time" timestamp(6) without time zone,
+    "submitter" timestamp(6) without time zone,
+    "quality_category" bigint,
+    "lp_category" bigint,
+    "score" integer(1),
+    "score_total" integer(11),
+    "rate" integer(11),
+    "problem_num"  varchar(11),
+    "version" integer(11),
+    "task_desc" bigint,
+    "close_reason"  varchar(256),
+    "close_remark" bigint,
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tbg_quality_task_info" IS '核查任务';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.task_id IS '主键id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.plan_id IS '计划id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.task_name IS '计划名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.project_id IS '项目id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.create_date IS '创建日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.creator IS '创建人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.operate_date IS '修改日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.operator IS '操作人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.task_state IS '任务状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.handle_state IS '任务状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.start_date IS '开始时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.end_date IS '结束时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.state IS '数据状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.company_id IS '公司id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.check_time IS '任务实际开始时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.complete_time IS '完成时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.submitter IS '完成提交人id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.quality_category IS '品质分类';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.lp_category IS '品质7';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.score IS '核查总得分数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.score_total IS '核查总分数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.rate IS '100*总得分数/总分数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.problem_num IS '问题总数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.version IS '版本号___时间戳';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.task_desc IS '任务描述';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.close_reason IS '任务关闭原因字典值';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_task_info.close_remark IS '任务原因备注';
+
+
+-- 核查计划 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbg_quality_plan_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbg_quality_plan_info"
+(
+    "plan_id" bigint,
+    "plan_name"  varchar(256),
+    "craft_id" bigint,
+    "create_date" timestamp(6) without time zone,
+    "creator" bigint,
+    "operate_date" timestamp(6) without time zone,
+    "operator" bigint,
+    "start_date" timestamp(6) without time zone,
+    "end_date" timestamp(6) without time zone,
+    "state" integer(1),
+    "pause_flag" integer(1),
+    "make_type" integer(1),
+    "company_id" bigint,
+    "fre_type" integer(1),
+    "interval_time" integer(1),
+    "plan_detail"  varchar(1024),
+    "quality_category" bigint,
+    "lp_category" integer(1),
+    "need_sign" integer(1),
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tbg_quality_plan_info" IS '核查计划';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.plan_id IS '主键id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.plan_name IS '计划名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.craft_id IS '核查标准(工艺路线)id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.create_date IS '创建日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.creator IS '创建人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.operate_date IS '修改日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.operator IS '操作人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.start_date IS '开始时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.end_date IS '结束时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.state IS '数据状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.pause_flag IS '暂停状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.make_type IS '生成方式';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.company_id IS '公司id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.fre_type IS '频次';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.interval_time IS '时间间隔';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.plan_detail IS '计划详情';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.quality_category IS '品质分类';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.lp_category IS '品质7';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_quality_plan_info.need_sign IS '是否验收签字';
+
+
+-- 管护计划操作记录 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbg_asset_plan_log_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbg_asset_plan_log_info"
+(
+    "log_id" bigint,
+    "create_date" timestamp(6) without time zone,
+    "creator" bigint,
+    "plan_id" bigint,
+    "remark"  varchar(1024),
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tbg_asset_plan_log_info" IS '管护计划操作记录';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_plan_log_info.log_id IS '记录id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_plan_log_info.create_date IS '创建日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_plan_log_info.creator IS '创建人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_plan_log_info.plan_id IS '关联的计划id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_plan_log_info.remark IS '内容';
+
+
+-- 管护任务 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbg_asset_task_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbg_asset_task_info"
+(
+    "task_id" bigint,
+    "plan_id" bigint,
+    "asset_id" bigint,
+    "create_date" timestamp(6) without time zone,
+    "creator" bigint,
+    "operate_date" timestamp(6) without time zone,
+    "operator" bigint,
+    "task_state" integer(2),
+    "start_date" timestamp(6) without time zone,
+    "end_date" timestamp(6) without time zone,
+    "location"  varchar(255),
+    "state" integer(1),
+    "task_remake"  varchar(255),
+    "company_id" bigint,
+    "complete_time" timestamp(6) without time zone,
+    "submitter" bigint,
+    "quality_category" bigint,
+    "lp_category" integer(11),
+    "check_time" timestamp(6) without time zone,
+    "rate" bigint,
+    "task_pdf"  varchar(255),
+    "version" bigint,
+    "need_count" integer(11),
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tbg_asset_task_info" IS '管护任务';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.task_id IS '主键id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.plan_id IS '计划id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.asset_id IS '资产id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.create_date IS '创建日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.creator IS '创建人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.operate_date IS '修改日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.operator IS '操作人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.task_state IS '任务状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.start_date IS '开始时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.end_date IS '结束时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.location IS '检查地点，资产地址信息';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.state IS '数据状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.task_remake IS '任务完成描述';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.company_id IS '公司id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.complete_time IS '完成时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.submitter IS '完成提交人id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.quality_category IS '品质分类';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.lp_category IS '品质7资产管护6';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.check_time IS '任务实际开始时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.rate IS '合格率（分数）';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.task_pdf IS 'Pdf路径地址';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.version IS '版本号___时间戳';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_info.need_count IS '是否计入统计内容';
+
+
+-- 管护任务记录 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbg_asset_task_record_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbg_asset_task_record_info"
+(
+    "id"  varchar(40),
+    "asset_id" bigint,
+    "plan_id" bigint,
+    "task_id" bigint,
+    "level_id" bigint,
+    "fields_json" text,
+    "recover_json" text,
+    "record_detail" text,
+    "creator" bigint,
+    "create_date" timestamp(6) without time zone,
+    "question_state" integer(2),
+    "question_type" integer(2),
+    "qualified_state" integer(2),
+    "submit_date" timestamp(6) without time zone,
+    "submitter" bigint,
+    "company_id" bigint,
+    "state" integer(1),
+    "quality_category" bigint,
+    "record_state" integer(2),
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tbg_asset_task_record_info" IS '管护任务记录';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.id IS '记录id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.asset_id IS '资产id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.plan_id IS '计划id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.task_id IS '任务id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.level_id IS '所核查类型id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.fields_json IS '核查记录json串';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.recover_json IS '追记描述 json';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.record_detail IS '问题描述';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.creator IS '提交人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.create_date IS '提交时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.question_state IS '问题状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.question_type IS '问题 类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.qualified_state IS '是否是问题';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.submit_date IS '完成时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.submitter IS '提交人id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.company_id IS '公司id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.state IS '数据状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.quality_category IS '品质分类';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info.record_state IS '记录状态';
+
+
+-- 管护任务记录检查标准详情 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbg_asset_task_record_info_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbg_asset_task_record_info_info"
+(
+    "id"  varchar(40),
+    "task_record_id"  varchar(40),
+    "task_id" bigint,
+    "level_id" bigint,
+    "field_id" bigint,
+    "field_state" integer(1),
+    "creator" bigint,
+    "create_date" timestamp(6) without time zone,
+    "state" integer(1),
+    "company_id" bigint,
+    "problem_detail"  varchar(255),
+    "longitude"  varchar(255),
+    "latitude"  varchar(255),
+    "location"  varchar(255),
+    "question_state" tinyint,
+    "question_type" tinyint,
+    "submit_date" timestamp(6) without time zone,
+    "submitter" bigint,
+    "approval_status" integer(1),
+    "measures"  varchar(255),
+    "info_path"  varchar(255),
+    "approval_remark"  varchar(255),
+    "hidden_danger_type" bigint,
+    "hidden_danger_category" bigint,
+    "hidden_danger_level" bigint,
+    "problem_id" bigint,
+    "standard_description"  varchar(255),
+    "hidden_danger_grade" bigint,
+    "rectification_suggestions"  varchar(255),
+    "location_info_json" text,
+    "operators"  varchar(255),
+    "oa_id" integer(11),
+    "version" bigint,
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tbg_asset_task_record_info_info" IS '管护任务记录检查标准详情';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.id IS '主键';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.task_record_id IS '任务记录id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.task_id IS '任务id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.level_id IS '分类id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.field_id IS '分类标准id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.field_state IS '状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.creator IS '创建人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.create_date IS '修改时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.state IS '数据状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.company_id IS '公司id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.problem_detail IS '问题描述';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.longitude IS '经度';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.latitude IS '纬度';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.location IS '问题位置信息';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.question_state IS '问题状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.question_type IS '问题类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.submit_date IS '完成时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.submitter IS '完成人id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.approval_status IS '审批状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.measures IS '整改措施';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.info_path IS '追记记录来源';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.approval_remark IS '审批备注';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.hidden_danger_type IS '隐患类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.hidden_danger_category IS '隐患类别';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.hidden_danger_level IS '隐患级别';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.problem_id IS '问题描述Id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.standard_description IS '问题描述';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.hidden_danger_grade IS '隐患等级';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.rectification_suggestions IS '整改建议';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.location_info_json IS '位置和人员信息json串';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.operators IS '所有操作人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.oa_id IS '地产OA的回传ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_asset_task_record_info_info.version IS '版本号___时间戳';
+
+
+-- 设备 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tzm_maintain_device_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tzm_maintain_device_info"
+(
+    "device_id" bigint,
+    "brand_name"  varchar(50),
+    "buidling_detail_id" bigint,
+    "building_id"  varchar(64),
+    "building_locations"  varchar(500),
+    "building_type" integer(11),
+    "concat_way"  varchar(20),
+    "construct_user"  varchar(20),
+    "state" integer(2),
+    "device_address"  varchar(500),
+    "device_category_id" bigint,
+    "device_code"  varchar(201),
+    "device_detail"  varchar(1024),
+    "device_location"  varchar(1500),
+    "device_name"  varchar(200),
+    "device_number"  varchar(150),
+    "device_state" bigint,
+    "device_model"  varchar(150),
+    "disable_date" timestamp(6) without time zone,
+    "eba_caut_num" bigint,
+    "factory"  varchar(255),
+    "fm_id"  varchar(255),
+    "has_exce" integer(2),
+    "ins_pos"  varchar(1000),
+    "is_check" integer(2),
+    "is_disable" integer(2),
+    "last_maintain_time" timestamp(6) without time zone,
+    "last_patrol_time" timestamp(6) without time zone,
+    "last_protect_time" timestamp(6) without time zone,
+    "link_man"  varchar(20),
+    "lp_category" integer(11),
+    "model"  varchar(255),
+    "operate_date" timestamp(6) without time zone,
+    "operator"  varchar(20),
+    "parameter1"  varchar(255),
+    "parameter2"  varchar(255),
+    "pledge_year"  varchar(20),
+    "power"  varchar(255),
+    "project_id" bigint,
+    "receipts_id"  varchar(128),
+    "service_dept"  varchar(255),
+    "sys_id" bigint,
+    "time_stamp" timestamp(6) without time zone,
+    "use_date" timestamp(6) without time zone,
+    "use_dept"  varchar(255),
+    "use_name"  varchar(25),
+    "write_flag" bigint,
+    "point_id"  varchar(64),
+    "city_id" bigint,
+    "level_id" bigint,
+    "dnorm_id" bigint,
+    "device_partrol_id"  varchar(64),
+    "dtype_id" bigint,
+    "parent_id" bigint,
+    "p_sys_id" bigint,
+    "eq_description"  varchar(255),
+    "fm_device_type" integer(11),
+    "fm_status"  varchar(255),
+    "qr_code_name"  varchar(1000),
+    "qr_code_path"  varchar(1000),
+    "latitude"  varchar(255),
+    "longitude"  varchar(255),
+    "company_id" bigint,
+    "device_mark"  varchar(32),
+    "appearance_code"  varchar(500),
+    "appearance_date"  varchar(500),
+    "device_param" text,
+    "lacation"  varchar(500),
+    "maintain_record"  varchar(500),
+    "model_name"  varchar(500),
+    "scope"  varchar(500),
+    "using_date"  varchar(500),
+    "timestamp_version" bigint,
+    "manufacturer"  varchar(64),
+    "square" number(16,2),
+    "count"  varchar(20),
+    "level_desc"  varchar(10),
+    "risk"  varchar(255),
+    "risk_id" bigint,
+    "annual_inspectiontime"  varchar(60),
+    "device_parameter"  varchar(60),
+    "maintain_unit"  varchar(60),
+    "over_rec"  varchar(20),
+    "registration_code"  varchar(60),
+    "superior"  varchar(60),
+    "disable_notice_date" timestamp(6) without time zone,
+    "fault_submit_time" timestamp(6) without time zone,
+    "fault_submit_user"  varchar(255),
+    "is_intelligent_device" integer(1),
+    "is_online" char(1),
+    "device_start_date_time" timestamp(6) without time zone,
+    "device_warning_duration" integer(9),
+    "device_warning_info"  varchar(255),
+    "device_is_warning" integer(2),
+    "act_return_time" timestamp(6) without time zone,
+    "borrowable_asset" char(2),
+    "lend_status" char(2),
+    "lend_time" timestamp(6) without time zone,
+    "lend_user" char(10),
+    "manager_id"  varchar(150),
+    "plan_return_time" timestamp(6) without time zone,
+    "first_lend_user" bigint,
+    "is_can_return" integer(2),
+    "info_id" bigint,
+    "viewable"  varchar(10),
+    "expect_disable_date" timestamp(6) without time zone,
+    "device_code_client"  varchar(255),
+    "implementation_place"  varchar(255),
+    "is_important" tinyint,
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tzm_maintain_device_info" IS '设备';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_id IS '主键';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.brand_name IS '品牌名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.buidling_detail_id IS '楼址ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.building_id IS '机房ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.building_locations IS '路址详情';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.building_type IS '巡更地点4';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.concat_way IS '联系方式';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.construct_user IS '施工方';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.state IS '删除状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_address IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_category_id IS '设备分类ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_code IS '设备编码';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_detail IS '设备详情';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_location IS '设备详细地址';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_name IS '设备名';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_number IS '设备唯一编号';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_state IS '设备状态设备状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_model IS '设备型号';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.disable_date IS '报废日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.eba_caut_num IS 'EBA预警未处理数量(默认为0)';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.factory IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.fm_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.has_exce IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.ins_pos IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.is_check IS '是否巡查点';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.is_disable IS '是否报废';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.last_maintain_time IS '最后一次维修时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.last_patrol_time IS '最后一次巡检时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.last_protect_time IS '最后一次维保时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.link_man IS '联系人';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.lp_category IS '类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.model IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.operate_date IS '修改日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.operator IS '修改人';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.parameter1 IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.parameter2 IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.pledge_year IS '质保年份';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.power IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.project_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.receipts_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.service_dept IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.sys_id IS 'device的根节点设备的id，否则是自己';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.time_stamp IS '时间戳';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.use_date IS '投入日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.use_dept IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.use_name IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.write_flag IS '是否写入文件';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.point_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.city_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.level_id IS '设备类型级别ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.dnorm_id IS '规格型号id(tzm_device_norm)';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_partrol_id IS '机房id';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.dtype_id IS '设备类型的ID (tzm_device_type)';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.parent_id IS '父设备ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.p_sys_id IS '系统gid';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.eq_description IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.fm_device_type IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.fm_status IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.qr_code_name IS '二维码文件名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.qr_code_path IS '二维码文件地址';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.latitude IS '纬度';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.longitude IS '经度';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.company_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_mark IS '设备标识，用于巡逻点辅助搜索';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.appearance_code IS '出厂编号';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.appearance_date IS '出厂日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_param IS '设备参数';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.lacation IS '产地';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.maintain_record IS '维保详情';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.model_name IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.scope IS '所涉范围';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.using_date IS '使用日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.timestamp_version IS '版本号';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.manufacturer IS '制造上';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.square IS '面积';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.count IS '数量';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.level_desc IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.risk IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.risk_id IS '风险等级';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.annual_inspectiontime IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_parameter IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.maintain_unit IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.over_rec IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.registration_code IS '注册编码';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.superior IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.disable_notice_date IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.fault_submit_time IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.fault_submit_user IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.is_intelligent_device IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.is_online IS '智能设备是否在线';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_start_date_time IS '设备开始运行时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_warning_duration IS '设备预警时长';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_warning_info IS '设备预警内容';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_is_warning IS '设备是否已经预警';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.act_return_time IS '实际归还时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.borrowable_asset IS '是否可借资产';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.lend_status IS '借出归还状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.lend_time IS '解除时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.lend_user IS '最后一次借出人';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.manager_id IS '归属管理员';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.plan_return_time IS '预计归还时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.first_lend_user IS '第一个借用人';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.is_can_return IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.info_id IS '路址id';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.viewable IS '是否可查看';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.expect_disable_date IS '预计报废时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.device_code_client IS '客户编码';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.implementation_place IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tzm_maintain_device_info.is_important IS '是否重要';
+
+
+-- 巡检计划 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbg_device_patrol_rule_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbg_device_patrol_rule_info"
+(
+    "patrol_rule_id" bigint,
+    "create_date" timestamp(6) without time zone,
+    "creator"  varchar(20),
+    "operate_date" timestamp(6) without time zone,
+    "operator"  varchar(20),
+    "state" integer(11),
+    "address_id"  varchar(64),
+    "auto_flag" bigint,
+    "craft_id" bigint,
+    "device_id" bigint,
+    "device_sam_rate"  varchar(10),
+    "grab_flag" bigint,
+    "inte_date"  varchar(50),
+    "level_prop_id" bigint,
+    "make_type" integer(11),
+    "patrol_remark"  varchar(1024),
+    "patrol_rule_name"  varchar(400),
+    "patrol_type" integer(11),
+    "people_num" bigint,
+    "task_fre_type" integer(11),
+    "task_type" integer(11),
+    "working_time" decimal(10,1),
+    "eff_end_date" timestamp(6) without time zone,
+    "eff_start_date" timestamp(6) without time zone,
+    "expect_create_task_num" integer(10),
+    "lp_category" integer(11),
+    "point_interval_time" bigint,
+    "professional" bigint,
+    "sys_id" bigint,
+    "dms_rule_id"  varchar(64),
+    "project_id" bigint,
+    "rank" tinyint,
+    "detail"  varchar(1024),
+    "distributeflag" integer(11),
+    "company_id" bigint,
+    "inspection"  varchar(1024),
+    "plantype" integer(11),
+    "device_ids" text,
+    "hasstandard" integer(11),
+    "userid"  varchar(255),
+    "supervision_jobid"  varchar(255),
+    "supervision_jobname"  varchar(255),
+    "grab_limit_flag" bigint,
+    "disaster_type_id"  varchar(128),
+    "is_emergency" integer(2),
+    "pause_flag" integer(1),
+    "transaction_id"  varchar(255),
+    "rule_rank" tinyint,
+    "is_holiday" integer(2),
+    "is_scanned_code" integer(2),
+    "is_work_result" integer(2),
+    "post_task" integer(2),
+    "take_picture" integer(2),
+    "decoration_id"  varchar(50),
+    "patrol_interval"  varchar(10),
+    "audit_user"  varchar(255),
+    "category_desc_id" bigint,
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tbg_device_patrol_rule_info" IS '巡检计划';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.patrol_rule_id IS '主键';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.create_date IS '创建日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.creator IS '创建人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.operate_date IS '修改日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.operator IS '修改人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.state IS '删除状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.address_id IS '机房ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.auto_flag IS '自动化标志';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.craft_id IS '工艺路线';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.device_id IS '废弃，不再使用';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.device_sam_rate IS '巡检抽样率';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.grab_flag IS '是否抢单';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.inte_date IS '间隔';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.level_prop_id IS '巡检等级id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.make_type IS '生成方式';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.patrol_remark IS '备注';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.patrol_rule_name IS '计划名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.patrol_type IS '1主设备2子设备';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.people_num IS '人数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.task_fre_type IS '频次类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.task_type IS '1：常规任务；2：循环任务';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.working_time IS '工时（分钟）';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.eff_end_date IS '有效期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.eff_start_date IS '有效期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.expect_create_task_num IS '期望创建任务数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.lp_category IS '类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.point_interval_time IS '巡检点间隔';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.professional IS '专业';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.sys_id IS '系统';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.dms_rule_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.project_id IS '项目ID';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.rank IS '计划等级';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.detail IS '详情';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.distributeflag IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.company_id IS '公司id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.inspection IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.plantype IS '1.频次 2.日历,3装修,4空置房,5工程装修';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.device_ids IS '标准设备id列表';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.hasstandard IS '是否按标准创建爱你';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.userid IS '标准负责人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.supervision_jobid IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.supervision_jobname IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.grab_limit_flag IS '是否限制抢单';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.disaster_type_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.is_emergency IS '1_是,0_否;默认为1';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.pause_flag IS '是否暂停';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.transaction_id IS '导入编号';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.rule_rank IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.is_holiday IS '1_是,0_否;默认为0';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.is_scanned_code IS '1_是,0_否;默认为0';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.is_work_result IS '1_是,0_否;默认为0';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.post_task IS '1_否,2_是;默认为1';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.take_picture IS '1_是,0_否;默认为1';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.decoration_id IS '装修计划id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.patrol_interval IS '废弃，不再使用';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.audit_user IS '审核人id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_info.category_desc_id IS '类别描述';
+
+
+-- 巡检任务 --
+DROP TABLE IF EXISTS "dwi_em"."dwi_em_tbg_device_patrol_rule_task_info";
+CREATE TABLE IF NOT EXISTS "dwi_em"."dwi_em_tbg_device_patrol_rule_task_info"
+(
+    "task_id" bigint,
+    "create_date" timestamp(6) without time zone,
+    "creator"  varchar(20),
+    "operate_date" timestamp(6) without time zone,
+    "operator"  varchar(20),
+    "state" integer(11),
+    "cycle" integer(11),
+    "destroy_order_satisfy_desc"  varchar(500),
+    "destroy_order_satisfy_id" bigint,
+    "destroy_user_id" bigint,
+    "device_id" bigint,
+    "device_ids" text,
+    "end_date"  varchar(25),
+    "fields_json"  varchar(2000),
+    "full_end_date" timestamp(6) without time zone,
+    "full_start_date" timestamp(6) without time zone,
+    "gtform_id" bigint,
+    "is_workorder" bigint,
+    "owner_id" bigint,
+    "patrol_date" timestamp(6) without time zone,
+    "patrol_state" integer(11),
+    "people_num" bigint,
+    "project_id" bigint,
+    "sour_id" bigint,
+    "start_date"  varchar(25),
+    "submit_date" timestamp(6) without time zone,
+    "task_detail"  varchar(500),
+    "task_source" integer(11),
+    "task_state" integer(11),
+    "user_id" bigint,
+    "working_time" decimal(10,1),
+    "point_id"  varchar(64),
+    "patrol_rule_id" bigint,
+    "fm_ids"  varchar(5000),
+    "lp_category" integer(11),
+    "point_interval_time" bigint,
+    "professional" bigint,
+    "reject_path"  varchar(255),
+    "system_id" bigint,
+    "team_id" bigint,
+    "server_time" timestamp(6) without time zone,
+    "finish_check_type" bigint,
+    "finish_date" timestamp(6) without time zone,
+    "finish_user_id" bigint,
+    "last_finish_date" timestamp(6) without time zone,
+    "last_finish_task_id" bigint,
+    "next_finish_date" timestamp(6) without time zone,
+    "next_finish_task_id" bigint,
+    "complete_quality" integer(11),
+    "helpuserids"  varchar(255),
+    "integral" number(16,2),
+    "maintenancegroup"  varchar(255),
+    "actual_working_time" decimal(10,1),
+    "destroy_order_detail"  varchar(500),
+    "supervisionremindflag" bigint,
+    "apply_close_reason"  varchar(60),
+    "apply_close_remark"  varchar(300),
+    "close_remark"  varchar(300),
+    "version" bigint,
+    "auto_autoexpire_flag" integer(11),
+    "checked_device_ids" text,
+    "company_id" bigint,
+    "handle_state" integer(11),
+    "is_order"  varchar(20),
+    "patrol_rule_name"  varchar(100),
+    "device_patrol_name"  varchar(100),
+    "area_id" bigint,
+    "decoration_id"  varchar(50),
+    "is_audit" integer(2),
+    "audit_state"  varchar(2),
+    "refuse_num" integer(2),
+    "overtime_finish" integer(2),
+    "dw_creation_by"  varchar(100),
+    "dw_creation_date" timestamp(6) without time zone default now(),
+    "dw_last_update_by"  varchar(100),
+    "dw_last_update_date" timestamp(6) without time zone default now(),
+    "dw_batch_number"  bigint) ;
+COMMENT ON TABLE "dwi_em"."dwi_em_tbg_device_patrol_rule_task_info" IS '巡检任务';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.task_id IS '主键';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.create_date IS '创建日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.creator IS '创建人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.operate_date IS '修改日期';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.operator IS '修改人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.state IS '删除状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.cycle IS '是否循环任务';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.destroy_order_satisfy_desc IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.destroy_order_satisfy_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.destroy_user_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.device_id IS '废弃，不再使用';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.device_ids IS '设备id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.end_date IS '结束时间（日期）';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.fields_json IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.full_end_date IS '完整的结束时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.full_start_date IS '完成的开始时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.gtform_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.is_workorder IS '是否工单池任务';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.owner_id IS '任务初始负责人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.patrol_date IS '巡检时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.patrol_state IS '巡检状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.people_num IS '人数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.project_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.sour_id IS '任务转发来源';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.start_date IS '开始时间（日期）';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.submit_date IS '提交任务时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.task_detail IS '任务详情';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.task_source IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.task_state IS '任务状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.user_id IS '负责人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.working_time IS '工时';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.point_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.patrol_rule_id IS '计划id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.fm_ids IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.lp_category IS '任务类型';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.point_interval_time IS '点位间隔时间（分钟）';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.professional IS '专业';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.reject_path IS '拒单路径';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.system_id IS '系统';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.team_id IS '片区id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.server_time IS '同步时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.finish_check_type IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.finish_date IS '任务完成时间';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.finish_user_id IS '任务完成人';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.last_finish_date IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.last_finish_task_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.next_finish_date IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.next_finish_task_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.complete_quality IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.helpuserids IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.integral IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.maintenancegroup IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.actual_working_time IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.destroy_order_detail IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.supervisionremindflag IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.apply_close_reason IS '申请关闭原因';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.apply_close_remark IS '申请关闭备注';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.close_remark IS '关闭备注';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.version IS '版本号';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.auto_autoexpire_flag IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.checked_device_ids IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.company_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.handle_state IS '是否申请关闭任务';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.is_order IS '是否工单池任务';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.patrol_rule_name IS '巡检计划名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.device_patrol_name IS '机房名称';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.area_id IS '';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.decoration_id IS '装修计划id';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.is_audit IS '是否审核';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.audit_state IS '审核状态';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.refuse_num IS '拒单次数';
+COMMENT ON COLUMN dwi_em.dwi_em_tbg_device_patrol_rule_task_info.overtime_finish IS '是否超时完成（';

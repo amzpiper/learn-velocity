@@ -1,0 +1,51 @@
+{
+"directory": "/dws/dm/order",
+"name": "job_dm_successrate_week_emp_f_dwr_order",
+"nodes": [
+{
+"failPolicy": "FAIL",
+"maxExecutionTime": 3600,
+"name": "script_dm_successrate_week_emp_f_dwr_order",
+"pollingInterval": 1,
+"properties": [
+{
+"name": "scriptName",
+"value": "script_dm_successrate_week_emp_f_dwr_order"
+},
+{
+"name": "connectionName",
+"value": "do_data_warehouse"
+},
+{
+"name": "database",
+"value": "Variable.get(\"data_service_dbname\")"
+},
+{
+"name": "scriptArgs",
+"value": "{\"current_day\":\"{{(dag.following_schedule(execution_date)+dag.default_args.timedelta).strftime('%Y-%m-%d')}}\",\"job_name\":\"{{dag.description}}\",\"job_plan_time\":\"{{(dag.following_schedule(execution_date)+dag.default_args.timedelta).strftime('%Y-%m-%d %H:%M:%S')}}\"}"
+}
+],
+            "retryInterval": 60,
+            "retryTimes": 3,
+"type": "gauss100"
+}
+],
+"schedule": {
+"cron": {
+
+"endTime": "",
+"expression": "0 0 * * *",
+"expressionTimeZone": "GMT+08:00",
+"period_day": "",
+"period_endtime": "",
+"period_interval": "1",
+"period_starttime": "00:00",
+"schedule_period": "day",
+"startTime": "2021-01-27T16:00:00Z"
+},
+"dependFailPolicy": "",
+"dependJobNames": [],
+"dependSelf": true,
+"type": "CRON"
+}
+}

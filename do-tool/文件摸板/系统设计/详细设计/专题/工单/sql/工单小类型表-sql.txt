@@ -1,0 +1,38 @@
+
+
+DROP TABLE IF EXISTS "dm_order"."dm_sig_order_subtype_f";
+CREATE TABLE IF NOT EXISTS "dm_order"."dm_sig_order_subtype_f"
+(
+    "id" character varying(60),
+    "order_type" character varying(60),
+	"order_type_name" character varying(60),
+    "sig_order_subtype" character varying(60),
+    "dw_creation_by" character varying(100),
+    "dw_creation_date" timestamp(6),
+    "dw_last_update_by" character varying(100),
+    "dw_last_update_date" timestamp(6),
+    "dw_batch_number" bigint
+)WITH(orientation=row,compression=no) 
+DISTRIBUTE BY HASH("order_type");
+COMMENT ON TABLE "dm_order"."dm_sig_order_subtype_f" IS '工单类型表';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.id IS '类型表id';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.order_type IS '部门id';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.order_type_name IS '部门名称';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.sig_order_subtype IS '工服务子类型';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_batch_number IS '数据批次号';
+
+
+DELETE FROM "dm_order"."dm_sig_order_subtype_f";
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('3','安保','3_2','安保');
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('3','安保','3_3','其他');
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('1','清洁','1_1','清洁');
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('1','清洁','1_2','绿化');
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('1','清洁','1_3','其他');
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('2','工程','2_1','综修');
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('2','工程','2_5','暖通');
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('2','工程','2_6','弱电');
+INSERT INTO "dm_order"."dm_sig_order_subtype_f"(order_type,order_type_name,id,sig_order_subtype) VALUES('2','工程','2_8','强电');

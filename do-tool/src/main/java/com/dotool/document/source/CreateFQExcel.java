@@ -19,15 +19,11 @@ public class CreateFQExcel {
 //	public static String fileName = "d:\\gd2yy_医疗.xlsx";
 //	public static String fileName = "d:\\gd2yy_视频巡更.xlsx";
 	public static String fileName = DocumentMain.fileName;
-
-
-
+//	public static String fileName = "D:\\programing\\learn-velocity\\do-tool\\文件摸板\\数据采集（源系统）\\融通物管—一碑.xlsx";
 
 	public static void main(String[] args) throws Exception {
-			List<Table> tableList = ReadFQExcel.read(fileName);
-			System.out.println(tableList.size());
-
-
+		List<Table> tableList = ReadFQExcel.read(fileName);
+		System.out.println(tableList.size());
 
 		String[] col = new String[] {"属性中文名称","属性英文名称","备注","类型","长度","特殊字段格式","主键（是/否）","是否为空","外键（是/否）","对应外键表","时间戳字段（是/否）","代码编号"};
 
@@ -167,22 +163,12 @@ public class CreateFQExcel {
 						}
 
 					}
-
-
 				}
-
-
 				for (int j = 0; j < 12; j++) {
 					st.setColumnWidth(j, 5000);
-
 				}
-				
 			}
-
-
 		}
-
-
 		catch (Exception e) {
 			e.printStackTrace();
 		}

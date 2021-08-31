@@ -51,18 +51,26 @@ public class DocumentMain {
 	public static String dbSchemaPre = "dwr_" + name;
 	public static String dbPre = "dwd_" + name;
 	public static String dwiDBPre = "dwi_abc";
-//	public static String needTableString = "hw_zhyq_enterprise_main_info";
+	//public static String needTableString = "hw_zhyq_enterprise_main_info";
 	public static String needTableString = "";*/
 
-
-	public static String fileName = "D:\\Projects\\智慧园区\\浙江金华智慧园区项目\\02、项目需求\\数据采集（源系统）\\能耗\\浙江金华_能耗.xlsx";
-	public static String domainName = "能耗";
-	public static String sourceSystemName = "能耗";
-	public static String domainNameDwi = "01_01 能耗_能耗采集";
-	public static String sourceSystemNameDwi = "能耗";
+	// D:\programing\learn-velocity\do-tool\文件摸板\数据采集（源系统）\融通物管—一碑.xlsx
+	public static String fileName = "E:\\SVN仓库\\301医院\\02、项目需求\\数据采集（源系统）\\一碑\\融通物管—一碑.xlsx";
+	//主题域
+	public static String domainName = "融通地产";
+	//主题系统简称
+	public static String sourceSystemName = "融通地产";
+	//专题域
+	public static String domainNameDwi = "01_01 融通地产_融通地产采集";
+	//专题系统简称
+	public static String sourceSystemNameDwi = "融通地产";
+	//
 	public static String name = "energy";
+	//
 	public static String dbSchemaPre = "dwr_" + name;
+	// 主题表前缀
 	public static String dbPre = "dwd_" + name;
+	// 专题表前缀
 	public static String dwiDBPre = "dwi_ecm";
 
 	//	public static String needTableString = "hw_zhyq_enterprise_main_info";
@@ -80,8 +88,6 @@ public class DocumentMain {
 	public static void main(String[] args) throws Exception {
 			/*List<Table> tableList = ReadFQExcel.read(fileName);
 			System.out.println(tableList.size());
-
-
 
 		String[] col = new String[] {"属性中文名称","属性英文名称","备注","类型","长度","新增字段","是否入主题","源系统属性名称"};
 
@@ -118,8 +124,6 @@ public class DocumentMain {
 		titleStyle.setFillForegroundColor((short) 27);
 
 		try {
-
-
 			String[] needTableArray = needTableString.split(",");
 			Map<String, String> needMap = new HashMap<>();
 			for (String s : needTableArray) {
@@ -169,14 +173,10 @@ public class DocumentMain {
 						if (row.getCell(j) == null) {
 							row.createCell(j).setCellValue("");
 						}
-
 						row.getCell(j).setCellStyle(titleStyle);
-
 					}
 				}
 				String tableName = table.getName();
-
-
 
 				int index = -1;
 			    for (Field field : table.getFieldList()) {
@@ -218,23 +218,14 @@ public class DocumentMain {
 						{
 							rr.getCell(j).setCellStyle(style);
 						}
-
 					}
-
-
 				}
-
 
 				for (int j = 0; j < col.length; j++) {
 					st.setColumnWidth(j, 5000);
-
 				}
-
 			}
-
-
 		}
-
 
 		catch (Exception e) {
 			e.printStackTrace();

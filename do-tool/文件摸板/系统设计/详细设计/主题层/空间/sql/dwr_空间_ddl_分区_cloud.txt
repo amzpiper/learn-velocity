@@ -1,0 +1,112 @@
+
+
+-- 空间信息表 --
+DROP TABLE IF EXISTS "dwr_space"."dwd_space_detial_f";
+CREATE TABLE IF NOT EXISTS "dwr_space"."dwd_space_detial_f"
+(
+    "id" serial,
+    "res_type" character varying(30),
+    "res_id" character varying(150),
+    "res_parent_id" character varying(150),
+    "sig_res_id" bigint,
+    "sig_res_parent_id" bigint,
+    "res_name" character varying(192),
+    "res_status" integer,
+    "res_code" character varying(30),
+    "description" character varying(300),
+    "build_area" character varying(30),
+    "bill_area" character varying(30),
+    "house_no" character varying(30),
+    "house_type" integer,
+    "use_area" character varying(30),
+    "garden_area" character varying(30),
+    "share_area" character varying(30),
+    "life_cycle" integer,
+    "floor_index" character varying(135),
+    "building_type" integer,
+    "build_floor" integer,
+    "organ_py" character varying(300),
+    "charge_type" integer,
+    "organ_address" character varying(300),
+    "organ_region" character varying(3),
+    "complete_date" timestamp(6),
+    "checkin_date" timestamp(6),
+    "total_area" character varying(30),
+    "province" integer,
+    "city" integer,
+    "region" integer,
+    "street" integer,
+    "plot_ratio" character varying(30),
+    "green_ratio" character varying(30),
+    "create_time" timestamp(6),
+    "create_by" character varying(135),
+    "update_time" timestamp(6),
+    "update_by" character varying(135),
+    "del_flag" integer,
+    "floor_id" bigint,
+    "unit_id" bigint,
+    "building_id" bigint,
+    "proj_id" bigint,
+    "source_type" integer,
+    "dw_creation_by" character varying(100),
+    "dw_creation_date" timestamp(6),
+    "dw_last_update_by" character varying(100),
+    "dw_last_update_date" timestamp(6),
+    "dw_batch_number" bigint
+)WITH(orientation=row,compression=no) 
+DISTRIBUTE BY HASH("sig_res_id") 
+PARTITION BY RANGE (dw_creation_date)
+(
+    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),
+    PARTITION PMAX VALUES LESS THAN(MAXVALUE)
+);
+COMMENT ON TABLE "dwr_space"."dwd_space_detial_f" IS '空间信息表';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.id IS '系统id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.res_type IS '资源类型';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.res_id IS '资源id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.res_parent_id IS '父资源id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.sig_res_id IS '四格资源id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.sig_res_parent_id IS '四格父资源id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.res_name IS '资源名称';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.res_status IS '资源状态';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.res_code IS '资源业态编码';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.description IS '资源描述';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.build_area IS '建筑面积';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.bill_area IS '计费面积';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.house_no IS '房号';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.house_type IS '房屋类型编码';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.use_area IS '使用面积';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.garden_area IS '花园面积';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.share_area IS '分摊面积';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.life_cycle IS '房屋生命周期';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.floor_index IS '楼层顺序必填且唯一';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.building_type IS '楼宇类型';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.build_floor IS '楼栋层数';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.organ_py IS '项目拼音名称';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.charge_type IS '收费方式';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.organ_address IS '地址';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.organ_region IS '机构所属地区';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.complete_date IS '竣工时间';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.checkin_date IS '入伙时间';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.total_area IS '占地面积';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.province IS '省';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.city IS '市';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.region IS '区';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.street IS '街道';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.plot_ratio IS '容积率';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.green_ratio IS '绿化率';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.create_time IS '';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.create_by IS '创建者';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.update_time IS '';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.update_by IS '';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.del_flag IS '删除标记';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.floor_id IS '楼层id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.unit_id IS '单元id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.building_id IS '楼宇id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.proj_id IS '项目id';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.source_type IS '数据来源';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dwr_space.dwd_space_detial_f.dw_batch_number IS '数据批次号';

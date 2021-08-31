@@ -1,0 +1,477 @@
+select
+    a.order_type_name as "order_type_name",
+    b.current_user_name as "current_user_name",
+    b.current_user_id as "current_user_id",
+    b.total as "total",
+    b.usetime as "usetime",
+    b.successrate as "successrate",
+    b.timelyrate as "timelyrate",
+    b.outtimecount as "outtimecount",
+
+    b.qiangdian as "qiangdian",
+    b.ruodian as "ruodian",
+    b.nuantong as "nuantong",
+    b.zongxiu as "zongxiu",
+    b.qingjie  as "qingjie",
+    b.lvhua as "lvhua",
+    b.anbao as "anbao",
+    b.other  as "other"
+FROM
+      "dm_order"."dm_sig_order_subtype_f" a
+      LEFT JOIN 
+        (
+               SELECT
+                    a.order_type as "order_type",
+                    a.current_user_id as "current_user_id",
+                    a.current_user_name as "current_user_name",
+                    a.total as "total",
+                    a.successrate as "successrate",
+                    a.timelyrate as "timelyrate",
+                    a.outtimecount as "outtimecount",
+                    a.usetime as "usetime",
+
+                    b.qiangdian as "qiangdian",
+                    b.ruodian as "ruodian",
+                    b.nuantong as "nuantong",
+                    b.zongxiu as "zongxiu",
+                    b.qingjie  as "qingjie",
+                    b.lvhua as "lvhua",
+                    b.anbao as "anbao",
+                    b.other  as "other"
+               FROM
+               (
+
+                    select
+                      a.current_user_id as current_user_id,
+                      a.current_user_name as current_user_name,
+                      e.order_type as "order_type",
+                      --总共完成单数
+                      case
+                         when b.successcount = 0 then 0
+                         else b.successcount
+                      end as total,
+                      --完成率
+                      case
+                         when a.ordercount = 0 then 0
+                         else CAST(
+                           (b.successcount / a.ordercount) * 100 AS DECIMAL(18, 0)
+                         )
+                      end as successrate,
+                      --及时率
+                      case
+                         when b.successcount = 0 then 0
+                         else CAST(
+                           (c.outtimecount / b.successcount) * 100 AS DECIMAL(18, 0)
+                         )
+                      end as timelyrate,
+                      --超时完成数
+                      --FIX
+                      d.outtimecount as outtimecount,
+                      e.usetime as usetime
+                    FROM
+                      (
+                         --所有完成的工单个数
+                         SELECT
+                           count(*) as ordercount,
+                           min(order_type),
+                           current_user_id,
+                           current_user_name
+                         FROM
+                           (
+                              SELECT
+                                order_type,
+                                current_user_id,
+                                current_user_name,
+                                order_time,
+                                order_status
+                              FROM
+                                dm_order.dm_order_detials_f
+                              GROUP BY
+                                order_type,
+                                current_user_id,
+                                current_user_name,
+                                order_time,
+                                order_status
+                           )
+                         WHERE
+                           -- 周
+                           order_time > TO_CHAR(now() - INTERVAL '30 day', 'yyyy-MM-dd 00:00:00')
+                           and order_time < TO_CHAR(now(), 'yyyy-MM-dd 00:00:00')
+                         GROUP BY
+                           current_user_id,
+                           current_user_name
+                      ) a,(
+                      
+                         --所有完成的工单个数
+                         SELECT
+                           count(*) as successcount,
+                           min(order_type),
+                           current_user_id,
+                           current_user_name
+                         FROM
+                           (
+                              SELECT
+                                order_type,
+                                current_user_id,
+                                current_user_name,
+                                order_time,
+                                order_status
+                              FROM
+                                dm_order.dm_order_detials_f
+                           )
+                         WHERE
+                           -- 完成
+                           order_status = 'FF' -- 周
+                           AND order_time > TO_CHAR(now() - INTERVAL '30 day', 'yyyy-MM-dd 00:00:00')
+                           and order_time < TO_CHAR(now(), 'yyyy-MM-dd 00:00:00')
+                         GROUP BY
+                           current_user_id,
+                           current_user_name
+                      ) b,(
+                         --2.及时率-超时总数-被除数-ok
+                         -- 公式: 未超时数/总完成数
+                         SELECT
+                           count(*) as outtimecount,
+                           min(order_type),
+                           current_user_id,
+                           current_user_name
+                         FROM
+                           (
+                              SELECT
+                                order_type,
+                                current_user_id,
+                                current_user_name,
+                                order_time,
+                                outtime_status,
+                                order_status
+                              FROM
+                                dm_order.dm_order_detials_f
+                              GROUP BY
+                                order_type,
+                                current_user_id,
+                                current_user_name,
+                                order_time,
+                                outtime_status,
+                                order_status
+                           )
+                         WHERE
+                           -- 完成
+                           order_status = 'FF'
+                           -- 未超时
+                           AND outtime_status = '1' -- 周
+                           AND order_time > TO_CHAR(now() - INTERVAL '30 day', 'yyyy-MM-dd 00:00:00')
+                           and order_time < TO_CHAR(now(), 'yyyy-MM-dd 00:00:00')
+                         GROUP BY
+                           current_user_id,
+                           current_user_name
+                      ) c,
+                      (
+                         SELECT
+                           a.current_user_name as "current_user_name",
+                           a.current_user_id as "current_user_id",
+                           min(b.outtimecount) as outtimecount,
+                           min(a.order_type) as order_type 
+                         FROM
+                           (
+                              select current_user_id,current_user_name,order_type,sig_order_subtype
+                              from 
+                                   dm_order.dm_order_detials_f
+                              GROUP BY
+                                   current_user_id,current_user_name,order_type,sig_order_subtype
+                           ) a
+                           LEFT JOIN(
+                              -- 公式: 超时完成数
+                              SELECT
+                                coalesce(count(*), 0) as outtimecount,
+                                min(order_type) as order_type,
+                                current_user_id,
+                                current_user_name
+                              FROM
+                                (
+                                   SELECT
+                                     order_type,
+                                     current_user_id,
+                                     current_user_name,
+                                     order_time,
+                                     outtime_status,
+                                     order_status
+                                   FROM
+                                     dm_order.dm_order_detials_f
+                                   GROUP BY
+                                     order_type,
+                                     current_user_id,
+                                     current_user_name,
+                                     order_time,
+                                     outtime_status,
+                                     order_status
+                                )
+                              WHERE
+                                -- 完成
+                                order_status = 'FF'
+                                -- 未超时
+                                AND outtime_status = '2' -- 周
+                                AND order_time > TO_CHAR(now() - INTERVAL '30 day', 'yyyy-MM-dd 00:00:00')
+                                and order_time < TO_CHAR(now(), 'yyyy-MM-dd 00:00:00')
+                              GROUP BY
+                                current_user_id,
+                                current_user_name
+                         ) b ON 
+                           b.current_user_id = a.current_user_id 
+                           and 
+                           b.current_user_name = a.current_user_name
+                           GROUP BY
+                                a.current_user_id,
+                                a.current_user_name
+                      ) d,
+                      (
+                         --2.总用时
+                         SELECT
+                           sum(track_update_time-track_create_time) as usetime,
+                           min(order_type) as order_type,
+                           current_user_id,
+                           current_user_name
+                         FROM
+                           (
+                              SELECT
+                                order_type,
+                                current_user_id,
+                                current_user_name,
+                                order_time,
+                                outtime_status,
+                                order_status,
+                                min(track_update_time) as track_update_time,
+                                min(track_create_time) as track_create_time
+                              FROM
+                                dm_order.dm_order_detials_f
+                              GROUP BY
+                                order_type,
+                                current_user_id,
+                                current_user_name,
+                                order_time,
+                                outtime_status,
+                                order_status
+                           )
+                         WHERE
+                           -- 完成
+                           order_status = 'FF'
+                           AND order_time > TO_CHAR(now() - INTERVAL '30 day', 'yyyy-MM-dd 00:00:00')
+                           and order_time < TO_CHAR(now(), 'yyyy-MM-dd 00:00:00')
+                         GROUP BY
+                           current_user_id,
+                           current_user_name
+                      ) e
+                    WHERE
+                      a.current_user_id = b.current_user_id
+                      and b.current_user_id = c.current_user_id
+                      and d.current_user_id = c.current_user_id
+                      and d.current_user_id = e.current_user_id
+                      and a.current_user_name = b.current_user_name
+                      and b.current_user_name = c.current_user_name
+                      and d.current_user_name = c.current_user_name
+                      and d.current_user_name = e.current_user_name
+                      
+                      
+                      
+               ) a ,
+
+    
+               (
+                   select
+                      order_type,
+                      current_user_name,
+                      current_user_id,
+                      qiangdian,
+                      ruodian,
+                      nuantong,
+                      zongxiu,
+                      qingjie,
+                      lvhua,
+                      anbao,
+                      (case
+                       when to_number(other) = 0 then 0
+                       when to_number(other) is null then 0
+                       else to_number(other)
+                      end )+
+                      (  
+                      case
+                       when to_number(other1) = 0 then 0
+                       when to_number(other1) is null then 0
+                       else to_number(other1)
+                      end ) as other
+                    FROM
+                 (
+                    select
+                     min(order_type) as "order_type",
+                     current_user_name as "current_user_name",
+                     current_user_id as "current_user_id",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '2_8' then total
+                          end
+                        ),
+                        ''
+                     ) as "qiangdian",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '2_6' then total
+                          end
+                        ),
+                        ''
+                     ) as "ruodian",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '2_5' then total
+                          end
+                        ),
+                        ''
+                     ) as "nuantong",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '2_1' then total
+                          end
+                        ),
+                        ''
+                     ) as "zongxiu",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '1_1' then total
+                          end
+                        ),
+                        ''
+                     ) as "qingjie",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '1_2' then total
+                          end
+                        ),
+                        ''
+                     ) as "lvhua",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '3_2' then total
+                          end
+                        ),
+                        ''
+                     ) as "anbao",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '1_3' then total
+                          end
+                        ),
+                        ''
+                     ) as "other",
+                     string_agg(
+                        (
+                          case
+                             id
+                             when '3_3' then total
+                          end
+                        ),
+                        ''
+                     ) as "other1"
+                   from
+                   (
+                        --- 右边-工单子类
+                        SELECT
+                          b.order_type as "order_type",
+                          b.sig_order_subtype as "sig_order_subtype",
+                          a.current_user_name as "current_user_name",
+                          a.current_user_id as "current_user_id",
+                          b.total as "total",
+                          concat(b.order_type,'_',b.sig_order_subtype) as id
+                        FROM
+                          (
+                             select current_user_id,current_user_name,order_type,sig_order_subtype
+                             from 
+                                  dm_order.dm_order_detials_f
+                             GROUP BY
+                                  current_user_id,current_user_name,order_type,sig_order_subtype
+                          ) a
+                          LEFT JOIN( 
+                             --工单子服务分类总工单数
+                             SELECT
+                               count(*) as total,
+                               order_type,
+                               sig_order_subtype,
+                               current_user_id,
+                               current_user_name
+                             FROM
+                               (
+                                 select current_user_id,current_user_name,order_type,sig_order_subtype,order_id
+                                 from 
+                                      dm_order.dm_order_detials_f
+                                 WHERE
+                                   order_status = 'FF' -- 工单超时标记
+                                   -- 周
+                                   AND order_time > TO_CHAR(now() - INTERVAL '30 day', 'yyyy-MM-dd 00:00:00')
+                                   and order_time < TO_CHAR(now(), 'yyyy-MM-dd 00:00:00')
+                               )
+                             GROUP BY
+                               order_type,
+                               sig_order_subtype,
+                               current_user_id,
+                               current_user_name
+                          ) b 
+                          ON 
+                          b.current_user_id = a.current_user_id 
+                          and 
+                          b.current_user_name = a.current_user_name 
+                          and 
+                          b.order_type = a.order_type
+                          and 
+                          b.sig_order_subtype = a.sig_order_subtype          
+                        ORDER BY
+                             a.current_user_id,a.current_user_name 
+                        )
+                     GROUP BY
+                        current_user_id,
+                        current_user_name
+                 )
+               )b
+
+
+               where
+               b.current_user_id = a.current_user_id 
+               and 
+               b.current_user_name = a.current_user_name 
+               and 
+               b.order_type = a.order_type 
+        ) b
+        
+ON b.order_type = a.order_type    
+GROUP BY
+    b.current_user_id,
+    b.current_user_name,
+    a.order_type_name,
+    b.total,
+    b.successrate,
+    b.timelyrate,
+    b.outtimecount,
+    b.usetime,
+
+    b.qiangdian,
+    b.ruodian,
+    b.nuantong,
+    b.zongxiu,
+    b.qingjie,
+    b.lvhua,
+    b.anbao,
+    b.other
+ORDER BY
+    a.order_type_name

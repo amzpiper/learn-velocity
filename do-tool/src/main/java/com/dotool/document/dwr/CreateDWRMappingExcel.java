@@ -20,6 +20,7 @@ public class CreateDWRMappingExcel {
 
 
 	public static void main(String[] args) throws Exception {
+//			List<Table> tableList = ReadFQExcel.read(DocumentMain.fileName);
 			List<Table> tableList = ReadFQExcel.read(DocumentMain.fileName);
 			System.out.println(tableList.size());
 

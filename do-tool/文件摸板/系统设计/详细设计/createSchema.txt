@@ -1,0 +1,28 @@
+--商管贴源层--
+CREATE SCHEMA dwi_bm
+
+
+
+--工单主题层--
+CREATE SCHEMA dwr_order
+
+--空间主题层--
+CREATE SCHEMA dwr_space;
+
+--企业主题层--
+CREATE SCHEMA dwr_enterprise
+
+--人员信息主题层--
+CREATE SCHEMA dwr_dim
+
+-- 通行信息主题层--
+CREATE SCHEMA dwr_access;
+
+-- 部门信息主题层--
+CREATE SCHEMA dwr_dim
+
+
+
+--工单专题--
+CREATE SCHEMA dm_order;
+

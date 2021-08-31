@@ -1,0 +1,274 @@
+
+
+-- 工单详情表 --
+DROP TABLE IF EXISTS dm_order.dm_order_detials_f;
+CREATE TABLE IF NOT EXISTS dm_order.dm_order_detials_f
+(
+    id serial(50),
+    order_id bigint(20),
+    order_no character varying(96),
+    sige_order_id character varying(60),
+    order_type integer(3),
+    order_type_name character varying(300),
+    addr character varying(384),
+    description character varying(1500),
+    connect_no character varying(60),
+    connector character varying(192),
+    level_no integer(3),
+    create_time timestamp(6),
+    source_type integer(3),
+    order_time timestamp(6),
+    order_status character varying(6),
+    com_name character varying(192),
+    com_type integer(3),
+    company_level integer(1),
+    public_flag integer(1),
+    proj_name character varying(384),
+    del_flag integer(1),
+    outtime_status integer(1),
+    sig_order_subtype integer(3),
+    sig_order_subtype_name character varying(300),
+    evaluate_level integer(1),
+    track_name character varying(192),
+    track_code character varying(192),
+    track_index character varying(192),
+    status integer(3),
+    over_status integer(4),
+    hang_up_status integer(4),
+    standard_time integer(4),
+    track_create_time timestamp(6),
+    track_update_time timestamp(6),
+    current_user_id character varying(192),
+    current_user_name character varying(192),
+    current_user_type integer(11),
+    event_type character varying(100),
+    event_user_id character varying(192),
+    event_time timestamp(6),
+    event_user_name character varying(300),
+    target_user_id character varying(192),
+    target_user_name character varying(300),
+    sup_flag character varying(60),
+    concat_create_time character varying(300),
+    concat_relieve_time character varying(300),
+    concat_hang_status character varying(300),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_order.dm_order_detials_f IS '工单详情表';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.id IS '系统id';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.order_id IS '工单id';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.order_no IS '工单号';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.sige_order_id IS '四格服务工单id';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.order_type IS '问题类型id';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.order_type_name IS '问题类型名称';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.addr IS '问题地点';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.description IS '问题描述';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.connect_no IS '联系方式';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.connector IS '联系人';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.level_no IS '紧急程度';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.create_time IS '创建事件';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.source_type IS '来源类型';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.order_time IS '报修时间';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.order_status IS '工单状态';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.com_name IS '企业名称';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.com_type IS '公司类型';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.company_level IS '企业等级';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.public_flag IS '是否公区';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.proj_name IS '项目名称';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.del_flag IS '删除标识';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.outtime_status IS '超时状态';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.sig_order_subtype IS '四格问题子类型';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.sig_order_subtype_name IS '四格问题子类型名称';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.evaluate_level IS '评价等级';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.track_name IS '环节名称';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.track_code IS '环节编码';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.track_index IS '环节序号';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.status IS '环节状态';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.over_status IS '超时状态';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.hang_up_status IS '挂起状态';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.standard_time IS '标准时长';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.track_create_time IS '环节开始时间';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.track_update_time IS '环节更新时间';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.current_user_id IS '处理人ID（四格）';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.current_user_name IS '待处理人员姓名';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.current_user_type IS '待处理人员类型';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.event_type IS '事件类型(p)';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.event_user_id IS '事件处理人id';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.event_time IS '事件时间';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.event_user_name IS '事件处理人姓名(p)';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.target_user_id IS '目标用户id';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.target_user_name IS '目标用户姓名(p)';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.sup_flag IS '督办级别';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.concat_create_time IS '创建时间(p)';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.concat_relieve_time IS '挂起解挂用时(p)';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.concat_hang_status IS '挂起结果(p)';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_order.dm_order_detials_f.dw_batch_number IS '数据批次号';
+
+
+-- 工单概览表 --
+DROP TABLE IF EXISTS dm_order.dm_order_overview_f;
+CREATE TABLE IF NOT EXISTS dm_order.dm_order_overview_f
+(
+    id serial(50),
+    order_id bigint(20),
+    order_type integer(3),
+    order_type_name character varying(300),
+    order_time timestamp(6),
+    order_status character varying(6),
+    del_flag integer(1),
+    outtime_status integer(1),
+    public_flag integer(1),
+    sig_order_subtype integer(3),
+    sig_order_subtype_name character varying(300),
+    evaluate_level integer(1),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_order.dm_order_overview_f IS '工单概览表';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.id IS '系统id';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.order_id IS '';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.order_type IS '问题类型';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.order_type_name IS '问题类型名称';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.order_time IS '报修时间';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.order_status IS '工单状态';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.del_flag IS '删除标识';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.outtime_status IS '超时状态';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.public_flag IS '是否公区';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.sig_order_subtype IS '四格问题子类型';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.sig_order_subtype_name IS '四格问题子类型名称';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.evaluate_level IS '评价等级';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_order.dm_order_overview_f.dw_batch_number IS '数据批次号';
+
+
+-- 工单类型表 --
+DROP TABLE IF EXISTS dm_order.dm_sig_order_subtype_f;
+CREATE TABLE IF NOT EXISTS dm_order.dm_sig_order_subtype_f
+(
+    id serial(50),
+    order_type integer(3),
+    order_type_name character varying(300),
+    sig_order_subtype integer(3),
+    evaluate_level integer(1),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_order.dm_sig_order_subtype_f IS '工单类型表';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.id IS '系统id';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.order_type IS '问题类型';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.order_type_name IS '问题类型名称';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.sig_order_subtype IS '四格问题子类型';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.evaluate_level IS '评价等级';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_order.dm_sig_order_subtype_f.dw_batch_number IS '数据批次号';
+
+
+-- 完成率部门周报表 --
+DROP TABLE IF EXISTS dm_order.dm_successrate_week_emp_f;
+CREATE TABLE IF NOT EXISTS dm_order.dm_successrate_week_emp_f
+(
+    id serial(50),
+    order_type_name character varying(60),
+    sig_order_subtype character varying(60),
+    total character varying(60),
+    successrate character varying(60),
+    timelyrate character varying(60),
+    paidantimelyrate character varying(60),
+    jiedantimelyrate character varying(60),
+    chulitimelyrate character varying(60),
+    shenhetimelyrate character varying(60),
+    huifangtimelyrate character varying(60),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_order.dm_successrate_week_emp_f IS '完成率部门周报表';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.id IS '系统id';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.order_type_name IS '类型表id';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.sig_order_subtype IS '子服务类型';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.total IS '总工单数';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.successrate IS '完成率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.timelyrate IS '及时率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.paidantimelyrate IS '派单及时率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.jiedantimelyrate IS '接单及时率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.chulitimelyrate IS '处理及时率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.shenhetimelyrate IS '审核及时率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.huifangtimelyrate IS '回访及时率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_order.dm_successrate_week_emp_f.dw_batch_number IS '数据批次号';
+
+
+-- 完成率人员周报表 --
+DROP TABLE IF EXISTS dm_order.dm_successrate_week_people_f;
+CREATE TABLE IF NOT EXISTS dm_order.dm_successrate_week_people_f
+(
+    id serial(50),
+    order_type_name character varying(60),
+    current_user_name character varying(60),
+    current_user_id character varying(60),
+    total character varying(60),
+    usetime character varying(60),
+    successrate character varying(60),
+    timelyrate character varying(60),
+    outtimecount character varying(60),
+    qiangdian character varying(60),
+    ruodian character varying(60),
+    nuantong character varying(60),
+    zongxiu character varying(60),
+    qingjie character varying(60),
+    lvhua character varying(60),
+    anbao character varying(60),
+    other character varying(60),
+    dw_creation_by character varying(100),
+    dw_creation_date timestamp(6),
+    dw_last_update_by character varying(100),
+    dw_last_update_date timestamp(6),
+    dw_batch_number bigint
+) ;
+COMMENT ON TABLE dm_order.dm_successrate_week_people_f IS '完成率人员周报表';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.id IS '系统id';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.order_type_name IS '部门名称';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.current_user_name IS '员工名';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.current_user_id IS '员工id';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.total IS '总工单数';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.usetime IS '总用时';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.successrate IS '完成率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.timelyrate IS '及时率';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.outtimecount IS '超时数';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.qiangdian IS '强电';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.ruodian IS '弱电';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.nuantong IS '暖通';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.zongxiu IS '综修';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.qingjie IS '清洁';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.lvhua IS '绿化';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.anbao IS '安保';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.other IS '其他';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.dw_creation_by IS '数据创建者';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.dw_creation_date IS '数据创建时间';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.dw_last_update_by IS '数据最后更新者';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.dw_last_update_date IS '数据最后更新时间';
+COMMENT ON COLUMN dm_order.dm_successrate_week_people_f.dw_batch_number IS '数据批次号';

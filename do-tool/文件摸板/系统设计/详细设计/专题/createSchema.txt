@@ -1,0 +1,6 @@
+
+--工单专题--
+CREATE SCHEMA dm_order;
+
+--通行专题--
+CREATE SCHEMA dm_access;
