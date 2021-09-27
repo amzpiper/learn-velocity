@@ -59,22 +59,13 @@ public class CreateDWISQL {
 
 		String filePath = "";
 
-
 		String[] paths = {
-//				"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\医疗\\数据及集成服务-DWI设计汇总表（医疗BI）-V1.0.xlsx",
-//				"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\ABC\\数据及集成服务-DWI设计汇总表（安防）-V1.0.xlsx",
-//				"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\能耗\\数据及集成服务-DWI设计汇总表（安防）-V1.0.xlsx",
-//				"D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\贴源层\\商管\\北京华贸-数据及集成服务-DWI设计汇总表-V1.0.xlsx",
-				"E:\\融通地产-数据及集成服务-DWI设计汇总表-V1.0.xlsx"
-//				"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\服务平台\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（园区服务平台）-V1.1.xlsx",
+				//"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\医疗\\数据及集成服务-DWI设计汇总表（医疗BI）-V1.0.xlsx",
+				//"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\ABC\\数据及集成服务-DWI设计汇总表（安防）-V1.0.xlsx",
+				//"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\能耗\\数据及集成服务-DWI设计汇总表（安防）-V1.0.xlsx",
 
-//				"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\管理平台（飞企）\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（园区管理平台_飞企）-V1.1.xlsx"
-//				"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\管理平台（普天）\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（园区管理平台_普天）-V1.2.xlsx",
-//				"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\国有资产\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（国有资产）-V1.1.xlsx",
-				//"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\环保\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（环保监测）-V1.0.xlsx",
-//				"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\能耗监测\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（能耗监测）-V1.0.xlsx"
-//				"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\消防\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（智慧消防）-V1.2.xlsx",
-				//"E:\\cc_project\\nwim\\SmartPark\\重庆璧山\\03、系统设计\\详细设计\\贴源层\\智慧安防\\重庆璧山高新区智慧园区-数据及集成服务-DWI设计汇总表（智慧安防）-V1.0.xlsx"
+				//"D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\贴源层\\商管\\北京华贸-数据及集成服务-DWI设计汇总表-V1.0.xlsx",
+				"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\一碑\\融通地产-一碑-数据及集成服务-DWI设计汇总表-V1.0.xlsx"
 		};
 
 		for (String path : paths) {
@@ -82,7 +73,6 @@ public class CreateDWISQL {
 			createDWISQL(path);
 			createSQL(path);
 		}
-
 	}
 
 	public static void createDWISQL(String filePath) throws Exception {
@@ -141,15 +131,15 @@ public class CreateDWISQL {
 				for (int a = 2; a <= count; a++) {
 					Row cr = sheet.getRow(a);
 					// System.out.println(a);
-//					if (null == cr || null == cr.getCell(3) || !checkCell(cr.getCell(3).getStringCellValue())) {
-//						break;
-//					}
+					//if (null == cr || null == cr.getCell(3) || !checkCell(cr.getCell(3).getStringCellValue())) {
+					//	break;
+					//}
 					if (null == cr || null == cr.getCell(2) || !checkCell(cr.getCell(2).getStringCellValue())) {
 						break;
 					}
-//					if(list.contains(getString(cr.getCell(3)).replaceAll("\\s+", "").toLowerCase())) {
-//						continue;
-//					}
+					//if(list.contains(getString(cr.getCell(3)).replaceAll("\\s+", "").toLowerCase())) {
+					//	continue;
+					//}
 					if(list.contains(getString(cr.getCell(2)).replaceAll("\\s+", "").toLowerCase())) {
 						continue;
 					}
@@ -166,59 +156,62 @@ public class CreateDWISQL {
 						lengthStr = "";
 					}else if(cr.getCell(4).getStringCellValue().equalsIgnoreCase("date")){
 						lengthStr = "";
+					}else if(cr.getCell(4).getStringCellValue().equalsIgnoreCase("bigint")){
+						lengthStr = "";
 					}
 					if (a == 2) {
-
-						//id =getString(cr.getCell(3)).replaceAll("\\s+", "");
 						id =getString(cr.getCell(2)).replaceAll("\\s+", "");
 						tableCommon = cr.getCell(1).getStringCellValue().toString().replaceAll("\\s+", "");
-//						sb.append("    \"" + id.toLowerCase() + "\" "
-//								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", "")));
-						sb.append("    \"" + id.toLowerCase() + "\" "
-								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))+lengthStr);
-						//map1.put(id, changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", "")));
+						sb.append(
+								"    \""
+								+ id.toLowerCase()
+								+ "\" "
+								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))
+								+lengthStr);
 						map1.put(id, changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))+lengthStr);
 					} else {
-						//sb.append(",\n    \"" + getString(cr.getCell(3)).replaceAll("\\s+", "").toLowerCase() + "\" "
-						//		+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", "")));
-						sb.append(",\n    \"" + getString(cr.getCell(2)).replaceAll("\\s+", "").toLowerCase() + "\" "
-								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))+lengthStr);
-						//map1.put(getString(cr.getCell(3)).toLowerCase().replaceAll("\\s+", ""), changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", "")));
-						map1.put(getString(cr.getCell(2)).toLowerCase().replaceAll("\\s+", ""), changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))+lengthStr);
+						sb.append(
+								",\n    \""
+								+ getString(cr.getCell(2)).replaceAll("\\s+", "").toLowerCase()
+								+ "\" "
+								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))
+								+lengthStr
+						);
+						map1.put(
+								getString(cr.getCell(2)).toLowerCase().replaceAll("\\s+", ""),
+								changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))+lengthStr
+						);
 					}
-//					common.append("COMMENT ON COLUMN " + schema + "."
-//							+ tableNameCell.getStringCellValue().toString().replaceAll("\\s+", "").toLowerCase() + "."
-//							+ getString(cr.getCell(3)) + " IS '"
-//							+ getString(cr.getCell(2)) + "';\n");
+
+					//common.append("COMMENT ON COLUMN " + schema + "."
+					//		+ tableNameCell.getStringCellValue().toString().replaceAll("\\s+", "").toLowerCase() + "."
+					//		+ getString(cr.getCell(3)) + " IS '"
+					//		+ getString(cr.getCell(2)) + "';\n");
 					common.append("COMMENT ON COLUMN " + schema + "."
 							+ tableNameCell.getStringCellValue().toString().replaceAll("\\s+", "").toLowerCase() + "."
 							+ getString(cr.getCell(2)) + " IS '"
 							+ getString(cr.getCell(3)) + "';\n");
 				}
+
 				//企业服务临时加
 				//sb.append(",\n    \"for_last_edittime\" timestamp(6)");
 
-				sb.append(",\n    \"dw_creation_by\"  character varying(100)");
-				sb.append(",\n    \"dw_creation_date\" timestamp(6) without time zone default now()");
-				sb.append(",\n    \"dw_last_update_by\"  character varying(100)");
-				sb.append(",\n    \"dw_last_update_date\" timestamp(6) without time zone default now()");
-				sb.append(",\n    \"dw_batch_number\"  bigint");
-
+				sb.append(",\n    \"dw_creation_by\"  varchar(100)");
+				sb.append(",\n    \"dw_creation_date\" timestamp(6) default now()");
+				sb.append(",\n    \"dw_last_update_by\"  varchar(100)");
+				sb.append(",\n    \"dw_last_update_date\" timestamp(6) default now()");
+				sb.append(",\n    \"dw_batch_number\"  int8");
 
 				for(Map.Entry<String, String> en : map.entrySet()) {
 					if(filePath.indexOf(en.getKey()) !=-1) {
-						sb.append(",\n    \"dw_data_source_id\"  character varying(5) default '"+en.getValue()+"'");
-						sb.append(",\n    \"dw_data_source\"  character varying(100) default'"+en.getKey()+"'");
+						sb.append(",\n    \"dw_data_source_id\"  varchar(5) default '"+en.getValue()+"'");
+						sb.append(",\n    \"dw_data_source\"  varchar(100) default'"+en.getKey()+"'");
 					}
 				}
 
+				//sb.append(")WITH(orientation=row,compression=no) ");
+				//sb.append("DISTRIBUTE BY HASH(\"" + id + "\") ;\n");
 
-
-
-
-
-				sb.append(")WITH(orientation=row,compression=no) ");
-				sb.append("DISTRIBUTE BY HASH(\"" + id + "\") ;\n");
 				sb.append("COMMENT ON TABLE \"" + schema + "\".\""
 						+ tableNameCell.getStringCellValue().replaceAll("\\s+", "") + "\" IS '" + tableCommon + "';\n");
 				System.out.println(sb.toString() + common.toString());
@@ -414,10 +407,10 @@ public class CreateDWISQL {
 			return "int";
 		}
 		else if (cell.toUpperCase().startsWith("VARCHAR2")) {
-			return cell.toUpperCase().replace("VARCHAR2", " character varying");
+			return cell.toUpperCase().replace("VARCHAR2", "varchar");
 		}
 		else if (cell.toUpperCase().startsWith("VARCHAR")) {
-			return cell.toUpperCase().replace("VARCHAR", " character varying");
+			return cell.toUpperCase().replace("VARCHAR", "varchar");
 		} else if (cell.toUpperCase().startsWith("TIMESTAMP")) {
 			return cell.toLowerCase() + "(6) without time zone";
 		} else if (cell.toUpperCase().startsWith("DATETIME") || cell.toUpperCase().startsWith("DATE")) {
@@ -425,9 +418,9 @@ public class CreateDWISQL {
 		} else if (cell.toUpperCase().startsWith("DOUBLE")) {
 			return cell.toUpperCase().replace("DOUBLE", "number");
 		} else if (cell.toUpperCase().startsWith("INT")) {
-			return "integer";
+			return "int8";
 		} else if (cell.toUpperCase().startsWith("BIGINT")) {
-			return "bigint";
+			return "int8";
 		} else if (cell.toUpperCase().startsWith("TINYINT")) {
 			return "tinyint";
 		} else if (cell.toUpperCase().startsWith("FLOAT")) {

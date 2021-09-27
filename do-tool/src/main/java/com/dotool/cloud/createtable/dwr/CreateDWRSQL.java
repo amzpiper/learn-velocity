@@ -19,21 +19,34 @@ public class CreateDWRSQL {
 	public static void main(String[] args) throws Exception {
 		
 		
-//		File file = new File("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\系统设计\\详细设计\\主题层");
-//		List<File> files = getNeedFile(file);
-//		for(File cf : files) {
-			//生成单独目录下的sql时放开
-//			if(cf.getName().indexOf("能耗") != -1) {
-//				System.out.println("9999999999");
-//				createDWISQL(cf.getPath());
-//				continue;
-//			}
-			//createDWISQL(cf.getPath());
-//		}
+		//File file = new File("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\系统设计\\详细设计\\主题层");
+		//List<File> files = getNeedFile(file);
+		//for(File cf : files) {
+		//	生成单独目录下的sql时放开
+		//	if(cf.getName().indexOf("能耗") != -1) {
+		//		System.out.println("9999999999");
+		//		createDWISQL(cf.getPath());
+		//		continue;
+		//	}
+		//	createDWISQL(cf.getPath());
+		//}
 		/*
 		 * for(String path :filePath) { createDWISQL(path); }
 		 */
-		createDWISQL("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\主题层\\工单\\02物理模型设计\\DWR-工单-物理表设计-V1.0.xlsx");
+
+		//createDWISQL("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\主题层\\工单\\02物理模型设计\\DWR-工单-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\车辆\\02物理模型设计\\DWR-车辆-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\工单\\02物理模型设计\\DWR-工单-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\客户服务\\02物理模型设计\\DWR-客户服务-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\能耗\\02物理模型设计\\DWR-能耗-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\品质核查\\02物理模型设计\\DWR-品质核查-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\人员\\02物理模型设计\\DWR-人员-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\设备\\02物理模型设计\\DWR-设备-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\巡检\\02物理模型设计\\DWR-巡检-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\医院专项\\02物理模型设计\\DWR-医院专项-物理表设计-V1.0.xlsx");
+		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\隐患\\02物理模型设计\\DWR-隐患-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\资产运营\\02物理模型设计\\DWR-资产运营-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\组织\\02物理模型设计\\DWR-组织-物理表设计-V1.0.xlsx");
 	}
 
 	public static void createDWISQL(String filePath) throws Exception {
@@ -116,10 +129,17 @@ public class CreateDWRSQL {
 
 						id =getString(cr.getCell(3)).toLowerCase().replaceAll("\\s+", "");
 						//tableCommon = getString(cr.getCell(1));
-						sb.append("    \"" + id + "\" " +getType(getString(cr.getCell(5)),length));
+						sb.append(
+								"    \"" + id.toLowerCase() + "\" "
+								+changeType(getString(cr.getCell(5)),length)
+						);
 					} else {
-						sb.append(",\n    \"" + getString(cr.getCell(3)).toLowerCase().replaceAll("\\s+", "") + "\" "
-								+ getType(getString(cr.getCell(5)),length));
+						sb.append(
+								",\n    \""
+								+ getString(cr.getCell(3)).toLowerCase().replaceAll("\\s+", "")
+								+ "\" "
+								+ changeType(getString(cr.getCell(5)),length)
+						);
 					}
 					common.append("COMMENT ON COLUMN " + schema + "."
 							+ tableNameCell.getStringCellValue().toString().replaceAll("\\s+", "").toLowerCase() + "."
@@ -127,11 +147,7 @@ public class CreateDWRSQL {
 							+ getString(cr.getCell(4)) + "';\n");
 				}
 
-
-
-
-
-				sb.append("\n)WITH(orientation=row,compression=no) ");
+				//sb.append("\n)WITH(orientation=row,compression=no) ");
 
 				StringBuilder sbDistr = new StringBuilder();
 				for(String key : list) {
@@ -141,19 +157,19 @@ public class CreateDWRSQL {
 					sbDistr.append("\""+key+"\"");
 				}
 				if(sbDistr.length() > 0) {
-					sb.append("\nDISTRIBUTE BY HASH("+sbDistr.toString()+") ");
+					//sb.append("\nDISTRIBUTE BY HASH("+sbDistr.toString()+") ");
 				}
-				//创建分区键
+				sb.append("\n) ");
 
-				sb.append("\nPARTITION BY RANGE (dw_creation_date)" + "\n(\n"+
-						"    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),\n"
-						+ "    PARTITION PMAX VALUES LESS THAN(MAXVALUE)" + "\n)" );
+				//创建分区键
+				//sb.append("\nPARTITION BY RANGE (dw_creation_date)" + "\n(\n"+
+				//		"    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),\n"
+				//		+ "    PARTITION PMAX VALUES LESS THAN(MAXVALUE)" + "\n)" );
 
 				sb.append(";\n");
 				sb.append("COMMENT ON TABLE \"" + schema + "\".\""
 						+ tableNameCell.getStringCellValue().replaceAll("\\s+", "") + "\" IS '" + getString(c2) + "';\n");
 				System.out.println(sb.toString() + common.toString());
-
 
 				PrintWriter pw = new PrintWriter(new FileWriter(file, true));
 				pw.write(sb.toString() + common.toString());
@@ -176,19 +192,49 @@ public class CreateDWRSQL {
 			return "int";
 		}
 		else if (cell.toUpperCase().startsWith("VARCHAR")) {
-			return cell.toUpperCase().replace("VARCHAR", " character varying");
+			return cell.toUpperCase().replace("VARCHAR", " varchar");
 		} else if (cell.toUpperCase().startsWith("TIMESTAMP")) {
-			return cell.toLowerCase() + " without time zone";
+			return cell.toLowerCase() + " ";
 		} else if (cell.toUpperCase().startsWith("DATETIME") || cell.toUpperCase().startsWith("DATE")) {
-			return "timestamp(6)" + " without time zone";
+			return "timestamp(6)" + " ";
 		} else if (cell.toUpperCase().startsWith("DOUBLE")) {
 			return cell.toUpperCase().replace("DOUBLE", "number");
 		} else if (cell.toUpperCase().startsWith("INT")) {
-			return "integer";
+			return "int8";
 		} else if (cell.toUpperCase().startsWith("BIGINT")) {
-			return "bigint";
+			return "int8";
 		} else if (cell.toUpperCase().startsWith("TINYINT")) {
-			return "tinyint";
+			return "int8";
+		} else if (cell.toUpperCase().startsWith("FLOAT")) {
+			return cell.toUpperCase().replace("FLOAT", "number");
+		}
+
+		return cell.toLowerCase();
+	}
+
+	public static String changeType(String cell,String length) {
+		cell = cell.replace("（", "(").replace("）", ")");
+		cell = getString(cell);
+		if (cell.toUpperCase().startsWith("mediumtext".toUpperCase())) {
+			return "text";
+		}
+		else if (cell.toUpperCase().startsWith("smallint".toUpperCase())) {
+			return "int4";
+		}
+		else if (cell.toUpperCase().startsWith("VARCHAR")) {
+			return cell.toUpperCase().replace("VARCHAR", " varchar") + "("+length+")";
+		} else if (cell.toUpperCase().startsWith("TIMESTAMP")) {
+			return cell.toLowerCase() + "("+length+")";
+		} else if (cell.toUpperCase().startsWith("DATETIME") || cell.toUpperCase().startsWith("DATE")) {
+			return "timestamp(6)" + " ";
+		} else if (cell.toUpperCase().startsWith("DOUBLE")) {
+			return cell.toUpperCase().replace("DOUBLE", "number");
+		} else if (cell.toUpperCase().startsWith("INT")) {
+			return "int8";
+		} else if (cell.toUpperCase().startsWith("BIGINT")) {
+			return "int8";
+		} else if (cell.toUpperCase().startsWith("TINYINT")) {
+			return "int8";
 		} else if (cell.toUpperCase().startsWith("FLOAT")) {
 			return cell.toUpperCase().replace("FLOAT", "number");
 		}
