@@ -4,48 +4,42 @@
 DROP TABLE IF EXISTS "dwr_order"."dwd_order_t_repairs_order_f";
 CREATE TABLE IF NOT EXISTS "dwr_order"."dwd_order_t_repairs_order_f"
 (
-    "id" serial(50),
-    "order_id" bigint(20),
-    "order_no" character varying(96),
-    "order_type" integer(3),
-    "addr" character varying(384),
-    "description" character varying(1500),
-    "connect_no" character varying(60),
-    "connector" character varying(192),
-    "level_no" integer(3),
-    "building_id" bigint(20),
+    "id" serial,
+    "order_id" int8,
+    "order_no" character varying,
+    "order_type" int8,
+    "addr" character varying,
+    "description" character varying,
+    "connect_no" character varying,
+    "connector" character varying,
+    "level_no" int8,
+    "building_id" int8,
     "create_time" timestamp(6),
-    "create_by" character varying(192),
-    "source_type" integer(3),
-    "voice_file" bigint(20),
+    "create_by" character varying,
+    "source_type" int8,
+    "voice_file" int8,
     "order_time" timestamp(6),
-    "order_status" character varying(6),
-    "version" bigint(20),
-    "credit_code" character varying(60),
-    "sige_order_id" character varying(60),
-    "order_create_name" character varying(192),
-    "sige_transport_user_id" character varying(192),
-    "sige_transport_euser_id" character varying(192),
-    "del_flag" integer(1),
-    "outtime_status" integer(1),
-    "sig_order_subtype" integer(3),
-    "sig_community_id" character varying(150),
-    "evalue_status" integer(1),
-    "proj_id" bigint(20),
-    "evaluate_level" integer(1),
-    "evaluate_description" character varying(768),
-    "dw_creation_by" character varying(100),
+    "order_status" character varying,
+    "version" int8,
+    "credit_code" character varying,
+    "sige_order_id" character varying,
+    "order_create_name" character varying,
+    "sige_transport_user_id" character varying,
+    "sige_transport_euser_id" character varying,
+    "del_flag" int8,
+    "outtime_status" int8,
+    "sig_order_subtype" int8,
+    "sig_community_id" character varying,
+    "evalue_status" int8,
+    "proj_id" int8,
+    "evaluate_level" int8,
+    "evaluate_description" character varying,
+    "dw_creation_by" character varying,
     "dw_creation_date" timestamp(6),
-    "dw_last_update_by" character varying(100),
+    "dw_last_update_by" character varying,
     "dw_last_update_date" timestamp(6),
-    "dw_batch_number" bigint
-)WITH(orientation=row,compression=no) 
-DISTRIBUTE BY HASH("order_no") 
-PARTITION BY RANGE (dw_creation_date)
-(
-    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),
-    PARTITION PMAX VALUES LESS THAN(MAXVALUE)
-);
+    "dw_batch_number" int8
+) ;
 COMMENT ON TABLE "dwr_order"."dwd_order_t_repairs_order_f" IS '报事报修工单表';
 COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.id IS '系统id';
 COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.order_id IS '工单id';
@@ -88,43 +82,37 @@ COMMENT ON COLUMN dwr_order.dwd_order_t_repairs_order_f.dw_batch_number IS '数�
 DROP TABLE IF EXISTS "dwr_order"."dwd_order_t_repair_track_f";
 CREATE TABLE IF NOT EXISTS "dwr_order"."dwd_order_t_repair_track_f"
 (
-    "id" serial(50),
-    "track_id" bigint(20),
-    "track_name" character varying(192),
-    "status_name" character varying(192),
-    "track_code" character varying(192),
-    "status" integer(3),
-    "order_id" bigint(20),
-    "track_desc" character varying(384),
-    "current_user_id" character varying(192),
-    "current_euser_id" character varying(192),
-    "current_user_name" character varying(192),
-    "current_user_type" integer(11),
-    "current_user_tel" character varying(60),
-    "review_result" character varying(3),
+    "id" serial,
+    "track_id" int8,
+    "track_name" character varying,
+    "status_name" character varying,
+    "track_code" character varying,
+    "status" int8,
+    "order_id" int8,
+    "track_desc" character varying,
+    "current_user_id" character varying,
+    "current_euser_id" character varying,
+    "current_user_name" character varying,
+    "current_user_type" int8,
+    "current_user_tel" character varying,
+    "review_result" character varying,
     "create_time" timestamp(6),
-    "create_by" character varying(192),
+    "create_by" character varying,
     "update_time" timestamp(6),
-    "update_by" character varying(192),
-    "version" bigint(20),
-    "sige_track_id" bigint(20),
-    "sige_order_id" character varying(60),
-    "over_type" integer(11),
-    "deal_advise" varchar(3072),
-    "deal_photos" varchar(3072),
-    "deal_sign_photos" varchar(3072),
-    "dw_creation_by" character varying(100),
+    "update_by" character varying,
+    "version" int8,
+    "sige_track_id" int8,
+    "sige_order_id" character varying,
+    "over_type" int8,
+    "deal_advise"  varchar(3072),
+    "deal_photos"  varchar(3072),
+    "deal_sign_photos"  varchar(3072),
+    "dw_creation_by" character varying,
     "dw_creation_date" timestamp(6),
-    "dw_last_update_by" character varying(100),
+    "dw_last_update_by" character varying,
     "dw_last_update_date" timestamp(6),
-    "dw_batch_number" bigint
-)WITH(orientation=row,compression=no) 
-DISTRIBUTE BY HASH("track_name") 
-PARTITION BY RANGE (dw_creation_date)
-(
-    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),
-    PARTITION PMAX VALUES LESS THAN(MAXVALUE)
-);
+    "dw_batch_number" int8
+) ;
 COMMENT ON TABLE "dwr_order"."dwd_order_t_repair_track_f" IS '工单环节表';
 COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.id IS '系统id';
 COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.track_id IS '环节主键';
@@ -162,40 +150,34 @@ COMMENT ON COLUMN dwr_order.dwd_order_t_repair_track_f.dw_batch_number IS '数�
 DROP TABLE IF EXISTS "dwr_order"."dwd_order_t_repair_event_f";
 CREATE TABLE IF NOT EXISTS "dwr_order"."dwd_order_t_repair_event_f"
 (
-    "id" serial(50),
-    "event_id" bigint(20),
-    "event_type" integer(3),
-    "event_name" character varying(60),
+    "id" serial,
+    "event_id" int8,
+    "event_type" int8,
+    "event_name" character varying,
     "event_time" timestamp(6),
-    "event_user_id" character varying(192),
-    "event_euser_id" character varying(192),
-    "event_user_name" character varying(192),
-    "target_user_id" character varying(192),
-    "target_euser_id" character varying(192),
-    "target_user_name" character varying(192),
-    "track_id" bigint(20),
+    "event_user_id" character varying,
+    "event_euser_id" character varying,
+    "event_user_name" character varying,
+    "target_user_id" character varying,
+    "target_euser_id" character varying,
+    "target_user_name" character varying,
+    "track_id" int8,
     "plan_relieve_time" timestamp(6),
-    "remark" character varying(192),
-    "hang_status" integer(11),
+    "remark" character varying,
+    "hang_status" int8,
     "fact_relieve_hang" timestamp(6),
-    "review_advise" character varying(192),
-    "comment_type" integer(11),
-    "photo" character varying(384),
-    "sup_flag" character varying(60),
+    "review_advise" character varying,
+    "comment_type" int8,
+    "photo" character varying,
+    "sup_flag" character varying,
     "create_time" timestamp(6),
-    "sige_track_id" bigint(20),
-    "dw_creation_by" character varying(100),
+    "sige_track_id" int8,
+    "dw_creation_by" character varying,
     "dw_creation_date" timestamp(6),
-    "dw_last_update_by" character varying(100),
+    "dw_last_update_by" character varying,
     "dw_last_update_date" timestamp(6),
-    "dw_batch_number" bigint
-)WITH(orientation=row,compression=no) 
-DISTRIBUTE BY HASH("event_type") 
-PARTITION BY RANGE (dw_creation_date)
-(
-    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),
-    PARTITION PMAX VALUES LESS THAN(MAXVALUE)
-);
+    "dw_batch_number" int8
+) ;
 COMMENT ON TABLE "dwr_order"."dwd_order_t_repair_event_f" IS '环节事件表';
 COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.id IS '系统id';
 COMMENT ON COLUMN dwr_order.dwd_order_t_repair_event_f.event_id IS '事件id';
@@ -231,22 +213,16 @@ DROP TABLE IF EXISTS "dwr_order"."dwd_order_dictionary_d";
 CREATE TABLE IF NOT EXISTS "dwr_order"."dwd_order_dictionary_d"
 (
     "id" serial,
-    "dictionary_value" character varying(50),
-    "dictionary_name" character varying(100),
-    "type" character varying(50),
-    "type_name" character varying(255),
-    "dw_creation_by" character varying(100),
+    "dictionary_value" character varying,
+    "dictionary_name" character varying,
+    "type" character varying,
+    "type_name" character varying,
+    "dw_creation_by" character varying,
     "dw_creation_date" timestamp(6),
-    "dw_last_update_by" character varying(100),
+    "dw_last_update_by" character varying,
     "dw_last_update_date" timestamp(6),
-    "dw_batch_number" bigint
-)WITH(orientation=row,compression=no) 
-DISTRIBUTE BY HASH("id") 
-PARTITION BY RANGE (dw_creation_date)
-(
-    PARTITION P0 VALUES LESS THAN(to_timestamp('2020-05-01','YYYY-MM-DD HH24:MI:SS')),
-    PARTITION PMAX VALUES LESS THAN(MAXVALUE)
-);
+    "dw_batch_number" int8
+) ;
 COMMENT ON TABLE "dwr_order"."dwd_order_dictionary_d" IS '工单标准表';
 COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.id IS '系统ID';
 COMMENT ON COLUMN dwr_order.dwd_order_dictionary_d.dictionary_value IS '字典值';

@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import sun.security.util.Length;
 
 /**
  * 贴源湖表和测试sql生成
@@ -65,7 +66,7 @@ public class CreateDWISQL {
 				//"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\能耗\\数据及集成服务-DWI设计汇总表（安防）-V1.0.xlsx",
 
 				//"D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\贴源层\\商管\\北京华贸-数据及集成服务-DWI设计汇总表-V1.0.xlsx",
-				"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\一碑\\融通地产-一碑-数据及集成服务-DWI设计汇总表-V1.0.xlsx"
+				"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\线下\\融通地产-线下-数据及集成服务-DWI设计汇总表-V1.0 .xlsx"
 		};
 
 		for (String path : paths) {
@@ -187,6 +188,7 @@ public class CreateDWISQL {
 					//		+ tableNameCell.getStringCellValue().toString().replaceAll("\\s+", "").toLowerCase() + "."
 					//		+ getString(cr.getCell(3)) + " IS '"
 					//		+ getString(cr.getCell(2)) + "';\n");
+					//common.append("\n);\n");
 					common.append("COMMENT ON COLUMN " + schema + "."
 							+ tableNameCell.getStringCellValue().toString().replaceAll("\\s+", "").toLowerCase() + "."
 							+ getString(cr.getCell(2)) + " IS '"
@@ -211,6 +213,7 @@ public class CreateDWISQL {
 
 				//sb.append(")WITH(orientation=row,compression=no) ");
 				//sb.append("DISTRIBUTE BY HASH(\"" + id + "\") ;\n");
+				sb.append("\n) ;\n");
 
 				sb.append("COMMENT ON TABLE \"" + schema + "\".\""
 						+ tableNameCell.getStringCellValue().replaceAll("\\s+", "") + "\" IS '" + tableCommon + "';\n");
