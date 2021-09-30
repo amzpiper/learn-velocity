@@ -67,6 +67,7 @@ public class CreateDWISQL {
 
 				//"D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\贴源层\\商管\\北京华贸-数据及集成服务-DWI设计汇总表-V1.0.xlsx",
 				"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\线下\\融通地产-线下-数据及集成服务-DWI设计汇总表-V1.0 .xlsx"
+				//"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\线下\\融通地产-线下-数据及集成服务-DWI设计汇总表-V1.0 .xlsx"
 		};
 
 		for (String path : paths) {
@@ -167,20 +168,18 @@ public class CreateDWISQL {
 								"    \""
 								+ id.toLowerCase()
 								+ "\" "
-								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))
-								+lengthStr);
-						map1.put(id, changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))+lengthStr);
+								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""),length));
+						map1.put(id, changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""),length));
 					} else {
 						sb.append(
 								",\n    \""
 								+ getString(cr.getCell(2)).replaceAll("\\s+", "").toLowerCase()
 								+ "\" "
-								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))
-								+lengthStr
+								+ changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""),length)
 						);
 						map1.put(
 								getString(cr.getCell(2)).toLowerCase().replaceAll("\\s+", ""),
-								changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""))+lengthStr
+								changeType(cr.getCell(4).getStringCellValue().replaceAll("^\\s+", ""),length)
 						);
 					}
 
@@ -428,6 +427,42 @@ public class CreateDWISQL {
 			return "tinyint";
 		} else if (cell.toUpperCase().startsWith("FLOAT")) {
 			return cell.toUpperCase().replace("FLOAT", "number");
+		}
+
+		return cell.toLowerCase();
+	}
+
+	public static String changeType(String cell,String length) {
+		cell = cell.replace("（", "(").replace("）", ")");
+		cell = getString(cell);
+		if (cell.toUpperCase().startsWith("mediumtext".toUpperCase())) {
+			return "text";
+		}
+		else if (cell.toUpperCase().startsWith("smallint".toUpperCase())) {
+			return "int4";
+		}
+		else if (cell.toUpperCase().startsWith("VARCHAR")) {
+			return cell.toUpperCase().replace("VARCHAR", " varchar") + "("+length+")";
+		} else if (cell.toUpperCase().startsWith("TIMESTAMP")) {
+			return cell.toLowerCase() + "("+length+")";
+		} else if (cell.toUpperCase().startsWith("DATETIME") || cell.toUpperCase().startsWith("DATE")) {
+			return "timestamp(6)" + " ";
+		} else if (cell.toUpperCase().startsWith("DOUBLE")) {
+			return cell.toUpperCase().replace("DOUBLE", "number");
+		} else if (cell.toUpperCase().startsWith("INT")) {
+			return "int8";
+		} else if (cell.toUpperCase().startsWith("BIGINT")) {
+			return "int8";
+		} else if (cell.toUpperCase().startsWith("TINYINT")) {
+			return "int8";
+		} else if (cell.toUpperCase().startsWith("FLOAT")) {
+			return cell.toUpperCase().replace("FLOAT", "number");
+		} else if (cell.toUpperCase().startsWith("NUMBER")) {
+			return "numeric("+ length +")";
+		} else if (cell.toUpperCase().startsWith("DECIMAL")) {
+			return "numeric("+ length +")";
+		} else if (cell.toUpperCase().startsWith("CHAR")) {
+			return "char("+ length +")";
 		}
 
 		return cell.toLowerCase();

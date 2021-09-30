@@ -37,7 +37,7 @@ public class CreateDWRSQL {
 		//createDWISQL("D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\主题层\\工单\\02物理模型设计\\DWR-工单-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\车辆\\02物理模型设计\\DWR-车辆-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\工单\\02物理模型设计\\DWR-工单-物理表设计-V1.0.xlsx");
-		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\客户服务\\02物理模型设计\\DWR-客户服务-物理表设计-V1.0.xlsx");
+		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\客户服务\\02物理模型设计\\DWR-客户服务-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\能耗\\02物理模型设计\\DWR-能耗-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\品质核查\\02物理模型设计\\DWR-品质核查-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\人员\\02物理模型设计\\DWR-人员-物理表设计-V1.0.xlsx");
@@ -46,7 +46,7 @@ public class CreateDWRSQL {
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\医院专项\\02物理模型设计\\DWR-医院专项-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\隐患\\02物理模型设计\\DWR-隐患-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\资产运营\\02物理模型设计\\DWR-资产运营-物理表设计-V1.0.xlsx");
-		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\组织\\02物理模型设计\\DWR-组织-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\主题\\组织\\02物理模型设计\\DWR-组织-物理表设计-V1.0.xlsx");
 	}
 
 	public static void createDWISQL(String filePath) throws Exception {
@@ -239,6 +239,10 @@ public class CreateDWRSQL {
 			return cell.toUpperCase().replace("FLOAT", "number");
 		} else if (cell.toUpperCase().startsWith("NUMBER")) {
 			return "numeric("+ length +")";
+		} else if (cell.toUpperCase().startsWith("DECIMAL")) {
+			return "numeric("+ length +")";
+		} else if (cell.toUpperCase().startsWith("CHAR")) {
+			return "char("+ length +")";
 		}
 
 		return cell.toLowerCase();
