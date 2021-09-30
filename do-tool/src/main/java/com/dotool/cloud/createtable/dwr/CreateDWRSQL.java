@@ -233,6 +233,8 @@ public class CreateDWRSQL {
 			return "int8";
 		} else if (cell.toUpperCase().startsWith("BIGINT")) {
 			return "int8";
+		} else if (cell.toUpperCase().startsWith("INTEGER")) {
+			return "int8";
 		} else if (cell.toUpperCase().startsWith("TINYINT")) {
 			return "int8";
 		} else if (cell.toUpperCase().startsWith("FLOAT")) {

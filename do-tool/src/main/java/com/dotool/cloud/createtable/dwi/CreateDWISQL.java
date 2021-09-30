@@ -312,14 +312,12 @@ public class CreateDWISQL {
 				sb.append("CREATE TABLE IF NOT EXISTS `" + getString(tableNameCell) + "`\n(\n");
 
 				int count = sheet.getLastRowNum();
-
 				Map<String,String> map1 = new LinkedHashMap<String, String>();
 				for (int a = 2; a <= count; a++) {
 					Row cr = sheet.getRow(a);
 					if (null == cr || null == cr.getCell(1) || !checkCell(cr.getCell(1).getStringCellValue())) {
 						break;
 					}
-
 					if(list.contains(getString(cr.getCell(3)).replaceAll("\\s+", "").toLowerCase())) {
 						if(getString(tableNameCell).indexOf("sls_task_subsequent_process") != -1) {
 							System.out.println(0);
@@ -452,6 +450,8 @@ public class CreateDWISQL {
 		} else if (cell.toUpperCase().startsWith("INT")) {
 			return "int8";
 		} else if (cell.toUpperCase().startsWith("BIGINT")) {
+			return "int8";
+		} else if (cell.toUpperCase().startsWith("INTEGER")) {
 			return "int8";
 		} else if (cell.toUpperCase().startsWith("TINYINT")) {
 			return "int8";
