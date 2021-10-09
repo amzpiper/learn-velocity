@@ -66,7 +66,7 @@ public class CreateDWISQL {
 				//"E:\\cc_project\\nwim\\SmartPark\\广东省二医\\03、系统设计\\详细设计\\贴源层\\能耗\\数据及集成服务-DWI设计汇总表（安防）-V1.0.xlsx",
 
 				//"D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\贴源层\\商管\\北京华贸-数据及集成服务-DWI设计汇总表-V1.0.xlsx",
-				"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\线下\\融通地产-线下-数据及集成服务-DWI设计汇总表-V1.0 .xlsx"
+				"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\一碑\\融通地产-一碑-数据及集成服务-DWI设计汇总表-V1.0.xlsx"
 				//"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\线下\\融通地产-线下-数据及集成服务-DWI设计汇总表-V1.0 .xlsx"
 		};
 
@@ -446,7 +446,7 @@ public class CreateDWISQL {
 		} else if (cell.toUpperCase().startsWith("DATETIME") || cell.toUpperCase().startsWith("DATE")) {
 			return "timestamp(6)" + " ";
 		} else if (cell.toUpperCase().startsWith("DOUBLE")) {
-			return cell.toUpperCase().replace("DOUBLE", "number");
+			return "numeric("+ length +")";
 		} else if (cell.toUpperCase().startsWith("INT")) {
 			return "int8";
 		} else if (cell.toUpperCase().startsWith("BIGINT")) {
