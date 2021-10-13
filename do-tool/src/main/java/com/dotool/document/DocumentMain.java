@@ -55,7 +55,8 @@ public class DocumentMain {
 	public static String needTableString = "";*/
 
 	// D:\programing\learn-velocity\do-tool\文件摸板\数据采集（源系统）\融通物管—一碑.xlsx
-	public static String fileName = "D:\\programing\\learn-velocity\\do-tool\\文件摸板\\02、项目需求\\数据采集（源系统）\\商管\\北京华贸-商管.xlsx";
+	//public static String fileName = "D:\\programing\\learn-velocity\\do-tool\\文件摸板\\02、项目需求\\数据采集（源系统）\\商管\\北京华贸-商管.xlsx";
+	public static String fileName = "E:\\SVN仓库\\301医院\\02、项目需求\\数据采集（源系统）\\一碑\\融通物管—一碑.xlsx";
 	//题域
 	public static String domainName = "商管";
 	//系统简称
