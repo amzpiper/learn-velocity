@@ -37,10 +37,11 @@ public class CreateDMSQL {
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\全国\\02物理模型设计\\DM-全国-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\分公司\\02物理模型设计\\DM-分公司-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\医疗事业部\\02物理模型设计\\DM-医疗事业部-物理表设计-V1.0.xlsx");
-		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\军品物业\\02物理模型设计\\DM-军品物业-物理表设计-V1.0.xlsx");
+		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\军品物业\\02物理模型设计\\DM-军品物业-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\军品物业_项目\\02物理模型设计\\DM-军品物业项目-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\产业运营\\02物理模型设计\\DM-产业运营-物理表设计-V1.0.xlsx");
 		//createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\资产安全\\02物理模型设计\\DM-资产安全-物理表设计-V1.0.xlsx");
+		createDWISQL("E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\专题\\安全管护\\02物理模型设计\\DM-安全管护-物理表设计-V1.0.xlsx");
 	}
 
 	public static void createDWISQL(String filePath) throws Exception {
@@ -133,10 +134,6 @@ public class CreateDMSQL {
 							+ getString(cr.getCell(3)).toLowerCase().replaceAll("\\s+", "") + " IS '"
 							+ getString(cr.getCell(4)) + "';\n");
 				}
-
-
-
-
 
 				sb.append("\n)WITH(orientation=row,compression=no) ");
 
