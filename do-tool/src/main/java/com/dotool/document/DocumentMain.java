@@ -56,24 +56,24 @@ public class DocumentMain {
 
 	// D:\programing\learn-velocity\do-tool\文件摸板\数据采集（源系统）\融通物管—一碑.xlsx
 	//public static String fileName = "D:\\programing\\learn-velocity\\do-tool\\文件摸板\\02、项目需求\\数据采集（源系统）\\商管\\北京华贸-商管.xlsx";
-	//public static String fileName = "E:\\SVN仓库\\301医院\\02、项目需求\\数据采集（源系统）\\一碑\\融通物管—一碑.xlsx";
-	public static String fileName = "E:\\SVN仓库\\华贸\\02、项目需求\\数据采集（源系统）\\商管2.0\\北京华贸-商管.xlsx";
+	public static String fileName = "E:\\SVN仓库\\301医院\\02、项目需求\\数据采集（源系统）\\一碑\\融通物管—一碑.xlsx";
+	//public static String fileName = "E:\\SVN仓库\\华贸\\02、项目需求\\数据采集（源系统）\\商管2.0\\北京华贸-商管.xlsx";
 	//题域
-	public static String domainName = "商管";
+	public static String domainName = "一碑";
 	//系统简称
-	public static String sourceSystemName = "商管";
+	public static String sourceSystemName = "一碑";
 	//题域
-	public static String domainNameDwi = "商管";
+	public static String domainNameDwi = "一碑";
 	//系统简称
-	public static String sourceSystemNameDwi = "商管";
+	public static String sourceSystemNameDwi = "一碑";
 	//
 	public static String name = "energy";
 	//
 	public static String dbSchemaPre = "dwr_" + name;
 	// 主题表前缀
 	public static String dbPre = "dwd_" + name;
-	// 专题表前缀
-	public static String dwiDBPre = "dwi_ecm";
+	// 湖表前缀
+	public static String dwiDBPre = "dwi_em";
 
 	//	public static String needTableString = "hw_zhyq_enterprise_main_info";
 	public static String needTableString = "";
