@@ -63,14 +63,14 @@ public class CreateDWISQL {
 		String[] paths = {
 				//"D:\\programing\\learn-velocity\\do-tool\\文件摸板\\03、系统设计\\详细设计\\贴源层\\商管\\北京华贸-数据及集成服务-DWI设计汇总表-V1.0.xlsx",
 				//"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\线下\\融通地产-线下-数据及集成服务-DWI设计汇总表-V1.0 .xlsx"
-				//"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\一碑\\融通地产-一碑-数据及集成服务-DWI设计汇总表-V1.0.xlsx"
-				"E:\\SVN仓库\\华贸\\03、系统设计\\详细设计\\贴源层\\商管2.0\\北京华贸-数据及集成服务-DWI设计汇总表-V2.0.xlsx"
+				"E:\\SVN仓库\\301医院\\03、系统设计\\详细设计\\贴源层\\一碑\\融通地产-一碑-数据及集成服务-DWI设计汇总表-V1.0.xlsx"
+				//"E:\\SVN仓库\\华贸\\03、系统设计\\详细设计\\贴源层\\商管2.0\\北京华贸-数据及集成服务-DWI设计汇总表-V2.0.xlsx"
 		};
-
+		// 选择生产sql的数据库类型
 		for (String path : paths) {
 			System.out.println(path);
-			createGaussDB200SQL(path);
-			createOpenGSSQL(path);
+			//createGaussDB200SQL(path);
+			//createOpenGSSQL(path);
 			createMysqlSQL(path);
 		}
 	}
